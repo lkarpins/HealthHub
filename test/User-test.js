@@ -36,4 +36,8 @@ describe("User", () => {
       "15195 Nakia Tunnel, Erdmanport VA 19901-1697"
     );
   });
+
+  it("should be able to store a user email", function() {
+    expect(user.email).to.equal("Diana.Hayes1@hotmail.com");
+  });
 });
