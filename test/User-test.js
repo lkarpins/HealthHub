@@ -52,4 +52,9 @@ describe("User", () => {
   it("should be able to store a users friends", function() {
     expect(user.friends).to.deep.equal([16, 4, 8]);
   });
+
+  it("should be able to return only the first name", function() {
+    const firstName = user.returnFirstName();
+    expect(firstName).to.equal("Luisa");
+  });
 });
