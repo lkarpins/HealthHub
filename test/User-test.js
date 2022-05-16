@@ -30,4 +30,10 @@ describe("User", () => {
   it("should be able to store a user name", function() {
     expect(user.name).to.equal("Luisa Hane");
   });
+
+  it("should be able to store a user address", function() {
+    expect(user.address).to.equal(
+      "15195 Nakia Tunnel, Erdmanport VA 19901-1697"
+    );
+  });
 });
