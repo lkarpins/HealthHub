@@ -44,4 +44,8 @@ describe("User", () => {
   it("should be able to store a user stride length", function() {
     expect(user.strideLength).to.equal(4.3);
   });
+
+  it("should be able to store a user daily step goal", function() {
+    expect(user.dailyStepGoal).to.equal(10000);
+  });
 });
