@@ -40,4 +40,8 @@ describe("User", () => {
   it("should be able to store a user email", function() {
     expect(user.email).to.equal("Diana.Hayes1@hotmail.com");
   });
+
+  it("should be able to store a user stride length", function() {
+    expect(user.strideLength).to.equal(4.3);
+  });
 });
