@@ -56,7 +56,7 @@ describe("Sleep", () => {
     expect(sleepQualityPerDay).to.equal();
   });
 
-  it.skip("should be able to return how many hours slept over the course of a gicen week", () => {
+  it.skip("should be able to return how many hours slept over the course of a given week", () => {
     const sleptHoursPerDayPerWeek = sleep.sleptHoursPerDayPerWeek();
     expect(sleptHoursPerDayPerWeek).to.equal();
   });
@@ -64,6 +64,11 @@ describe("Sleep", () => {
   it.skip("should be able to return how many hours slept each day over the course of a different week", () => {
     const sleptHoursPerDayPerWeek = sleep.sleptHoursPerDayPerWeek();
     expect(sleptHoursPerDayPerWeek).to.equal();
+  });
+
+  it.skip("should be able to return their sleep quality each day over the course of a given week", () => {
+    const sleepQualityPerDayPerWeek = sleep.sleepQualityPerDayPerWeek();
+    expect(sleepQualityPerDayPerWeek).to.equal();
   });
 
   it.skip("should be able to return the average sleep quality for all users", () => {
