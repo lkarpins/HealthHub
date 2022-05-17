@@ -27,4 +27,8 @@ describe("Sleep", () => {
   it("should be able to store a date", () => {
     expect(sleep.date).to.equal("2019/06/15");
   });
+
+  it("should be able to store hoursSlept", () => {
+    expect(sleep.hoursSlept).to.equal(6.1);
+  });
 });
