@@ -3,12 +3,20 @@ class Hydration {
     this.userID = hydrationData.userID;
     this.date = hydrationData.date;
     this.numOunces = hydrationData.numOunces;
-  }
+  };
 
-  avgHydrationPerDay = () => {
-    //Identified by userID, should calculate average number of number
-    //of ounces drank per day
+  returnAvgHydrationPerDay = () => {
+    //Identified by userID, should calculate average number
+    //of ounces consumed per day for all time; reduce?
+  };
+
+  returnDailyOunces = () => {
+    //Identified by a specified date, their ounces consumed for a given day; reduce?
+  };
+
+  returnWeeklyOunces = () => {
+    //Identiified by a specific week, return the amount of ounces for each day
   }
-}
+};
 
 export default Hydration;

@@ -30,10 +30,18 @@ describe("Hydration", () => {
       expect(hydration.numOunces).to.equal(37);
     });
 
-    it("should be able to return the average fluid ounces consumed per day", () => {
-      const avgHydrationPerDay = hydration.avgHydrationPerDay();
+    it.skip("should be able to return the average fluid ounces consumed per day for all time", () => {
+      const avgHydrationPerDay = hydration.returnAvgHydrationPerDay();
       expect(avgHydrationPerDay).to.equal();
     });
 
+    it.skip("should be able to return how many ounces a user consumed for a specific day", () => {
+      const consumedOuncesPerDay = hydration.returnDailyOunces();
+      expect(consumedOuncesPerDay).to.equal();
+    });
 
+    it.skip("should be able to return the amount of ounces consumed each day over the course of a week", () => {
+      const weeklyOuncesPerDay = hydration.returnWeeklyOunces();
+      expect(weeklyOuncesPerDay).to.equal();
+    });
   });
