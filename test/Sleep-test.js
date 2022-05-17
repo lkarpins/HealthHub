@@ -19,4 +19,8 @@ describe("Sleep", () => {
   it("should be an instance of Sleep", () => {
     expect(sleep).to.be.an.instanceof(Sleep);
   });
+
+  it("should be able to store a sleep user id", () => {
+    expect(sleep.userID).to.equal(1);
+  });
 });

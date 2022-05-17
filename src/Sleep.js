@@ -15,7 +15,9 @@
 // },
 
 class Sleep {
-  constructor() {}
+  constructor(sleepData) {
+    this.userID = sleepData.userID;
+  }
 }
 
 export default Sleep;
