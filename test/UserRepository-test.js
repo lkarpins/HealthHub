@@ -46,15 +46,14 @@ describe('User Repository', () => {
       expect(userRepository).to.be.an.instanceof(UserRepository);
     });
 
-    // it("should be able to determine user data by ID", () => {
-    //   let determineUser = userRepository.determineUserData();
-    //   expect(determineUser).to.equal(user)
-    // });
+    it("should be able to determine user data by ID", () => {
+      let determineUser = userRepository.findUser(user2.id);
+      expect(determineUser).to.equal(user2)
+    });
 
     it("should be able to capture the average step goal of the users ", () => {
       let averageSteps = userRepository.averageStepGoal();
       expect(averageSteps).to.equal(6500)
     })
-  
   });
   
