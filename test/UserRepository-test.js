@@ -23,27 +23,38 @@ describe('User Repository', () => {
     });
     
     user2 = new User({
-      id: 3,
-      name: "Herminia Witting",
-      address: "85823 Bosco Fork, East Oscarstad MI 85126-5660",
-      email: "Elwin.Tromp@yahoo.com",
-      strideLength: 4.4,
-      dailyStepGoal: 5000,
+      id: 5,
+      name: "Erick Schaden",
+      address: "514 Mayert Walk, Jordaneside SC 55023-6523",
+      email: "Vanessa_Gerhold@gmail.com",
+      strideLength: 3.1,
+      dailyStepGoal: 8000,
       friends: [
-        19,
-        11,
-        42,
-        33
+        13,
+        44,
+        49,
+        33,
+        10
       ]
     })
-    userRepository = new UserRepository(user, user2)    
+    userRepository = new UserRepository([user, user2])    
     })
-    it('should be a function', function () {
+    it("should be a function", function () {
       expect(UserRepository).to.be.a('function');
     });
     it("should be an instance of UserRepository", () => {
       expect(userRepository).to.be.an.instanceof(UserRepository);
     });
+
+    // it("should be able to determine user data by ID", () => {
+    //   let determineUser = userRepository.determineUserData();
+    //   expect(determineUser).to.equal(user)
+    // });
+
+    it("should be able to capture the average step goal of the users ", () => {
+      let averageSteps = userRepository.averageStepGoal();
+      expect(averageSteps).to.equal(6500)
+    })
   
-  })
+  });
   
