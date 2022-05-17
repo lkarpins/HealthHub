@@ -55,4 +55,9 @@ describe("Sleep", () => {
     const sleepQualityPerDay = sleep.sleepQualityPerDay();
     expect(sleepQualityPerDay).to.equal();
   });
+
+  it.skip("should be able to return how many hours slept each day over the course of a given week", () => {
+    const sleptHoursPerDayPerWeek = sleep.sleptHoursPerDayPerWeek();
+    expect(sleptHoursPerDayPerWeek).to.equal();
+  });
 });
