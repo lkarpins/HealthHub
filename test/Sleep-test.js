@@ -40,4 +40,9 @@ describe("Sleep", () => {
     const avgSleepPerDay = sleep.avgSleepPerDay();
     expect(avgSleepPerDay).to.equal();
   });
+
+  it.skip("should be able to return the average quality of sleep per day", () => {
+    const avgSleepQualityPerDay = sleep.avgSleepQualityPerDay();
+    expect(avgSleepQualityPerDay).to.equal();
+  });
 });
