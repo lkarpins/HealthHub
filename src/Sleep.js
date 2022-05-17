@@ -14,6 +14,8 @@
 //   "sleepQuality": [number - unitless]
 // },
 
-class Sleep {}
+class Sleep {
+  constructor() {}
+}
 
 export default Sleep;
