@@ -45,4 +45,9 @@ describe("Sleep", () => {
     const avgSleepQualityPerDay = sleep.avgSleepQualityPerDay();
     expect(avgSleepQualityPerDay).to.equal();
   });
+
+  it.skip("should be able to return how many hours a user slept for a specific day", () => {
+    const sleptHoursPerDay = sleep.sleptHoursPerDay();
+    expect(sleptHoursPerDay).to.equal();
+  });
 });
