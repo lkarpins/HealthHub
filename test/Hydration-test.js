@@ -26,7 +26,14 @@ describe("Hydration", () => {
       expect(hydration.date).to.equal("2019/06/15");
     });
 
-    it("should be able to store ounces drank", () => {
+    it("should be able to store ounces fluid consumed", () => {
       expect(hydration.numOunces).to.equal(37);
     });
+
+    it("should be able to return the average fluid ounces consumed per day", () => {
+      const avgHydrationPerDay = hydration.avgHydrationPerDay();
+      expect(avgHydrationPerDay).to.equal();
+    });
+
+
   });
