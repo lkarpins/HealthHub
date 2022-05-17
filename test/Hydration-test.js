@@ -25,4 +25,8 @@ describe("Hydration", () => {
     it("should be able to store a date", () => {
       expect(hydration.date).to.equal("2019/06/15");
     });
+
+    it("should be able to store ounces drank", () => {
+      expect(hydration.numOunces).to.equal(37);
+    });
   });
