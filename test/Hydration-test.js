@@ -15,14 +15,18 @@ describe("Hydration", () => {
       dailyStepGoal: 10000,
       friends: [16, 4, 8]
     });
+
+    hydration = new Hydration({
+
+    })
 });
     it("should be a function", () => {
       expect(Hydration).to.be.a("function");
     });
-    //
-    // it("should be an instance of Hydration", () => {
-    //   expect(hydration).to.be.an.instanceof(Hydration);
-    // });
+
+    it("should be an instance of Hydration", () => {
+      expect(hydration).to.be.an.instanceof(Hydration);
+    });
     //
     // it("should be able to store a user id", () => {
     //   expect(hydration.id).to.equal(user.id);
