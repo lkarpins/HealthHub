@@ -65,4 +65,9 @@ describe("Sleep", () => {
     const sleptHoursPerDayPerWeek = sleep.sleptHoursPerDayPerWeek();
     expect(sleptHoursPerDayPerWeek).to.equal();
   });
+
+  it.skip("should be able to return the average sleep quality for all users", () => {
+    const avgSleepQualityAllUsers = sleep.avgSleepQualityAllUsers();
+    expect(avgSleepQualityAllUsers).to.equal();
+  });
 });
