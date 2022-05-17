@@ -50,4 +50,9 @@ describe("Sleep", () => {
     const sleptHoursPerDay = sleep.sleptHoursPerDay();
     expect(sleptHoursPerDay).to.equal();
   });
+
+  it.skip("should be able to return the sleep quality for a specific day", () => {
+    const sleepQualityPerDay = sleep.sleepQualityPerDay();
+    expect(sleepQualityPerDay).to.equal();
+  });
 });
