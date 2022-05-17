@@ -11,11 +11,11 @@ class Hydration {
   };
 
   returnDailyOunces = () => {
-    //Identified by a specified date, their ounces consumed for a given day; reduce?
+    //Identified by a specified date, return the ounces consumed for a given day; reduce?
   };
 
   returnWeeklyOunces = () => {
-    //Identiified by a specific week, return the amount of ounces for each day
+    //Identiified by a specific week, return the amount of ounces for each day;
   }
 };
 
