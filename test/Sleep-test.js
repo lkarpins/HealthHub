@@ -71,6 +71,11 @@ describe("Sleep", () => {
     expect(sleepQualityPerDayPerWeek).to.equal();
   });
 
+  it.skip("should be able to return the quality of sleep each day over the course of a different week", () => {
+    const sleptHoursPerDayPerWeek = sleep.sleptHoursPerDayPerWeek();
+    expect(sleptHoursPerDayPerWeek).to.equal();
+  });
+
   it.skip("should be able to return the average sleep quality for all users", () => {
     const avgSleepQualityAllUsers = sleep.avgSleepQualityAllUsers();
     expect(avgSleepQualityAllUsers).to.equal();
