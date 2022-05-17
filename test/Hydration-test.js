@@ -8,7 +8,7 @@ describe("Hydration", () => {
       userID: 1,
       date: "2019/06/15",
       numOunces: 37
-    })
+    });
 });
     it("should be a function", () => {
       expect(Hydration).to.be.a("function");
@@ -20,5 +20,9 @@ describe("Hydration", () => {
 
     it("should be able to store a user id", () => {
       expect(hydration.userID).to.equal(1);
+    });
+
+    it("should be able to store a date", () => {
+      expect(hydration.date).to.equal("2019/06/15");
     });
   });
