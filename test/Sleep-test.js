@@ -20,7 +20,11 @@ describe("Sleep", () => {
     expect(sleep).to.be.an.instanceof(Sleep);
   });
 
-  it("should be able to store a sleep user id", () => {
+  it("should be able to store a user id", () => {
     expect(sleep.userID).to.equal(1);
+  });
+
+  it("should be able to store a date", () => {
+    expect(sleep.date).to.equal("2019/06/15");
   });
 });
