@@ -1,14 +1,12 @@
 import { expect } from "chai";
 import Sleep from "../src/Sleep";
+const sampleSleepData = require("../src/data/sample-sleep-data");
 
 describe("Sleep", () => {
-  let sleep;
+  let userSleep;
   beforeEach(() => {
-    sleep = new Sleep({
-      userID: 1,
-      date: "2019/06/15",
-      hoursSlept: 6.1,
-      sleepQuality: 2.2
+    userSleep = new Sleep({
+      sampleSleepData[0]
     });
   });
 
