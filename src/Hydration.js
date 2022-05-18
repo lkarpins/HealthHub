@@ -37,8 +37,15 @@ class Hydration {
     return dailyIntake.numOunces;
   };
 
-  returnWeeklyOunces = () => {
-    //Identiified by a specific week, return the amount of ounces for each day;
+  returnWeeklyOunces = weekStart => {
+    let weeklyIntake = this.userHydroData.map(entry => {
+      return entry.numOunces;
+    });
+    const targetStartDate = this.userHydroData.findIndex(entry => {
+      return entry.date === weekStart;
+    });
+    let chosenWeek = weeklyIntake.slice(targetStartDate, targetStartDate + 7);
+    return chosenWeek;
   };
 }
 
