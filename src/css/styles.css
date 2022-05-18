@@ -1,5 +1,16 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-image: linear-gradient(to top, yellow 0%, green 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
+  border: solid;
+  /* display: flex; */
 }
+
+.nav--bar {
+  border: solid;
+}
+
+section {
+  border: solid;
+}
+
