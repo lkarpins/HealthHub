@@ -6,9 +6,8 @@ describe("Sleep", () => {
   let user1Sleep;
   let user2Sleep;
   beforeEach(() => {
-    console.log(sampleSleepData);
-    user1Sleep = new Sleep(sampleSleepData[0]);
-    user2Sleep = new Sleep(sampleSleepData[1]);
+    user1Sleep = new Sleep(sampleSleepData[0], sampleSleepData);
+    user2Sleep = new Sleep(sampleSleepData[1], sampleSleepData);
   });
 
   it("should be a function", () => {
@@ -40,9 +39,12 @@ describe("Sleep", () => {
     expect(user2Sleep.sleepQuality).to.equal(4.7);
   });
 
-  it.skip("should be able to return the average hours of sleep per day", () => {
-    const avgSleepPerDay = sleep.avgSleepPerDay();
-    expect(avgSleepPerDay).to.equal();
+  it("should be able to return the average hours of sleep per day", () => {
+    const avgSleepPerDay1 = user1Sleep.avgSleepPerDay();
+    const avgSleepPerDay2 = user2Sleep.avgSleepPerDay();
+
+    expect(avgSleepPerDay1).to.equal(7.8);
+    expect(avgSleepPerDay2).to.equal(8);
   });
 
   it.skip("should be able to return the average quality of sleep per day", () => {

@@ -1,14 +1,35 @@
 class Sleep {
-  constructor(sleepData) {
-    this.userID = sleepData.userID;
-    this.date = sleepData.date;
-    this.hoursSlept = sleepData.hoursSlept;
-    this.sleepQuality = sleepData.sleepQuality;
+  constructor(userSleep, sleepAPIResponse) {
+    this.userID = userSleep.userID;
+    this.date = userSleep.date;
+    this.hoursSlept = userSleep.hoursSlept;
+    this.sleepQuality = userSleep.sleepQuality;
+    this.sleepAPIResponse = sleepAPIResponse;
+    this.userSleepData = this.setUserSleepData(sleepAPIResponse);
   }
+
+  setUserSleepData = sleepAPIResponse => {
+    const userSleep = sleepAPIResponse.filter(userSleepData => {
+      if (userSleepData.userID === this.userID) {
+        return userSleepData;
+      }
+    });
+    return userSleep;
+  };
 
   avgSleepPerDay = () => {
     // For a user (identified by their `userID`), the average number of hours slept per day
     //
+    let totalHours = 0;
+    this.userSleepData.forEach(entry => {
+      return (totalHours += entry.hoursSlept);
+    });
+
+    const averageHours =
+      Math.round(
+        (totalHours / this.userSleepData.length + Number.EPSILON) * 10
+      ) / 10;
+    return averageHours;
   };
 
   avgSleepQualityPerDay = () => {
