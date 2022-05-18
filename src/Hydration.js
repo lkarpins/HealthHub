@@ -30,8 +30,11 @@ class Hydration {
     return averageOunces;
   };
 
-  returnDailyOunces = () => {
-    //Identified by a specified date, return the ounces consumed for a given day; find?
+  returnDailyOunces = date => {
+    let dailyIntake = this.userHydroData.find(entry => {
+      return entry.date === date;
+    });
+    return dailyIntake.numOunces;
   };
 
   returnWeeklyOunces = () => {

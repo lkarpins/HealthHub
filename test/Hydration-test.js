@@ -40,9 +40,15 @@ describe("Hydration", () => {
     expect(avgHydrationPerDay2).to.equal(61.5);
   });
 
-  it.skip("should be able to return how many ounces a user consumed for a specific day", () => {
-    const consumedOuncesPerDay = user1Hydration.returnDailyOunces();
-    expect(consumedOuncesPerDay).to.equal();
+  it("should be able to return how many ounces a user consumed for a specific day", () => {
+    const consumedOuncesPerDay1 = user1Hydration.returnDailyOunces(
+      "2019/06/16"
+    );
+    expect(consumedOuncesPerDay1).to.equal(69);
+    const consumedOuncesPerDay2 = user2Hydration.returnDailyOunces(
+      "2019/06/16"
+    );
+    expect(consumedOuncesPerDay2).to.equal(91);
   });
 
   it.skip("should be able to return the amount of ounces consumed each day over the course of a week", () => {
