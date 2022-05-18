@@ -3,10 +3,12 @@ import Sleep from "../src/Sleep";
 const sampleSleepData = require("../src/data/sample-sleep-data");
 
 describe("Sleep", () => {
-  let userSleep;
+  let user1Sleep;
+  let user2Sleep;
   beforeEach(() => {
     console.log(sampleSleepData);
-    userSleep = new Sleep(sampleSleepData[0]);
+    user1Sleep = new Sleep(sampleSleepData[0]);
+    user2Sleep = new Sleep(sampleSleepData[1]);
   });
 
   it("should be a function", () => {
@@ -14,23 +16,28 @@ describe("Sleep", () => {
   });
 
   it("should be an instance of Sleep", () => {
-    expect(userSleep).to.be.an.instanceof(Sleep);
+    expect(user1Sleep).to.be.an.instanceof(Sleep);
+    expect(user2Sleep).to.be.an.instanceof(Sleep);
   });
 
   it("should be able to store a user id", () => {
-    expect(userSleep.userID).to.equal(1);
+    expect(user1Sleep.userID).to.equal(1);
+    expect(user2Sleep.userID).to.equal(2);
   });
 
   it("should be able to store a date", () => {
-    expect(userSleep.date).to.equal("2019/06/15");
+    expect(user1Sleep.date).to.equal("2019/06/15");
+    expect(user2Sleep.date).to.equal("2019/06/15");
   });
 
   it("should be able to store hours slept", () => {
-    expect(userSleep.hoursSlept).to.equal(6.1);
+    expect(user1Sleep.hoursSlept).to.equal(6.1);
+    expect(user2Sleep.hoursSlept).to.equal(7);
   });
 
   it("should be able to store sleep quality ", () => {
-    expect(userSleep.sleepQuality).to.equal(2.2);
+    expect(user1Sleep.sleepQuality).to.equal(2.2);
+    expect(user2Sleep.sleepQuality).to.equal(4.7);
   });
 
   it.skip("should be able to return the average hours of sleep per day", () => {
