@@ -18,8 +18,6 @@ class Sleep {
   };
 
   avgSleepPerDay = () => {
-    // For a user (identified by their `userID`), the average number of hours slept per day
-    //
     let totalHours = 0;
     this.userSleepData.forEach(entry => {
       return (totalHours += entry.hoursSlept);
@@ -33,7 +31,6 @@ class Sleep {
   };
 
   avgSleepQualityPerDay = () => {
-    // - For a user, their average sleep quality per day over all time
     let totalHours = 0;
     this.userSleepData.forEach(entry => {
       return (totalHours += entry.sleepQuality);
@@ -54,8 +51,6 @@ class Sleep {
     return dailyHoursSlept.hoursSlept;
   };
 
-  // - For a user, how many hours they slept for a specific day (identified by a date)
-
   sleepQualityPerDay = date => {
     let dailySleepQuality = this.userSleepData.find(entry => {
       return entry.date === date;
@@ -64,12 +59,38 @@ class Sleep {
     return dailySleepQuality.sleepQuality;
   };
 
-  sleptHoursPerDayPerWeek = () => {
-    // - For a user, how many hours slept each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+  sleptHoursPerDayPerWeek = weekStart => {
+    let weeklyHoursSlept = this.userSleepData.map(entry => {
+      return entry.hoursSlept;
+    });
+
+    const targetStartDate = this.userSleepData.findIndex(entry => {
+      return entry.date === weekStart;
+    });
+
+    let chosenWeek = weeklyHoursSlept.slice(
+      targetStartDate,
+      targetStartDate + 7
+    );
+
+    return chosenWeek;
   };
 
-  sleepQualityPerDayPerWeek = () => {
-    // For a user, their sleep quality each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+  sleepQualityPerDayPerWeek = weekStart => {
+    let weeklySleepQuality = this.userSleepData.map(entry => {
+      return entry.sleepQuality;
+    });
+
+    const targetStartDate = this.userSleepData.findIndex(entry => {
+      return entry.date === weekStart;
+    });
+
+    let chosenWeek = weeklySleepQuality.slice(
+      targetStartDate,
+      targetStartDate + 7
+    );
+
+    return chosenWeek;
   };
 
   avgSleepQualityAllUsers = () => {
