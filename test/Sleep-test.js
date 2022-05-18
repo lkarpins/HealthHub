@@ -5,9 +5,8 @@ const sampleSleepData = require("../src/data/sample-sleep-data");
 describe("Sleep", () => {
   let userSleep;
   beforeEach(() => {
-    userSleep = new Sleep({
-      sampleSleepData[0]
-    });
+    console.log(sampleSleepData);
+    userSleep = new Sleep(sampleSleepData[0]);
   });
 
   it("should be a function", () => {
@@ -15,23 +14,23 @@ describe("Sleep", () => {
   });
 
   it("should be an instance of Sleep", () => {
-    expect(sleep).to.be.an.instanceof(Sleep);
+    expect(userSleep).to.be.an.instanceof(Sleep);
   });
 
   it("should be able to store a user id", () => {
-    expect(sleep.userID).to.equal(1);
+    expect(userSleep.userID).to.equal(1);
   });
 
   it("should be able to store a date", () => {
-    expect(sleep.date).to.equal("2019/06/15");
+    expect(userSleep.date).to.equal("2019/06/15");
   });
 
   it("should be able to store hours slept", () => {
-    expect(sleep.hoursSlept).to.equal(6.1);
+    expect(userSleep.hoursSlept).to.equal(6.1);
   });
 
   it("should be able to store sleep quality ", () => {
-    expect(sleep.sleepQuality).to.equal(2.2);
+    expect(userSleep.sleepQuality).to.equal(2.2);
   });
 
   it.skip("should be able to return the average hours of sleep per day", () => {

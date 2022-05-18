@@ -168,3 +168,5 @@ const sampleSleepData = [
     sleepQuality: 4.9
   }
 ];
+
+module.exports = sampleSleepData;
