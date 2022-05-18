@@ -6,22 +6,23 @@
   </head>
   <body>
     <!-- <h1>Activity Tracker</h1> -->
-    <aside class="user nav--bar">
-      <h3 class="user__menu-text">Main Menu</h3>
-      <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-    <aside/>
-    <section class="activity-section">
-      <p>Activity</p>
-      <button>Activity</button>
+    <div>
+      <aside class="user nav--bar">
+        <h3 class="user__menu-text">Main Menu</h3>
+        <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+      </aside>
+    </div>
+    <article class="dashboard">
+      <section class="activity-section">
+        <button>Activity</button>
+      </section>
+      <section class="hydration-section">
+        <button>Hydration</button>
+      </section>
+      <section class="sleep-section">
+        <button>Sleep</button>
     </section>
-    <section class="hydration-section">
-      <p>Hydration</p>
-      <button>Hydration</button>
-    </section>
-    <section class="sleep-section">
-      <p>Sleep</p>
-      <button>Sleep</button>
-    </section>
+   </article>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

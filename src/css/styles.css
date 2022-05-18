@@ -6,11 +6,28 @@ body, html {
   /* display: flex; */
 }
 
-.nav--bar {
+div {
+  border: solid;
+  display: flex;
+}
+
+aside {
+  border: solid;
+  padding-bottom: 35%;
+}
+
+article {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+section {
   border: solid;
 }
 
-section {
-  border: solid;
+button {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
 }
 
