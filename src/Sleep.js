@@ -46,12 +46,22 @@ class Sleep {
     return averageHours;
   };
 
-  sleptHoursPerDay = () => {
-    // - For a user, how many hours they slept for a specific day (identified by a date)
+  sleptHoursPerDay = date => {
+    let dailyHoursSlept = this.userSleepData.find(entry => {
+      return entry.date === date;
+    });
+
+    return dailyHoursSlept.hoursSlept;
   };
 
-  sleepQualityPerDay = () => {
-    // - For a user, their sleep quality for a specific day (identified by a date)
+  // - For a user, how many hours they slept for a specific day (identified by a date)
+
+  sleepQualityPerDay = date => {
+    let dailySleepQuality = this.userSleepData.find(entry => {
+      return entry.date === date;
+    });
+
+    return dailySleepQuality.sleepQuality;
   };
 
   sleptHoursPerDayPerWeek = () => {

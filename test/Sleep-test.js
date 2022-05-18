@@ -55,14 +55,20 @@ describe("Sleep", () => {
     expect(avgSleepQualityPerDay2).to.equal(3.1);
   });
 
-  it.skip("should be able to return how many hours a user slept for a specific day", () => {
-    const sleptHoursPerDay = sleep.sleptHoursPerDay();
-    expect(sleptHoursPerDay).to.equal();
+  it("should be able to return how many hours a user slept for a specific day", () => {
+    const sleptHoursPerDay1 = user1Sleep.sleptHoursPerDay("2019/06/16");
+    const sleptHoursPerDay2 = user2Sleep.sleptHoursPerDay("2019/06/16");
+
+    expect(sleptHoursPerDay1).to.equal(4.1);
+    expect(sleptHoursPerDay2).to.equal(7.5);
   });
 
-  it.skip("should be able to return the sleep quality for a specific day", () => {
-    const sleepQualityPerDay = sleep.sleepQualityPerDay();
-    expect(sleepQualityPerDay).to.equal();
+  it("should be able to return the sleep quality for a specific day", () => {
+    const sleepQualityPerDay1 = user1Sleep.sleepQualityPerDay("2019/06/16");
+    const sleepQualityPerDay2 = user2Sleep.sleepQualityPerDay("2019/06/16");
+
+    expect(sleepQualityPerDay1).to.equal(3.8);
+    expect(sleepQualityPerDay2).to.equal(3.8);
   });
 
   it.skip("should be able to return how many hours slept over the course of a given week", () => {
