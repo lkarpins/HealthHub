@@ -153,13 +153,35 @@ describe("Sleep", () => {
     ]);
   });
 
-  it.skip("should be able to return the quality of sleep each day over the course of a different week", () => {
-    const sleptHoursPerDayPerWeek = sleep.sleptHoursPerDayPerWeek();
-    expect(sleptHoursPerDayPerWeek).to.deep.equal();
+  it("should be able to return the quality of sleep each day over the course of a different week", () => {
+    const sleepQualityPerDayPerWeek1 = user1Sleep.sleepQualityPerDayPerWeek(
+      "2019/06/22"
+    );
+    const sleepQualityPerDayPerWeek2 = user2Sleep.sleepQualityPerDayPerWeek(
+      "2019/06/22"
+    );
+    expect(sleepQualityPerDayPerWeek1).to.deep.equal([
+      3,
+      1.5,
+      1.3,
+      3.7,
+      2.4,
+      4.6,
+      4.7
+    ]);
+    expect(sleepQualityPerDayPerWeek2).to.deep.equal([
+      3.3,
+      4.9,
+      1,
+      1.3,
+      2.6,
+      1.3,
+      4.9
+    ]);
   });
 
-  it.skip("should be able to return the average sleep quality for all users", () => {
-    const avgSleepQualityAllUsers = sleep.avgSleepQualityAllUsers();
-    expect(avgSleepQualityAllUsers).to.equal();
+  it("should be able to return the average sleep quality for all users", () => {
+    const avgSleepQualityAllUsers1 = user1Sleep.avgSleepQualityAllUsers();
+    expect(avgSleepQualityAllUsers1).to.equal(3);
   });
 });

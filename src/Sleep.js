@@ -31,16 +31,16 @@ class Sleep {
   };
 
   avgSleepQualityPerDay = () => {
-    let totalHours = 0;
+    let totalQuality = 0;
     this.userSleepData.forEach(entry => {
-      return (totalHours += entry.sleepQuality);
+      return (totalQuality += entry.sleepQuality);
     });
 
-    const averageHours =
+    const averageQuality =
       Math.round(
-        (totalHours / this.userSleepData.length + Number.EPSILON) * 10
+        (totalQuality / this.userSleepData.length + Number.EPSILON) * 10
       ) / 10;
-    return averageHours;
+    return averageQuality;
   };
 
   sleptHoursPerDay = date => {
@@ -94,7 +94,16 @@ class Sleep {
   };
 
   avgSleepQualityAllUsers = () => {
-    // - For all users, the average sleep quality
+    let totalQuality = 0;
+    this.sleepAPIResponse.forEach(entry => {
+      return (totalQuality += entry.sleepQuality);
+    });
+
+    const averageQuality =
+      Math.round(
+        (totalQuality / this.sleepAPIResponse.length + Number.EPSILON) * 10
+      ) / 10;
+    return averageQuality;
   };
 }
 
