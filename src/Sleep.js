@@ -34,6 +34,16 @@ class Sleep {
 
   avgSleepQualityPerDay = () => {
     // - For a user, their average sleep quality per day over all time
+    let totalHours = 0;
+    this.userSleepData.forEach(entry => {
+      return (totalHours += entry.sleepQuality);
+    });
+
+    const averageHours =
+      Math.round(
+        (totalHours / this.userSleepData.length + Number.EPSILON) * 10
+      ) / 10;
+    return averageHours;
   };
 
   sleptHoursPerDay = () => {
