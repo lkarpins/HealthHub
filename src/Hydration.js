@@ -1,13 +1,33 @@
 class Hydration {
-  constructor(hydrationData) {
-    this.userID = hydrationData.userID;
-    this.date = hydrationData.date;
-    this.numOunces = hydrationData.numOunces;
-    console.log(hydrationData);
+  constructor(userHydroData, hydroAPIResponse) {
+    this.userID = userHydroData.userID;
+    this.date = userHydroData.date;
+    this.numOunces = userHydroData.numOunces;
+    this.hydroAPIResponse = hydroAPIResponse;
+    this.userHydroData = this.setUserHydroData(hydroAPIResponse);
   }
-  returnAvgHydrationPerDay = userID => {
-    //Identified by userID, should calculate average number
-    //of ounces consumed per day for all time; filter? reduce?
+
+  setUserHydroData = hydroAPIResponse => {
+    const userHydro = hydroAPIResponse.filter(userHydroData => {
+      if (userHydroData.userID === this.userID) {
+        return userHydroData;
+      }
+    });
+    return userHydro;
+  };
+
+  returnAvgHydroPerDay = () => {
+    let totalOunces = 0;
+
+    this.userHydroData.forEach(entry => {
+      return (totalOunces += entry.numOunces);
+    });
+    const averageOunces =
+      Math.round(
+        (totalOunces / this.userHydroData.length + Number.EPSILON) * 10
+      ) / 10;
+
+    return averageOunces;
   };
 
   returnDailyOunces = () => {

@@ -6,8 +6,8 @@ describe("Hydration", () => {
   let user1Hydration;
   let user2Hydration;
   beforeEach(() => {
-    user1Hydration = new Hydration(sampleHydrationData[0]);
-    user2Hydration = new Hydration(sampleHydrationData[1]);
+    user1Hydration = new Hydration(sampleHydrationData[0], sampleHydrationData);
+    user2Hydration = new Hydration(sampleHydrationData[1], sampleHydrationData);
   });
   it("should be a function", () => {
     expect(Hydration).to.be.a("function");
@@ -33,9 +33,11 @@ describe("Hydration", () => {
     expect(user2Hydration.numOunces).to.equal(75);
   });
 
-  it.skip("should be able to return the average fluid ounces consumed per day for all time", () => {
-    const avgHydrationPerDay = user1Hydration.returnAvgHydrationPerDay();
-    expect(avgHydrationPerDay).to.equal();
+  it("should be able to return the average fluid ounces consumed per day for all time", () => {
+    const avgHydrationPerDay1 = user1Hydration.returnAvgHydroPerDay();
+    expect(avgHydrationPerDay1).to.equal(56.1);
+    const avgHydrationPerDay2 = user2Hydration.returnAvgHydroPerDay();
+    expect(avgHydrationPerDay2).to.equal(61.5);
   });
 
   it.skip("should be able to return how many ounces a user consumed for a specific day", () => {
