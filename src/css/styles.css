@@ -3,7 +3,6 @@ body, html {
   background-repeat: no-repeat;
   height: 100%;
   border: solid;
-  /* display: flex; */
 }
 
 div {
@@ -13,7 +12,7 @@ div {
 
 aside {
   border: solid;
-  padding-bottom: 35%;
+  padding-bottom: 30%;
 }
 
 article {
@@ -31,3 +30,7 @@ button {
   border-radius: 50%;
 }
 
+.data {
+  padding-right: 100px;
+  margin: 20px;
+} 

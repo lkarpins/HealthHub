@@ -5,23 +5,41 @@
     <title>Fitlit</title>
   </head>
   <body>
-    <!-- <h1>Activity Tracker</h1> -->
     <div>
       <aside class="user nav--bar">
-        <h3 class="user__menu-text">Main Menu</h3>
-        <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+        <h1 class="user__menu-text">Main Menu</h1>
       </aside>
+      <section class="data user--section">
+        <h2>User Data</h2>
+      </section>
+      <article>
+        <section class="data activity--section">
+          <h3>Activity</h3>
+          <p>Recent Logs:</p>
+          <p>Goals:</p>
+        </section>
+        <section class="data hydration-section">
+          <h3>Hydration</h3>
+          <p>Recent Logs:</p>
+          <p>Goals:</p>
+        </section>
+        <section class="data sleep-section">
+          <h3>Sleep</h3>
+          <p>Recent Logs:</p>
+          <p>Goals:</p>
+        </section>
+      </article>
     </div>
     <article class="dashboard">
-      <section class="activity-section">
+      <section class="activity-button">
         <button>Activity</button>
       </section>
-      <section class="hydration-section">
+      <section class="hydration-button">
         <button>Hydration</button>
       </section>
-      <section class="sleep-section">
+      <section class="sleep-button">
         <button>Sleep</button>
-    </section>
+      </section>
    </article>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
