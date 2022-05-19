@@ -30,6 +30,7 @@ let  user, userRepo, hydration, sleep;
 
 const loadPage = () => {
   generateUserCard();
+  welcomeUser();
 }
 
 const getRandomIndex = (array)=> {
@@ -49,12 +50,11 @@ const fetchApiCalls = () => {
   })
 };
 
-// const welcomeUser = () => {
-//   welcomeMessage.innerHTML = `Hello ${user.returnFirstName()} ! Welcome to HealthHub!`
-// }
+const welcomeUser = () => {
+  welcomeMessage.innerHTML = `Hello ${user.returnFirstName()} ! Welcome to HealthHub!`
+}
 
 const generateUserCard = () => {
-  // let userDetails = Object.values(user)
   userInfoCard.innerText = 
   `Name: ${user.name} 
   Address: ${user.address} 
