@@ -21,15 +21,20 @@ import apiCalls from "./apiCalls";
 
 // Query Selectors
 const welcomeMessage = document.querySelector('#welcomeMessage');
+const userInfoCard = document.querySelector('#userInfo');
 
 // Class Instances
 let  user, userRepo, hydration, sleep;
-// const apiResponse = apiCalls.fetchData()
-//   .then(data => {
-//     userRepo = new UserRepository(data[2].userData);
-//     user = new User(data[2].userData[0]);
-//   })
+
 // Functions
+
+const loadPage = () => {
+  generateUserCard();
+}
+
+const getRandomIndex = (array)=> {
+  return Math.floor(Math.random() * array.length);
+}
 
 const fetchApiCalls = () => {
   apiCalls.fetchData().then(data => {
@@ -40,20 +45,24 @@ const fetchApiCalls = () => {
     userRepo = new UserRepository(userData);  
     user = new User(userRepo.findUser(randomUser));
     console.log(user)
-})
-
+    loadPage();
+  })
 };
-
-const getRandomIndex = (array)=> {
-  return Math.floor(Math.random() * array.length);
-}
-// const loadPage = () => {
-
-// }
 
 // const welcomeUser = () => {
 //   welcomeMessage.innerHTML = `Hello ${user.returnFirstName()} ! Welcome to HealthHub!`
 // }
 
+const generateUserCard = () => {
+  // let userDetails = Object.values(user)
+  userInfoCard.innerText = 
+  `Name: ${user.name} 
+  Address: ${user.address} 
+  Email: ${user.email}
+  Daily Step Goal: ${user.dailyStepGoal}
+  `
+}
+
 // Event Listeners
 window.addEventListener('load', fetchApiCalls);
+// userInfoCard.addEventListener('load', generateUserCard)
