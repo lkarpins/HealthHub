@@ -1,5 +1,36 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-image: linear-gradient(to top, yellow 0%, green 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
+  border: solid;
 }
+
+div {
+  border: solid;
+  display: flex;
+}
+
+aside {
+  border: solid;
+  padding-bottom: 30%;
+}
+
+article {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+section {
+  border: solid;
+}
+
+button {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+.data {
+  padding-right: 100px;
+  margin: 20px;
+} 
