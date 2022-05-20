@@ -40,12 +40,17 @@ class Hydration {
 
   returnWeeklyOunces = weekStart => {
     let weeklyIntake = this.userHydroData.map(entry => {
-      return entry.numOunces;
+      const weeklyIntakeEntry = {
+        date: entry.date,
+        numOunces: entry.numOunces
+      }
+      return weeklyIntakeEntry
     });
     const targetStartDate = this.userHydroData.findIndex(entry => {
       return entry.date === weekStart;
     });
-    let chosenWeek = weeklyIntake.slice(targetStartDate, targetStartDate - 7);
+    let chosenWeek = weeklyIntake.slice(targetStartDate, targetStartDate + 7);
+    chosenWeek.reverse();
     return chosenWeek;
   };
 }

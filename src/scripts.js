@@ -19,6 +19,7 @@ const welcomeMessage = document.querySelector('#welcomeMessage');
 const userInfoCard = document.querySelector('#userInfo');
 const averageSteps = document.querySelector('#averageSteps');
 const dailyIntakeCard = document.querySelector('#dailyIntake');
+const weeklyIntakeCard = document.querySelector('#weeklyIntake');
 
 // Class Instances
 let  user, userRepo, hydration, sleep;
@@ -30,6 +31,7 @@ const loadPage = () => {
   welcomeUser();
   compareAverageStepGoal();
   displayDailyIntake(); 
+  displayDailyOunces();
 }
 
 const getRandomIndex = (array)=> {
@@ -73,8 +75,20 @@ const compareAverageStepGoal = () => {
 
 const displayDailyIntake = () => {
   let dailyIntake = hydration.returnDailyOunces(hydration.date);
-  console.log(dailyIntake)
   dailyIntakeCard.innerHTML = `Daily Intake: ${dailyIntake} oz.`
+};
+
+const displayDailyOunces = () => {
+  let weeklyIntake = hydration.returnWeeklyOunces(hydration.date);
+  weeklyIntake.forEach((entry) => {
+    const singleEntry = `<br/> 
+    <br/>
+    Date: ${entry.date}
+    <br/>
+    <br/>
+    Amount: ${entry.numOunces} oz.`
+    weeklyIntakeCard.innerHTML += singleEntry;
+  })
 };
 
 // ### Items to add to the dashboard:
