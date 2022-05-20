@@ -1,10 +1,10 @@
 class Hydration {
-  constructor(userHydroData, hydroAPIResponse) {
-    this.userID = userHydroData.userID;
-    this.date = userHydroData.date;
-    this.numOunces = userHydroData.numOunces;
-    this.hydroAPIResponse = hydroAPIResponse;
+  constructor(userID, hydroAPIResponse) {
+    this.userID = userID;
     this.userHydroData = this.setUserHydroData(hydroAPIResponse);
+    this.date = this.userHydroData[0].date;
+    this.numOunces = this.userHydroData[0].numOunces
+    this.hydroAPIResponse = hydroAPIResponse;
   }
 
   setUserHydroData = hydroAPIResponse => {
@@ -13,6 +13,7 @@ class Hydration {
         return userHydroData;
       }
     });
+    userHydro.reverse()
     return userHydro;
   };
 
@@ -44,7 +45,7 @@ class Hydration {
     const targetStartDate = this.userHydroData.findIndex(entry => {
       return entry.date === weekStart;
     });
-    let chosenWeek = weeklyIntake.slice(targetStartDate, targetStartDate + 7);
+    let chosenWeek = weeklyIntake.slice(targetStartDate, targetStartDate - 7);
     return chosenWeek;
   };
 }

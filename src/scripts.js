@@ -10,12 +10,15 @@ import "./css/styles.css";
 import userData from "./data/users";
 import User from "./User";
 import UserRepository from "./UserRepository";
+import Hydration from "./Hydration"
+import Sleep from "./Sleep"
 import apiCalls from "./apiCalls";
 
 // Query Selectors
 const welcomeMessage = document.querySelector('#welcomeMessage');
 const userInfoCard = document.querySelector('#userInfo');
-const averageSteps = document.querySelector('#averageSteps')
+const averageSteps = document.querySelector('#averageSteps');
+const dailyIntakeCard = document.querySelector('#dailyIntake');
 
 // Class Instances
 let  user, userRepo, hydration, sleep;
@@ -26,10 +29,11 @@ const loadPage = () => {
   generateUserCard();
   welcomeUser();
   compareAverageStepGoal();
+  // displayDailyIntake(); 
 }
 
 const getRandomIndex = (array)=> {
-  return Math.floor(Math.random() * array.length);
+  return Math.floor((Math.random() * array.length)+1);
 }
 
 const fetchApiCalls = () => {
@@ -40,13 +44,19 @@ const fetchApiCalls = () => {
     let randomUser = getRandomIndex(userData);
     userRepo = new UserRepository(userData);  
     user = new User(userRepo.findUser(randomUser));
+    hydration = new Hydration(user.id, hydrationData);
+    console.log(hydration)
     loadPage();
   })
 };
 
+// Need to tie user to hydration data
+// may need to alter class to tie it together with the
+// correct user based on the ID 
+
 const welcomeUser = () => {
   welcomeMessage.innerHTML = `Hello ${user.returnFirstName()} ! Welcome to HealthHub!`
-}
+};
 
 const generateUserCard = () => {
   userInfoCard.innerText = 
@@ -55,12 +65,25 @@ const generateUserCard = () => {
   Email: ${user.email}
   Daily Step Goal: ${user.dailyStepGoal}
   `
-}
+};
 
 const compareAverageStepGoal = () => {
   let averageUserSteps = userRepo.averageStepGoal();
   averageSteps.innerHTML = `Community Average Step Goal: ${averageUserSteps}`
-}
+};
 
+// const displayDailyIntake = () => {
+//   let dailyIntake = hydration
+//   console.log(dailyIntake)
+//   dailyIntakeCard.innerHTML = `Daily Intake: ${dailyIntake}`
+// };
+
+// ### Items to add to the dashboard:
+
+// - For a user, a display to show how much water they have consumed 
+// today (these displays are often called “widgets” in the FE tech world)
+
+// - For a user, a display to show much water they have consumed each
+//  day over the course of the latest week
 // Event Listeners
 window.addEventListener('load', fetchApiCalls);
