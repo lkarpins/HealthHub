@@ -29,7 +29,7 @@ const loadPage = () => {
   generateUserCard();
   welcomeUser();
   compareAverageStepGoal();
-  // displayDailyIntake(); 
+  displayDailyIntake(); 
 }
 
 const getRandomIndex = (array)=> {
@@ -45,7 +45,6 @@ const fetchApiCalls = () => {
     userRepo = new UserRepository(userData);  
     user = new User(userRepo.findUser(randomUser));
     hydration = new Hydration(user.id, hydrationData);
-    console.log(hydration)
     loadPage();
   })
 };
@@ -72,11 +71,11 @@ const compareAverageStepGoal = () => {
   averageSteps.innerHTML = `Community Average Step Goal: ${averageUserSteps}`
 };
 
-// const displayDailyIntake = () => {
-//   let dailyIntake = hydration
-//   console.log(dailyIntake)
-//   dailyIntakeCard.innerHTML = `Daily Intake: ${dailyIntake}`
-// };
+const displayDailyIntake = () => {
+  let dailyIntake = hydration.returnDailyOunces(hydration.date);
+  console.log(dailyIntake)
+  dailyIntakeCard.innerHTML = `Daily Intake: ${dailyIntake} oz.`
+};
 
 // ### Items to add to the dashboard:
 
