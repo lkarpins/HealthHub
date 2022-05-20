@@ -10,27 +10,32 @@ import "./css/styles.css";
 import userData from "./data/users";
 import User from "./User";
 import UserRepository from "./UserRepository";
+import Hydration from "./Hydration"
+import Sleep from "./Sleep"
 import apiCalls from "./apiCalls";
 
 // Query Selectors
 const welcomeMessage = document.querySelector('#welcomeMessage');
 const userInfoCard = document.querySelector('#userInfo');
-const averageSteps = document.querySelector('#averageSteps')
+const averageSteps = document.querySelector('#averageSteps');
+const dailyIntakeCard = document.querySelector('#dailyIntake');
+const weeklyIntakeCard = document.querySelector('#weeklyIntake');
 
 // Class Instances
 let  user, userRepo, hydration, sleep;
 
 // Functions
-
 const loadPage = () => {
   generateUserCard();
   welcomeUser();
   compareAverageStepGoal();
-}
+  displayDailyIntake(); 
+  displayDailyOunces();
+};
 
 const getRandomIndex = (array)=> {
-  return Math.floor(Math.random() * array.length);
-}
+  return Math.floor((Math.random() * array.length)+1);
+};
 
 const fetchApiCalls = () => {
   apiCalls.fetchData().then(data => {
@@ -40,13 +45,14 @@ const fetchApiCalls = () => {
     let randomUser = getRandomIndex(userData);
     userRepo = new UserRepository(userData);  
     user = new User(userRepo.findUser(randomUser));
+    hydration = new Hydration(user.id, hydrationData);
     loadPage();
   })
 };
 
 const welcomeUser = () => {
   welcomeMessage.innerHTML = `Hello ${user.returnFirstName()} ! Welcome to HealthHub!`
-}
+};
 
 const generateUserCard = () => {
   userInfoCard.innerText = 
@@ -55,12 +61,30 @@ const generateUserCard = () => {
   Email: ${user.email}
   Daily Step Goal: ${user.dailyStepGoal}
   `
-}
+};
 
 const compareAverageStepGoal = () => {
   let averageUserSteps = userRepo.averageStepGoal();
   averageSteps.innerHTML = `Community Average Step Goal: ${averageUserSteps}`
-}
+};
 
-// Event Listeners
+const displayDailyIntake = () => {
+  let dailyIntake = hydration.returnDailyOunces(hydration.date);
+  dailyIntakeCard.innerHTML = `Daily Intake: ${dailyIntake} oz.`
+};
+
+const displayDailyOunces = () => {
+  let weeklyIntake = hydration.returnWeeklyOunces(hydration.date);
+  weeklyIntake.forEach((entry) => {
+    const singleEntry = `<br/> 
+    <br/>
+    Date: ${entry.date}
+    <br/>
+    <br/>
+    Amount: ${entry.numOunces} oz.`
+    weeklyIntakeCard.innerHTML += singleEntry;
+  })
+};
+
+// Event Linsteners
 window.addEventListener('load', fetchApiCalls);
