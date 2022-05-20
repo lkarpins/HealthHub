@@ -1,27 +1,21 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-
-// console.log(userData, "<>>>>userData");
-// An example of how you tell webpack to use a CSS file
-import "./css/styles.css";
-
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import "./images/turing-logo.png";
-
 // console.log("This is the JavaScript entry file - your code begins here.");
-
 // An example of how you tell webpack to use a JS file
+// An example of how you tell webpack to use a CSS file
 
+// Imports
+import "./css/styles.css";
 import userData from "./data/users";
 import User from "./User";
 import UserRepository from "./UserRepository";
-
 import apiCalls from "./apiCalls";
-// console.log(apiCalls.fetchData());
 
 // Query Selectors
 const welcomeMessage = document.querySelector('#welcomeMessage');
 const userInfoCard = document.querySelector('#userInfo');
+const averageSteps = document.querySelector('#averageSteps')
 
 // Class Instances
 let  user, userRepo, hydration, sleep;
@@ -31,6 +25,7 @@ let  user, userRepo, hydration, sleep;
 const loadPage = () => {
   generateUserCard();
   welcomeUser();
+  compareAverageStepGoal();
 }
 
 const getRandomIndex = (array)=> {
@@ -45,7 +40,6 @@ const fetchApiCalls = () => {
     let randomUser = getRandomIndex(userData);
     userRepo = new UserRepository(userData);  
     user = new User(userRepo.findUser(randomUser));
-    console.log(user)
     loadPage();
   })
 };
@@ -63,6 +57,10 @@ const generateUserCard = () => {
   `
 }
 
+const compareAverageStepGoal = () => {
+  let averageUserSteps = userRepo.averageStepGoal();
+  averageSteps.innerHTML = `Community Average Step Goal: ${averageUserSteps}`
+}
+
 // Event Listeners
 window.addEventListener('load', fetchApiCalls);
-// userInfoCard.addEventListener('load', generateUserCard)
