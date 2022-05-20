@@ -25,18 +25,17 @@ const weeklyIntakeCard = document.querySelector('#weeklyIntake');
 let  user, userRepo, hydration, sleep;
 
 // Functions
-
 const loadPage = () => {
   generateUserCard();
   welcomeUser();
   compareAverageStepGoal();
   displayDailyIntake(); 
   displayDailyOunces();
-}
+};
 
 const getRandomIndex = (array)=> {
   return Math.floor((Math.random() * array.length)+1);
-}
+};
 
 const fetchApiCalls = () => {
   apiCalls.fetchData().then(data => {
@@ -50,10 +49,6 @@ const fetchApiCalls = () => {
     loadPage();
   })
 };
-
-// Need to tie user to hydration data
-// may need to alter class to tie it together with the
-// correct user based on the ID 
 
 const welcomeUser = () => {
   welcomeMessage.innerHTML = `Hello ${user.returnFirstName()} ! Welcome to HealthHub!`
@@ -91,12 +86,5 @@ const displayDailyOunces = () => {
   })
 };
 
-// ### Items to add to the dashboard:
-
-// - For a user, a display to show how much water they have consumed 
-// today (these displays are often called “widgets” in the FE tech world)
-
-// - For a user, a display to show much water they have consumed each
-//  day over the course of the latest week
-// Event Listeners
+// Event Linsteners
 window.addEventListener('load', fetchApiCalls);
