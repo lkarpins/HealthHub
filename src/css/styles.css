@@ -1,4 +1,5 @@
-body {
+body,
+html {
   background-image: linear-gradient(
     to top,
     #f7fe72 0%,
@@ -25,6 +26,11 @@ h6 {
 h2 {
   padding-bottom: 1rem;
   color: #333333;
+}
+
+label {
+  text-transform: uppercase;
+  font-weight: 700;
 }
 p {
   margin: 0;
@@ -75,16 +81,17 @@ button {
   padding: 0 1rem;
 }
 
-/* .data {
-  padding-right: 100px;
-  margin: 20px;
-} */
-
 .number {
   font-family: "Oswald", sans-serif;
   font-size: 3rem;
   padding-bottom: 1rem;
   color: #519e8a;
+}
+
+.userContact {
+  font-size: 1.25rem;
+  padding-bottom: 1rem;
+  padding-top: 0.25rem;
 }
 
 #welcomeMessage {

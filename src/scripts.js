@@ -18,7 +18,8 @@ import chart from "./Chart";
 
 // Query Selectors
 const welcomeMessage = document.querySelector("#welcomeMessage");
-const userInfoCard = document.querySelector("#userInfo");
+const userAddress = document.querySelector("#userAddress");
+const userEmail = document.querySelector("#userEmail");
 const dailySteps = document.querySelector("#dailySteps");
 const averageSteps = document.querySelector("#averageSteps");
 const dailyIntakeCard = document.querySelector("#dailyIntake");
@@ -55,7 +56,7 @@ const fetchApiCalls = () => {
 };
 
 const loadPage = () => {
-  generateUserCard();
+  displayUserCard();
   welcomeUser();
   displayAverageStepGoal();
   displayDailyStepGoal();
@@ -66,7 +67,6 @@ const loadPage = () => {
   // displayWeeklySleepHours();
   // displayWeeklyQuality();
   displayAverageQuality();
-  displayUserName();
   displayHydrationChart();
   displaySleepChart();
 };
@@ -79,15 +79,10 @@ const welcomeUser = () => {
   welcomeMessage.innerHTML = `Hello ${user.returnFirstName()}! Welcome to HealthHub!`;
 };
 
-const displayUserName = () => {
+const displayUserCard = () => {
   userName.innerHTML = `${user.name}`;
-};
-
-const generateUserCard = () => {
-  userInfoCard.innerText = `
-  Address: ${user.address}
-  Email: ${user.email}
-  `;
+  userAddress.innerHTML = `${user.address}`;
+  userEmail.innerHTML = `${user.email}`;
 };
 
 const displayAverageStepGoal = () => {
@@ -118,12 +113,12 @@ const displayDailyOunces = () => {
 
 const displayDailySleepHours = () => {
   let dailySleep = sleep.sleptHoursPerDay(sleep.date);
-  dailyHoursSlept.innerHTML = `Daily Hours Slept: ${dailySleep}`;
+  dailyHoursSlept.innerHTML = `${dailySleep}`;
 };
 
 const displayQualitySleep = () => {
   let dailyQuality = sleep.sleepQualityPerDay(sleep.date);
-  dailySleepQuality.innerHTML = `Daily Quality Sleep Hours: ${dailyQuality}`;
+  dailySleepQuality.innerHTML = `${dailyQuality}`;
 };
 
 const displayWeeklySleepHours = () => {
