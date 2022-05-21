@@ -1,18 +1,28 @@
-body, html {
+body {
   background-image: linear-gradient(to top, yellow 0%, green 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
   border: solid;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
-div {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+main {
   border: solid;
   display: flex;
 }
 
-aside {
+header {
   border: solid;
-  padding-bottom: 30%;
 }
 
 article {
@@ -33,4 +43,4 @@ button {
 .data {
   padding-right: 100px;
   margin: 20px;
-} 
+}

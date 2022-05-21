@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@200;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Health Hub</title>
   </head>
   <body>
-    <div>
-      <aside class="user nav--bar">
-        <h1 class="user__menu-text">Main Menu</h1>
-        <p id="welcomeMessage"></p>
-      </aside>
+    <header class="user nav--bar">
+      <h1 class="user__menu-text">Main Menu</h1>
+      <p id="welcomeMessage"></p>
+    </header>
+    <main>
       <section class="data user--section">
         <h2>User Data</h2>
         <p id="userInfo"></p>
@@ -39,7 +45,7 @@
           <p id="averageSleepQuality">All Time Average Sleep Quality:</p>
         </section>
       </article>
-    </div>
+    </main>
     <article class="dashboard">
       <section class="activity-button">
         <button>Activity</button>
@@ -50,8 +56,8 @@
       <section class="sleep-button">
         <button>Sleep</button>
       </section>
-   </article>
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    </article>
+    <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
 </html>
