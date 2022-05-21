@@ -82,7 +82,7 @@ class Sleep {
   };
 
   sleepQualityPerDayPerWeek = weekStart => {
-    let weeklyQuality = this.userSleepData.map(entry => {
+    let weeklySleepQuality = this.userSleepData.map(entry => {
       const weeklyQualityEntry = {
         date: entry.date,
         sleepQuality: entry.sleepQuality

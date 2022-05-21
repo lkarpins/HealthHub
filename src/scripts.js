@@ -60,6 +60,7 @@ const loadPage = () => {
   displayDailySleepHours();
   displayQualitySleep();
   displayWeeklySleepHours();
+  displayWeeklyQuality();
 };
 
 const welcomeUser = () => {
@@ -123,18 +124,18 @@ const displayWeeklySleepHours = () => {
   })
 };
 
-// const displayWeeklyQuality = () => {
-//   let weeklyQuality = hydration.returnWeeklyOunces(hydration.date);
-//   weeklyQuality.forEach((entry) => {
-//     const singleEntry = `<br/> 
-//     <br/>
-//     Date: ${entry.date}
-//     <br/>
-//     <br/>
-//     Amount: ${entry.numOunces} oz.`
-//     weeklyHoursSlept.innerHTML += singleEntry;
-//   })
-// };
+const displayWeeklyQuality = () => {
+  let weeklyQuality = sleep.sleepQualityPerDayPerWeek(sleep.date);
+  weeklyQuality.forEach((entry) => {
+    const singleEntry = `<br/> 
+    <br/>
+    Date: ${entry.date}
+    <br/>
+    <br/>
+    Quality Hours: ${entry.sleepQuality}`
+    weeklySleepQuality.innerHTML += singleEntry;
+  })
+};
 // ### Items to add to the dashboard:
 
 // - For a user, their sleep data over the course of the latest 
