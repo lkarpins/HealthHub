@@ -29,14 +29,18 @@
         <label>Daily Intake:</label>
         <p id="dailyIntake" class="number"></p>
         <label>Weekly Intake:</label>
-        <div id="weeklyIntake"></div>
+        <div id="weeklyIntake">
+          <canvas id="hydrationChart"></canvas>
+        </div>
       </section>
       <section class="data sleep-section">
         <h2>Sleep</h2>
         <p id="dailyHoursSlept">Daily Hours Slept:</p>
         <p id="dailyQualityHoursSlept">Daily Quality Sleep Hours:</p>
         <p>Weekly Hours Slept:</p>
-        <div id="weeklyHoursSlept"></div>
+        <div id="weeklyHoursSlept">
+          <canvas id="sleepChart"></canvas>
+        </div>
         <p>Weekly Quality Hours Sleep:</p>
         <div id="weeklyQulaityHoursSlept"></div>
         <p id="averageSleepHours">All Time Average Sleep Hours:</p>
@@ -49,6 +53,7 @@
     </main>
 
     <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="bundle.js"></script>
   </body>
 </html>

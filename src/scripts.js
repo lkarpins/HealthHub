@@ -14,6 +14,7 @@ import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
 import apiCalls from "./apiCalls";
+import chart from "./Chart";
 
 // Query Selectors
 const welcomeMessage = document.querySelector("#welcomeMessage");
@@ -59,13 +60,15 @@ const loadPage = () => {
   displayAverageStepGoal();
   displayDailyStepGoal();
   displayDailyIntake();
-  displayDailyOunces();
+  // displayDailyOunces();
   displayDailySleepHours();
   displayQualitySleep();
-  displayWeeklySleepHours();
-  displayWeeklyQuality();
+  // displayWeeklySleepHours();
+  // displayWeeklyQuality();
   displayAverageQuality();
   displayUserName();
+  displayHydrationChart();
+  displaySleepChart();
 };
 
 const refreshPage = () => {
@@ -154,6 +157,18 @@ const displayAverageQuality = () => {
   avgSleepQuality.innerHTML = `All Time Average Sleep Quality: ${averageQuality}`;
 };
 
+const displayHydrationChart = () => {
+  let weeklyIntakeData = hydration.returnWeeklyOunces(hydration.date);
+  chart.horizontalBar(weeklyIntakeData);
+};
+
+const displaySleepChart = () => {
+  let hours = sleep.sleptHoursPerDayPerWeek(sleep.date);
+  let quality = sleep.sleepQualityPerDayPerWeek(sleep.date);
+  console.log(hours);
+  console.log(quality);
+  chart.groupedBar(hours, quality);
+};
 // Event Linsteners
 window.addEventListener("load", fetchApiCalls);
 newUserButton.addEventListener("click", refreshPage);
