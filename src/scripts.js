@@ -20,19 +20,18 @@ const userInfoCard = document.querySelector('#userInfo');
 const averageSteps = document.querySelector('#averageSteps');
 const dailyIntakeCard = document.querySelector('#dailyIntake');
 const weeklyIntakeCard = document.querySelector('#weeklyIntake');
+const dailyHoursSlept = document.querySelector('#dailyHoursSlept');
+const dailySleepQuality = document.querySelector('#dailyQualityHoursSlept');
+const weeklyHoursSlept = document.querySelector('#weeklyHoursSlept');
+const weeklySleepQuality = document.querySelector('#weeklyQulaityHoursSlept');
+const avgHoursSlept = document.querySelector('#averageSleepHours');
+const avgSleepQuality = document.querySelector('#averageSleepQuality');
+
 
 // Class Instances
 let  user, userRepo, hydration, sleep;
 
 // Functions
-const loadPage = () => {
-  generateUserCard();
-  welcomeUser();
-  compareAverageStepGoal();
-  displayDailyIntake(); 
-  displayDailyOunces();
-};
-
 const getRandomIndex = (array)=> {
   return Math.floor((Math.random() * array.length)+1);
 };
@@ -50,6 +49,15 @@ const fetchApiCalls = () => {
     console.log(sleep);
     loadPage();
   })
+};
+
+const loadPage = () => {
+  generateUserCard();
+  welcomeUser();
+  compareAverageStepGoal();
+  displayDailyIntake(); 
+  displayDailyOunces();
+  displayDailySleepHours();
 };
 
 const welcomeUser = () => {
@@ -88,6 +96,11 @@ const displayDailyOunces = () => {
   })
 };
 
+const displayDailySleepHours = () => {
+  let dailySleep = sleep.sleptHoursPerDay(sleep.date);
+  console.log(dailySleep)
+  dailyHoursSlept.innerHTML = `Daily Hours Slept: ${dailySleep}`
+}; 
 // ### Items to add to the dashboard:
 
 // - For a user, their sleep data for the latest day 
