@@ -1,11 +1,11 @@
 class Sleep {
-  constructor(userSleep, sleepAPIResponse) {
-    this.userID = userSleep.userID;
-    this.date = userSleep.date;
-    this.hoursSlept = userSleep.hoursSlept;
-    this.sleepQuality = userSleep.sleepQuality;
-    this.sleepAPIResponse = sleepAPIResponse;
+  constructor(userID, sleepAPIResponse) {
+    this.userID = userID;
     this.userSleepData = this.setUserSleepData(sleepAPIResponse);
+    this.date = this.userSleepData[0].date;
+    this.hoursSlept = this.userSleepData[0].hoursSlept;
+    this.sleepQuality = this.userSleepData[0].sleepQuality;
+    this.sleepAPIResponse = sleepAPIResponse;
   }
 
   setUserSleepData = sleepAPIResponse => {
@@ -14,6 +14,7 @@ class Sleep {
         return userSleepData;
       }
     });
+    userSleep.reverse();
     return userSleep;
   };
 
@@ -61,9 +62,12 @@ class Sleep {
 
   sleptHoursPerDayPerWeek = weekStart => {
     let weeklyHoursSlept = this.userSleepData.map(entry => {
-      return entry.hoursSlept;
+      const weeklyHourEntry = {
+        date: entry.date,
+        hoursSlept: entry.hoursSlept
+      }
+      return weeklyHourEntry;
     });
-
     const targetStartDate = this.userSleepData.findIndex(entry => {
       return entry.date === weekStart;
     });
@@ -72,15 +76,18 @@ class Sleep {
       targetStartDate,
       targetStartDate + 7
     );
-
+    chosenWeek.reverse();
     return chosenWeek;
   };
 
   sleepQualityPerDayPerWeek = weekStart => {
     let weeklySleepQuality = this.userSleepData.map(entry => {
-      return entry.sleepQuality;
+      const weeklyQualityEntry = {
+        date: entry.date,
+        sleepQuality: entry.sleepQuality
+      }
+      return weeklyQualityEntry;
     });
-
     const targetStartDate = this.userSleepData.findIndex(entry => {
       return entry.date === weekStart;
     });
@@ -89,7 +96,7 @@ class Sleep {
       targetStartDate,
       targetStartDate + 7
     );
-
+    chosenWeek.reverse();
     return chosenWeek;
   };
 

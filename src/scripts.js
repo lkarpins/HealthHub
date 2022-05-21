@@ -7,7 +7,7 @@
 
 // Imports
 import "./css/styles.css";
-import userData from "./data/users";
+// import userData from "./data/users";
 import User from "./User";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration"
@@ -20,19 +20,18 @@ const userInfoCard = document.querySelector('#userInfo');
 const averageSteps = document.querySelector('#averageSteps');
 const dailyIntakeCard = document.querySelector('#dailyIntake');
 const weeklyIntakeCard = document.querySelector('#weeklyIntake');
+const dailyHoursSlept = document.querySelector('#dailyHoursSlept');
+const dailySleepQuality = document.querySelector('#dailyQualityHoursSlept');
+const weeklyHoursSlept = document.querySelector('#weeklyHoursSlept');
+const weeklySleepQuality = document.querySelector('#weeklyQulaityHoursSlept');
+// const avgHoursSlept = document.querySelector('#averageSleepHours');
+const avgSleepQuality = document.querySelector('#averageSleepQuality');
+
 
 // Class Instances
 let  user, userRepo, hydration, sleep;
 
 // Functions
-const loadPage = () => {
-  generateUserCard();
-  welcomeUser();
-  compareAverageStepGoal();
-  displayDailyIntake(); 
-  displayDailyOunces();
-};
-
 const getRandomIndex = (array)=> {
   return Math.floor((Math.random() * array.length)+1);
 };
@@ -46,8 +45,22 @@ const fetchApiCalls = () => {
     userRepo = new UserRepository(userData);  
     user = new User(userRepo.findUser(randomUser));
     hydration = new Hydration(user.id, hydrationData);
+    sleep = new Sleep(user.id, sleepData); 
     loadPage();
   })
+};
+
+const loadPage = () => {
+  generateUserCard();
+  welcomeUser();
+  compareAverageStepGoal();
+  displayDailyIntake(); 
+  displayDailyOunces();
+  displayDailySleepHours();
+  displayQualitySleep();
+  displayWeeklySleepHours();
+  displayWeeklyQuality();
+  displayAverageQuality();
 };
 
 const welcomeUser = () => {
@@ -85,6 +98,47 @@ const displayDailyOunces = () => {
     weeklyIntakeCard.innerHTML += singleEntry;
   })
 };
+
+const displayDailySleepHours = () => {
+  let dailySleep = sleep.sleptHoursPerDay(sleep.date);
+  dailyHoursSlept.innerHTML = `Daily Hours Slept: ${dailySleep}`
+}; 
+
+const displayQualitySleep = () => {
+  let dailyQuality = sleep.sleepQualityPerDay(sleep.date);
+  dailySleepQuality.innerHTML = `Daily Quality Sleep Hours: ${dailyQuality}`
+}; 
+
+const displayWeeklySleepHours = () => {
+  let weeklySleep = sleep.sleptHoursPerDayPerWeek(sleep.date);
+  weeklySleep.forEach((entry) => {
+    const singleEntry = `<br/> 
+    <br/>
+    Date: ${entry.date}
+    <br/>
+    <br/>
+    Hours: ${entry.hoursSlept}`
+    weeklyHoursSlept.innerHTML += singleEntry;
+  })
+};
+
+const displayWeeklyQuality = () => {
+  let weeklyQuality = sleep.sleepQualityPerDayPerWeek(sleep.date);
+  weeklyQuality.forEach((entry) => {
+    const singleEntry = `<br/> 
+    <br/>
+    Date: ${entry.date}
+    <br/>
+    <br/>
+    Quality Hours: ${entry.sleepQuality}`
+    weeklySleepQuality.innerHTML += singleEntry;
+  })
+};
+
+const displayAverageQuality = () => {
+  let averageQuality = sleep.avgSleepQualityAllUsers();
+  avgSleepQuality.innerHTML = `All Time Average Sleep Quality: ${averageQuality}`
+}; 
 
 // Event Linsteners
 window.addEventListener('load', fetchApiCalls);
