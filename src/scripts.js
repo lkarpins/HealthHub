@@ -71,13 +71,13 @@ const generateUserCard = () => {
   userInfoCard.innerText = `Name: ${user.name}
   Address: ${user.address}
   Email: ${user.email}
-  Daily Step Goal: ${user.dailyStepGoal}
   `;
 };
 
 const compareAverageStepGoal = () => {
   let averageUserSteps = userRepo.averageStepGoal();
-  averageSteps.innerHTML = `Community Average Step Goal: ${averageUserSteps}`;
+  averageSteps.innerHTML = `Daily Step Goal: ${user.dailyStepGoal}
+  Community Average Step Goal: ${averageUserSteps}`;
 };
 
 const displayDailyIntake = () => {

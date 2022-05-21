@@ -27,7 +27,6 @@ header {
   padding: 1.5rem;
 }
 main {
-  border: solid;
   display: flex;
 }
 
@@ -37,7 +36,11 @@ article {
   justify-content: space-evenly;
 }
 section {
-  border: solid;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1rem;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 0.75rem #09441b);
 }
 
 button {

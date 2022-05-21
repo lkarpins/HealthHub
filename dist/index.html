@@ -11,22 +11,16 @@
     <title>Health Hub</title>
   </head>
   <body>
-    <header class="user nav--bar">
-      <h1 class="user__menu-text">HealthHub</h1>
+    <header class="main nav--bar">
+      <h1 class="main__menu-text">HealthHub</h1>
       <h2 id="welcomeMessage"></h2>
-      <button class="user__button">New User</button>
+      <button class="main__button">New User</button>
     </header>
     <main>
-      <section class="data user--section">
-        <h2>User Data</h2>
-        <p id="userInfo"></p>
-        <p id="averageSteps"></p>
-      </section>
       <article>
         <section class="data activity--section">
           <h3>Activity</h3>
-          <p>Recent Logs:</p>
-          <p>Goals:</p>
+          <p id="averageSteps"></p>
         </section>
         <section class="data hydration-section">
           <h3>Hydration</h3>
@@ -44,6 +38,10 @@
           <section id="weeklyQulaityHoursSlept"></section>
           <p id="averageSleepHours">All Time Average Sleep Hours:</p>
           <p id="averageSleepQuality">All Time Average Sleep Quality:</p>
+        </section>
+        <section class="data user--section">
+          <h2>User Data</h2>
+          <p id="userInfo"></p>
         </section>
       </article>
     </main>
