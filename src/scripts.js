@@ -46,6 +46,8 @@ const fetchApiCalls = () => {
     userRepo = new UserRepository(userData);  
     user = new User(userRepo.findUser(randomUser));
     hydration = new Hydration(user.id, hydrationData);
+    sleep = new Sleep(user.id, sleepData); 
+    console.log(sleep);
     loadPage();
   })
 };
@@ -85,6 +87,15 @@ const displayDailyOunces = () => {
     weeklyIntakeCard.innerHTML += singleEntry;
   })
 };
+
+// ### Items to add to the dashboard:
+
+// - For a user, their sleep data for the latest day 
+// (hours slept and quality of sleep)
+// - For a user, their sleep data over the course of the latest 
+// week (hours slept and quality of sleep)
+// - For a user, their all-time average sleep quality and all-time 
+// average number of hours slept
 
 // Event Linsteners
 window.addEventListener('load', fetchApiCalls);

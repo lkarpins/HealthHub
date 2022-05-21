@@ -1,11 +1,12 @@
 class Sleep {
-  constructor(userSleep, sleepAPIResponse) {
-    this.userID = userSleep.userID;
-    this.date = userSleep.date;
-    this.hoursSlept = userSleep.hoursSlept;
-    this.sleepQuality = userSleep.sleepQuality;
-    this.sleepAPIResponse = sleepAPIResponse;
+  constructor(userID, sleepAPIResponse) {
+    this.userID = userID;
     this.userSleepData = this.setUserSleepData(sleepAPIResponse);
+    this.date = this.userSleepData[0].date;
+    this.hoursSlept = this.userSleepData[0].hoursSlept;
+    this.sleepQuality = this.userSleepData[0].sleepQuality;
+    this.sleepAPIResponse = sleepAPIResponse;
+   
   }
 
   setUserSleepData = sleepAPIResponse => {
@@ -14,6 +15,7 @@ class Sleep {
         return userSleepData;
       }
     });
+    userSleep.reverse();
     return userSleep;
   };
 
@@ -72,7 +74,7 @@ class Sleep {
       targetStartDate,
       targetStartDate + 7
     );
-
+    chosenWeek.reverse();
     return chosenWeek;
   };
 
@@ -89,7 +91,7 @@ class Sleep {
       targetStartDate,
       targetStartDate + 7
     );
-
+    chosenWeek.reverse();
     return chosenWeek;
   };
 
