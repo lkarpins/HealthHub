@@ -58,6 +58,7 @@ const loadPage = () => {
   displayDailyIntake(); 
   displayDailyOunces();
   displayDailySleepHours();
+  displayQualitySleep();
 };
 
 const welcomeUser = () => {
@@ -98,8 +99,12 @@ const displayDailyOunces = () => {
 
 const displayDailySleepHours = () => {
   let dailySleep = sleep.sleptHoursPerDay(sleep.date);
-  console.log(dailySleep)
   dailyHoursSlept.innerHTML = `Daily Hours Slept: ${dailySleep}`
+}; 
+
+const displayQualitySleep = () => {
+  let dailyQuality = sleep.sleepQualityPerDay(sleep.date);
+  dailySleepQuality.innerHTML = `Daily Quality Sleep Hours: ${dailyQuality}`
 }; 
 // ### Items to add to the dashboard:
 
