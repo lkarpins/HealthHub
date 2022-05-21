@@ -29,6 +29,7 @@ const weeklySleepQuality = document.querySelector("#weeklyQulaityHoursSlept");
 // const avgHoursSlept = document.querySelector('#averageSleepHours');
 const avgSleepQuality = document.querySelector("#averageSleepQuality");
 const userName = document.querySelector("#userName");
+const newUserButton = document.querySelector(".main__button");
 
 // Class Instances
 let user, userRepo, hydration, sleep;
@@ -67,6 +68,10 @@ const loadPage = () => {
   displayUserName();
 };
 
+const refreshPage = () => {
+  window.location.reload();
+};
+
 const welcomeUser = () => {
   welcomeMessage.innerHTML = `Hello ${user.returnFirstName()}! Welcome to HealthHub!`;
 };
@@ -92,7 +97,7 @@ const displayDailyStepGoal = () => {
 
 const displayDailyIntake = () => {
   let dailyIntake = hydration.returnDailyOunces(hydration.date);
-  dailyIntakeCard.innerHTML = `Daily Intake: ${dailyIntake} oz.`;
+  dailyIntakeCard.innerHTML = `${dailyIntake} oz.`;
 };
 
 const displayDailyOunces = () => {
@@ -151,3 +156,4 @@ const displayAverageQuality = () => {
 
 // Event Linsteners
 window.addEventListener("load", fetchApiCalls);
+newUserButton.addEventListener("click", refreshPage);
