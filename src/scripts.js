@@ -18,6 +18,7 @@ import apiCalls from "./apiCalls";
 // Query Selectors
 const welcomeMessage = document.querySelector("#welcomeMessage");
 const userInfoCard = document.querySelector("#userInfo");
+const dailySteps = document.querySelector("#dailySteps");
 const averageSteps = document.querySelector("#averageSteps");
 const dailyIntakeCard = document.querySelector("#dailyIntake");
 const weeklyIntakeCard = document.querySelector("#weeklyIntake");
@@ -27,6 +28,7 @@ const weeklyHoursSlept = document.querySelector("#weeklyHoursSlept");
 const weeklySleepQuality = document.querySelector("#weeklyQulaityHoursSlept");
 // const avgHoursSlept = document.querySelector('#averageSleepHours');
 const avgSleepQuality = document.querySelector("#averageSleepQuality");
+const userName = document.querySelector("#userName");
 
 // Class Instances
 let user, userRepo, hydration, sleep;
@@ -53,7 +55,8 @@ const fetchApiCalls = () => {
 const loadPage = () => {
   generateUserCard();
   welcomeUser();
-  compareAverageStepGoal();
+  displayAverageStepGoal();
+  displayDailyStepGoal();
   displayDailyIntake();
   displayDailyOunces();
   displayDailySleepHours();
@@ -61,23 +64,30 @@ const loadPage = () => {
   displayWeeklySleepHours();
   displayWeeklyQuality();
   displayAverageQuality();
+  displayUserName();
 };
 
 const welcomeUser = () => {
-  welcomeMessage.innerHTML = `Hello ${user.returnFirstName()} ! Welcome to HealthHub!`;
+  welcomeMessage.innerHTML = `Hello ${user.returnFirstName()}! Welcome to HealthHub!`;
+};
+
+const displayUserName = () => {
+  userName.innerHTML = `${user.name}`;
 };
 
 const generateUserCard = () => {
-  userInfoCard.innerText = `Name: ${user.name}
+  userInfoCard.innerText = `
   Address: ${user.address}
   Email: ${user.email}
   `;
 };
 
-const compareAverageStepGoal = () => {
+const displayAverageStepGoal = () => {
   let averageUserSteps = userRepo.averageStepGoal();
-  averageSteps.innerHTML = `Daily Step Goal: ${user.dailyStepGoal}
-  Community Average Step Goal: ${averageUserSteps}`;
+  averageSteps.innerHTML = `${averageUserSteps}`;
+};
+const displayDailyStepGoal = () => {
+  dailySteps.innerHTML = `${user.dailyStepGoal}`;
 };
 
 const displayDailyIntake = () => {
