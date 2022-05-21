@@ -1,4 +1,5 @@
-body {
+body,
+html {
   background-image: linear-gradient(
     to top,
     #f7fe72 0%,
@@ -90,6 +91,7 @@ button {
 .userContact {
   font-size: 1.25rem;
   padding-bottom: 1rem;
+  padding-top: 0.25rem;
 }
 
 #welcomeMessage {

@@ -60,11 +60,11 @@ const loadPage = () => {
   displayAverageStepGoal();
   displayDailyStepGoal();
   displayDailyIntake();
-  displayDailyOunces();
+  // displayDailyOunces();
   displayDailySleepHours();
   displayQualitySleep();
-  displayWeeklySleepHours();
-  displayWeeklyQuality();
+  // displayWeeklySleepHours();
+  // displayWeeklyQuality();
   displayAverageQuality();
 };
 
