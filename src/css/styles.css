@@ -26,6 +26,11 @@ h2 {
   padding-bottom: 1rem;
   color: #333333;
 }
+
+label {
+  text-transform: uppercase;
+  font-weight: 700;
+}
 p {
   margin: 0;
 }
@@ -75,16 +80,16 @@ button {
   padding: 0 1rem;
 }
 
-/* .data {
-  padding-right: 100px;
-  margin: 20px;
-} */
-
 .number {
   font-family: "Oswald", sans-serif;
   font-size: 3rem;
   padding-bottom: 1rem;
   color: #519e8a;
+}
+
+.userContact {
+  font-size: 1.25rem;
+  padding-bottom: 1rem;
 }
 
 #welcomeMessage {
