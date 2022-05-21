@@ -63,9 +63,12 @@ class Sleep {
 
   sleptHoursPerDayPerWeek = weekStart => {
     let weeklyHoursSlept = this.userSleepData.map(entry => {
-      return entry.hoursSlept;
+      const weeklyHourEntry = {
+        date: entry.date,
+        hoursSlept: entry.hoursSlept
+      }
+      return weeklyHourEntry;
     });
-
     const targetStartDate = this.userSleepData.findIndex(entry => {
       return entry.date === weekStart;
     });
@@ -79,10 +82,13 @@ class Sleep {
   };
 
   sleepQualityPerDayPerWeek = weekStart => {
-    let weeklySleepQuality = this.userSleepData.map(entry => {
-      return entry.sleepQuality;
+    let weeklyQuality = this.userSleepData.map(entry => {
+      const weeklyQualityEntry = {
+        date: entry.date,
+        sleepQuality: entry.sleepQuality
+      }
+      return weeklyQualityEntry;
     });
-
     const targetStartDate = this.userSleepData.findIndex(entry => {
       return entry.date === weekStart;
     });

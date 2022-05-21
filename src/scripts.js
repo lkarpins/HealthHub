@@ -59,6 +59,7 @@ const loadPage = () => {
   displayDailyOunces();
   displayDailySleepHours();
   displayQualitySleep();
+  displayWeeklySleepHours();
 };
 
 const welcomeUser = () => {
@@ -87,6 +88,7 @@ const displayDailyIntake = () => {
 const displayDailyOunces = () => {
   let weeklyIntake = hydration.returnWeeklyOunces(hydration.date);
   weeklyIntake.forEach((entry) => {
+    console.log(entry)
     const singleEntry = `<br/> 
     <br/>
     Date: ${entry.date}
@@ -106,10 +108,35 @@ const displayQualitySleep = () => {
   let dailyQuality = sleep.sleepQualityPerDay(sleep.date);
   dailySleepQuality.innerHTML = `Daily Quality Sleep Hours: ${dailyQuality}`
 }; 
+
+const displayWeeklySleepHours = () => {
+  let weeklySleep = sleep.sleptHoursPerDayPerWeek(sleep.date);
+  weeklySleep.forEach((entry) => {
+    console.log(entry)
+    const singleEntry = `<br/> 
+    <br/>
+    Date: ${entry.date}
+    <br/>
+    <br/>
+    Hours: ${entry.hoursSlept}`
+    weeklyHoursSlept.innerHTML += singleEntry;
+  })
+};
+
+// const displayWeeklyQuality = () => {
+//   let weeklyQuality = hydration.returnWeeklyOunces(hydration.date);
+//   weeklyQuality.forEach((entry) => {
+//     const singleEntry = `<br/> 
+//     <br/>
+//     Date: ${entry.date}
+//     <br/>
+//     <br/>
+//     Amount: ${entry.numOunces} oz.`
+//     weeklyHoursSlept.innerHTML += singleEntry;
+//   })
+// };
 // ### Items to add to the dashboard:
 
-// - For a user, their sleep data for the latest day 
-// (hours slept and quality of sleep)
 // - For a user, their sleep data over the course of the latest 
 // week (hours slept and quality of sleep)
 // - For a user, their all-time average sleep quality and all-time 
