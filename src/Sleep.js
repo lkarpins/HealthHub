@@ -6,7 +6,6 @@ class Sleep {
     this.hoursSlept = this.userSleepData[0].hoursSlept;
     this.sleepQuality = this.userSleepData[0].sleepQuality;
     this.sleepAPIResponse = sleepAPIResponse;
-   
   }
 
   setUserSleepData = sleepAPIResponse => {

@@ -7,7 +7,7 @@
 
 // Imports
 import "./css/styles.css";
-import userData from "./data/users";
+// import userData from "./data/users";
 import User from "./User";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration"
@@ -24,7 +24,7 @@ const dailyHoursSlept = document.querySelector('#dailyHoursSlept');
 const dailySleepQuality = document.querySelector('#dailyQualityHoursSlept');
 const weeklyHoursSlept = document.querySelector('#weeklyHoursSlept');
 const weeklySleepQuality = document.querySelector('#weeklyQulaityHoursSlept');
-const avgHoursSlept = document.querySelector('#averageSleepHours');
+// const avgHoursSlept = document.querySelector('#averageSleepHours');
 const avgSleepQuality = document.querySelector('#averageSleepQuality');
 
 
@@ -46,7 +46,6 @@ const fetchApiCalls = () => {
     user = new User(userRepo.findUser(randomUser));
     hydration = new Hydration(user.id, hydrationData);
     sleep = new Sleep(user.id, sleepData); 
-    console.log(sleep);
     loadPage();
   })
 };
@@ -61,6 +60,7 @@ const loadPage = () => {
   displayQualitySleep();
   displayWeeklySleepHours();
   displayWeeklyQuality();
+  displayAverageQuality();
 };
 
 const welcomeUser = () => {
@@ -89,7 +89,6 @@ const displayDailyIntake = () => {
 const displayDailyOunces = () => {
   let weeklyIntake = hydration.returnWeeklyOunces(hydration.date);
   weeklyIntake.forEach((entry) => {
-    console.log(entry)
     const singleEntry = `<br/> 
     <br/>
     Date: ${entry.date}
@@ -113,7 +112,6 @@ const displayQualitySleep = () => {
 const displayWeeklySleepHours = () => {
   let weeklySleep = sleep.sleptHoursPerDayPerWeek(sleep.date);
   weeklySleep.forEach((entry) => {
-    console.log(entry)
     const singleEntry = `<br/> 
     <br/>
     Date: ${entry.date}
@@ -136,12 +134,11 @@ const displayWeeklyQuality = () => {
     weeklySleepQuality.innerHTML += singleEntry;
   })
 };
-// ### Items to add to the dashboard:
 
-// - For a user, their sleep data over the course of the latest 
-// week (hours slept and quality of sleep)
-// - For a user, their all-time average sleep quality and all-time 
-// average number of hours slept
+const displayAverageQuality = () => {
+  let averageQuality = sleep.avgSleepQualityAllUsers();
+  avgSleepQuality.innerHTML = `All Time Average Sleep Quality: ${averageQuality}`
+}; 
 
 // Event Linsteners
 window.addEventListener('load', fetchApiCalls);
