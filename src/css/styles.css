@@ -2,7 +2,6 @@ body {
   background-image: linear-gradient(to top, yellow 0%, green 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
-  border: solid;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }
@@ -14,15 +13,22 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-}
-
-main {
-  border: solid;
-  display: flex;
+  margin: 0;
 }
 
 header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e98a15;
+  padding: 1.5rem;
+}
+main {
   border: solid;
+  display: flex;
 }
 
 article {
@@ -35,9 +41,9 @@ section {
 }
 
 button {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
+  height: 2.75rem;
+  width: auto;
+  border-radius: 0.25rem;
 }
 
 .data {
