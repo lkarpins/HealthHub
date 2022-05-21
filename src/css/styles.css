@@ -1,18 +1,60 @@
-body, html {
-  background-image: linear-gradient(to top, yellow 0%, green 99%, #fecfef 100%);
+body,
+html {
+  background-image: linear-gradient(
+    to top,
+    #f7fe72 0%,
+    #519e8a 83%,
+    #09441b 100%
+  );
   background-repeat: no-repeat;
   height: 100%;
-  border: solid;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #666666;
 }
 
-div {
-  border: solid;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  margin: 0;
+}
+
+h2 {
+  padding-bottom: 1rem;
+  color: #333333;
+}
+
+label {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+p {
+  margin: 0;
+}
+
+header {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #09441b;
+  padding: 1.5rem;
+  color: #ffffff;
 }
-
-aside {
-  border: solid;
-  padding-bottom: 30%;
+main {
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding-top: 1.5rem;
 }
 
 article {
@@ -21,16 +63,38 @@ article {
   justify-content: space-evenly;
 }
 section {
-  border: solid;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1rem;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 0.75rem #09441b);
+  width: 18rem;
 }
 
 button {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
+  height: 2.75rem;
+  width: auto;
+  border-radius: 0.25rem;
+  background-color: #e98a15;
+  border: none;
+  color: #ffffff;
+  padding: 0 1rem;
 }
 
-.data {
-  padding-right: 100px;
-  margin: 20px;
-} 
+.number {
+  font-family: "Oswald", sans-serif;
+  font-size: 3rem;
+  padding-bottom: 1rem;
+  color: #519e8a;
+}
+
+.userContact {
+  font-size: 1.25rem;
+  padding-bottom: 1rem;
+  padding-top: 0.25rem;
+}
+
+#welcomeMessage {
+  padding: 0;
+  color: #ffffff;
+}
