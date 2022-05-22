@@ -7,7 +7,6 @@ html {
     #09441b 100%
   );
   background-repeat: no-repeat;
-  height: 100%;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: #666666;
@@ -68,7 +67,6 @@ section {
   background-color: #ffffff;
   border-radius: 1rem;
   padding: 1rem;
-  /* margin-bottom: 2rem; */
   opacity: 0.9;
   filter: drop-shadow(0 0 0.75rem #09441b);
   width: 18rem;
@@ -102,12 +100,13 @@ button {
 .sleepContent {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .sleepStats {
-  display: flex;
   flex-flow: row wrap;
 }
+
 .number {
   font-family: "Oswald", sans-serif;
   font-size: 3rem;
@@ -124,4 +123,8 @@ button {
 #welcomeMessage {
   padding: 0;
   color: #ffffff;
+}
+
+#weeklyHoursSlept {
+  margin: auto;
 }
