@@ -24,6 +24,12 @@ h6 {
   margin: 0;
 }
 
+h1 {
+  background: -webkit-linear-gradient(#f7fe72, #e98a15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 h2 {
   padding-bottom: 1rem;
   color: #333333;
@@ -80,6 +86,12 @@ button {
   border: none;
   color: #ffffff;
   padding: 0 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f7fe72;
+  color: #333333;
 }
 
 .widgetContainer {
@@ -121,6 +133,7 @@ button {
 }
 
 #welcomeMessage {
+  font-weight: 400;
   padding: 0;
   color: #ffffff;
 }
