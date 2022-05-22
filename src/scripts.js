@@ -149,7 +149,7 @@ const displayWeeklyQuality = () => {
 
 const displayAverageQuality = () => {
   let averageQuality = sleep.avgSleepQualityAllUsers();
-  avgSleepQuality.innerHTML = `All Time Average Sleep Quality: ${averageQuality}`;
+  avgSleepQuality.innerHTML = `${averageQuality}`;
 };
 
 const displayHydrationChart = () => {
@@ -160,8 +160,6 @@ const displayHydrationChart = () => {
 const displaySleepChart = () => {
   let hours = sleep.sleptHoursPerDayPerWeek(sleep.date);
   let quality = sleep.sleepQualityPerDayPerWeek(sleep.date);
-  console.log(hours);
-  console.log(quality);
   chart.groupedBar(hours, quality);
 };
 // Event Linsteners

@@ -6,8 +6,8 @@ const chart = {
         labels: weeklyIntake.date,
         datasets: [
           {
-            label: "weekly ounces",
-            backgroundColor: ["#519E8A"],
+            label: "Ounces",
+            backgroundColor: ["#E98A15"],
             data: weeklyIntake.numOunces
           }
         ]
@@ -35,7 +35,7 @@ const chart = {
           {
             type: "bar",
             label: "Hours",
-            backgroundColor: "#519E8A",
+            backgroundColor: "#E98A15",
             data: hours.hoursSlept
           }
         ],
