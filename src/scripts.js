@@ -14,6 +14,7 @@ import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
 import apiCalls from "./apiCalls";
+import chart from "./Chart";
 
 // Query Selectors
 const welcomeMessage = document.querySelector("#welcomeMessage");
@@ -27,7 +28,7 @@ const dailyHoursSlept = document.querySelector("#dailyHoursSlept");
 const dailySleepQuality = document.querySelector("#dailyQualityHoursSlept");
 const weeklyHoursSlept = document.querySelector("#weeklyHoursSlept");
 const weeklySleepQuality = document.querySelector("#weeklyQulaityHoursSlept");
-// const avgHoursSlept = document.querySelector('#averageSleepHours');
+const avgHoursSlept = document.querySelector("#averageSleepHours");
 const avgSleepQuality = document.querySelector("#averageSleepQuality");
 const userName = document.querySelector("#userName");
 const newUserButton = document.querySelector(".main__button");
@@ -60,12 +61,12 @@ const loadPage = () => {
   displayAverageStepGoal();
   displayDailyStepGoal();
   displayDailyIntake();
-  // displayDailyOunces();
   displayDailySleepHours();
   displayQualitySleep();
-  // displayWeeklySleepHours();
-  // displayWeeklyQuality();
   displayAverageQuality();
+  displayAverageHoursSlept();
+  displayHydrationChart();
+  displaySleepChart();
 };
 
 const refreshPage = () => {
@@ -146,9 +147,24 @@ const displayWeeklyQuality = () => {
 
 const displayAverageQuality = () => {
   let averageQuality = sleep.avgSleepQualityAllUsers();
-  avgSleepQuality.innerHTML = `All Time Average Sleep Quality: ${averageQuality}`;
+  avgSleepQuality.innerHTML = `${averageQuality}`;
 };
 
+const displayAverageHoursSlept = () => {
+  let averageHoursSlept = sleep.avgHoursSleptAllUsers();
+  avgHoursSlept.innerHTML = `${averageHoursSlept}`;
+};
+
+const displayHydrationChart = () => {
+  let weeklyIntakeData = hydration.returnWeeklyOunces(hydration.date);
+  chart.horizontalBar(weeklyIntakeData);
+};
+
+const displaySleepChart = () => {
+  let hours = sleep.sleptHoursPerDayPerWeek(sleep.date);
+  let quality = sleep.sleepQualityPerDayPerWeek(sleep.date);
+  chart.groupedBar(hours, quality);
+};
 // Event Linsteners
 window.addEventListener("load", fetchApiCalls);
 newUserButton.addEventListener("click", refreshPage);

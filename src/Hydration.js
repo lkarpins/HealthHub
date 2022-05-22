@@ -3,7 +3,7 @@ class Hydration {
     this.userID = userID;
     this.userHydroData = this.setUserHydroData(hydroAPIResponse);
     this.date = this.userHydroData[0].date;
-    this.numOunces = this.userHydroData[0].numOunces
+    this.numOunces = this.userHydroData[0].numOunces;
     this.hydroAPIResponse = hydroAPIResponse;
   }
 
@@ -13,7 +13,7 @@ class Hydration {
         return userHydroData;
       }
     });
-    userHydro.reverse()
+    userHydro.reverse();
     return userHydro;
   };
 
@@ -39,19 +39,23 @@ class Hydration {
   };
 
   returnWeeklyOunces = weekStart => {
-    let weeklyIntake = this.userHydroData.map(entry => {
-      const weeklyIntakeEntry = {
-        date: entry.date,
-        numOunces: entry.numOunces
-      }
-      return weeklyIntakeEntry
-    });
     const targetStartDate = this.userHydroData.findIndex(entry => {
       return entry.date === weekStart;
     });
-    let chosenWeek = weeklyIntake.slice(targetStartDate, targetStartDate + 7);
-    chosenWeek.reverse();
-    return chosenWeek;
+
+    const selectedWeekData = this.userHydroData
+      .slice(targetStartDate, targetStartDate + 7)
+      .reverse();
+
+    let weeklyIntake = {
+      date: [],
+      numOunces: []
+    };
+
+    weeklyIntake.date = selectedWeekData.map(entry => entry.date);
+    weeklyIntake.numOunces = selectedWeekData.map(entry => entry.numOunces);
+
+    return weeklyIntake;
   };
 }
 

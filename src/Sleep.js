@@ -61,43 +61,43 @@ class Sleep {
   };
 
   sleptHoursPerDayPerWeek = weekStart => {
-    let weeklyHoursSlept = this.userSleepData.map(entry => {
-      const weeklyHourEntry = {
-        date: entry.date,
-        hoursSlept: entry.hoursSlept
-      }
-      return weeklyHourEntry;
-    });
     const targetStartDate = this.userSleepData.findIndex(entry => {
       return entry.date === weekStart;
     });
 
-    let chosenWeek = weeklyHoursSlept.slice(
-      targetStartDate,
-      targetStartDate + 7
-    );
-    chosenWeek.reverse();
-    return chosenWeek;
+    let chosenWeek = this.userSleepData
+      .slice(targetStartDate, targetStartDate + 7)
+      .reverse();
+
+    let weeklyHours = {
+      date: [],
+      hoursSlept: []
+    };
+
+    weeklyHours.date = chosenWeek.map(entry => entry.date);
+    weeklyHours.hoursSlept = chosenWeek.map(entry => entry.hoursSlept);
+
+    return weeklyHours;
   };
 
   sleepQualityPerDayPerWeek = weekStart => {
-    let weeklySleepQuality = this.userSleepData.map(entry => {
-      const weeklyQualityEntry = {
-        date: entry.date,
-        sleepQuality: entry.sleepQuality
-      }
-      return weeklyQualityEntry;
-    });
     const targetStartDate = this.userSleepData.findIndex(entry => {
       return entry.date === weekStart;
     });
 
-    let chosenWeek = weeklySleepQuality.slice(
-      targetStartDate,
-      targetStartDate + 7
-    );
-    chosenWeek.reverse();
-    return chosenWeek;
+    let chosenWeek = this.userSleepData
+      .slice(targetStartDate, targetStartDate + 7)
+      .reverse();
+
+    let weeklyQuality = {
+      date: [],
+      sleepQuality: []
+    };
+
+    weeklyQuality.date = chosenWeek.map(entry => entry.date);
+    weeklyQuality.sleepQuality = chosenWeek.map(entry => entry.sleepQuality);
+
+    return weeklyQuality;
   };
 
   avgSleepQualityAllUsers = () => {
@@ -111,6 +111,18 @@ class Sleep {
         (totalQuality / this.sleepAPIResponse.length + Number.EPSILON) * 10
       ) / 10;
     return averageQuality;
+  };
+  avgHoursSleptAllUsers = () => {
+    let totalHours = 0;
+    this.sleepAPIResponse.forEach(entry => {
+      return (totalHours += entry.hoursSlept);
+    });
+
+    const averageHoursSlept =
+      Math.round(
+        (totalHours / this.sleepAPIResponse.length + Number.EPSILON) * 10
+      ) / 10;
+    return averageHoursSlept;
   };
 }
 

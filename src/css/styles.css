@@ -1,5 +1,6 @@
 body,
 html {
+  background-color: #f7fe72;
   background-image: linear-gradient(
     to top,
     #f7fe72 0%,
@@ -7,10 +8,15 @@ html {
     #09441b 100%
   );
   background-repeat: no-repeat;
-  height: 100%;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: #666666;
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  height: 100%;
 }
 
 h1,
@@ -21,6 +27,12 @@ h5,
 h6 {
   font-weight: 700;
   margin: 0;
+}
+
+h1 {
+  background: -webkit-linear-gradient(#f7fe72, #e98a15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h2 {
@@ -51,10 +63,10 @@ main {
   display: flex;
   align-content: center;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: flex-start;
-  padding-top: 1.5rem;
+  gap: 3rem;
+  padding: 1.5rem 4rem;
 }
 
 article {
@@ -66,7 +78,7 @@ section {
   background-color: #ffffff;
   border-radius: 1rem;
   padding: 1rem;
-  opacity: 0.75;
+  opacity: 0.9;
   filter: drop-shadow(0 0 0.75rem #09441b);
   width: 18rem;
 }
@@ -79,6 +91,37 @@ button {
   border: none;
   color: #ffffff;
   padding: 0 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f7fe72;
+  color: #333333;
+}
+
+.widgetContainer {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
+.hydration-section {
+  flex-grow: 2;
+}
+.sleep-section {
+  flex-grow: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.sleepContent {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.sleepStats {
+  flex-flow: row wrap;
+  padding-right: 1rem;
 }
 
 .number {
@@ -95,6 +138,12 @@ button {
 }
 
 #welcomeMessage {
+  font-weight: 400;
   padding: 0;
   color: #ffffff;
+}
+
+#weeklyHoursSlept {
+  flex-grow: 2;
+  width: auto;
 }
