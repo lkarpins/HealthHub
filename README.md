@@ -1,78 +1,91 @@
-# FitLit Starter Kit
+<img width="230" alt="Health Hub Lable" src="https://user-images.githubusercontent.com/95496577/169706412-03739a11-373c-439f-998f-174dde44173f.png"> 
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+## Table of Contents
 
-## Setup
+- [Table of Contents](#table-of-contents)
+- [Abstract](#abstract)
+- [Illustration](#illustration)
+- [Wireframe](#wireframe)
+- [Technologies Used](#technologies-used)
+- [Context and Features](#context-and-features)
+- [Lessons Learned](#lessons-learned)
+- [Future Features](#future-features)
+- [Application Set-Up](#application-set-up)
+- [Contributor LinkedIn and GitHub](#contributor-linkedin-and-github)
+- [Project Specs](#project-specs)
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page).  `Control + C` is the command to stop running the local server.  Closing the terminal without stopping the server first could allow the server to continue to run in the background and cause problems. This command is not specific to Webpack; make note of it for future use.   
-1. Make sure both members of your team are collaborators on the forked repo.  
-1. Do not run `npm audit fix --force`.  This will update to the latest version of packages.  We need to be using `webpack-dev-server@3.11.2` which is not the latest version.  If you start to run into Webpack errors, first check that all group members are using the correct version.  
+## Abstract
 
-## Testing
+- The _HealthHub_ Project was designed to test my fellow project collaborators and I on our abilities to implement ES6 classes, use array and object prototype methods for data manipulation, create an easy to use and understand dashboard with clearly displayed information, make network requests to retrieve data and practice our TDD skills with Mocha/Chai. It’s a health and wellness application that showcases wellness information for a random user. 
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+## Illustration
 
+![HealthHub Recording](https://user-images.githubusercontent.com/95496577/169706726-6dc58550-073f-4af8-89a8-c24313bcb7bc.gif)
 
-## Data Model
+## Wireframe
 
-**Users**
+- [Figma Wireframe](https://www.figma.com/file/MAcq55QYBdenQxU3mBVcVz/FitLit-Wireframe?node-id=0%3A1) 
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+<img width="721" alt="New Wire Frame Layout" src="https://user-images.githubusercontent.com/95496577/169707014-ea0f4135-dca2-4ea0-8bbe-2e4e7047f150.png">
 
-**Activity**
+## Technologies Used
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
+- CSS
+- HTML
+- Fetch API
+- JavaScript
+- Mocha & Chai
+- Webpack
 
-**Hydration**
+## Context and Features
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
+- HelathHub is a health and wellness application. Upon page load, the site displays a user’s information (name, address, and email), hydration data, and sleep data. It compares their daily step goal to an average amongst a database of users. The site also greets the user by their first name at the top of the web page. This application was created using Webpack, which is a modular bundler used to group HTML, CSS, and JavaScript files into more efficient files for a browser to read. It also accounts for npm packages, which our application includes many of. 
 
-**Sleep**
+- We made use of many packages to bring our application together including `Normalize.css` and `Charts.js`. The `Normalize.css` package allowed us to make our application render more consistently on different browsers. The `Charts.js` package allowed us to create charts that represent our weekly data for user hydration and sleep patterns. Both of these charts are dynamic and generated based on the data for a specific user. They are displayed in our HealthHub widgets. The widgets also display daily and average information for each respective data type in an appealing and eye catching manner.  
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+- We implemented Test Driven Development into our development process for this application. All of our classes that were built to accommodate our respective data types were thoroughly tested using the mocha testing framework and the chai assertion library. In order for us to test the data that we fetched from our provided API’s properly, we decided to take a sample size from the data for each API, and test all of the data locally. However, we made all of our methods dynamic in order to ensure that said methods would work for the larger data sets provided to us by our API’s. Fetching the data from said API’s is what allows our application to GET and display said data for 50 different users over years of time. 
+
+## Lessons Learned
+
+- Building this application introduced many new concepts to my fellow collaborators and I. This was our first time using Webpack, installing npm packages, and fetching data from API’s. Running Webpack from our console’s had somewhat of a learning curve to it, but seeing how it updated our application in real time was very satisfying. Knowing that it allowed us to install and make use of some wonderfully robust npm packages makes Webpack appear superior and better to use than merely running index.html files locally. Although this wasn’t our first time writing test assertions for classes, the scope of this project was certainly larger than any my fellow collaborators and I have tackled in the past. The amount of tests and methods that we all wrote were certainly wins for us, especially the ones that made use of  prototype iterator methods. 
+
+- The most challenging aspect of this project was writing network requests to fetch data from the provided API’s. The syntax on these GET requests were initially very tricky for my collaborators and I to write. We had to make use of the `then()` prototype method in conjunction with the `json()` method to resolve promises and parse the data into a usable and applicable form. We also made sure to include the `catch()` method in all of our fetch API functions. Lastly, the trickiest part of this entire process was tieing the data from our API’s together with our data model and our DOM. We did so by incorporating the data from our API calls into our pre-developed classes, and writing a function in our `scripts.js` file that made one final use of `.then()` to tie our data to our class instances in `scripts.js`. This allowed us to manipulate and display said data on our DOM. Accessing and connecting all of this data was a challenging but rewarding learning experience for my fellow collaborators and I.   
+
+## Future Features
+
+Some future features we’d like to add to this application are:
+
+- Fetching and displaying more activity data for the user. 
+- Having a step challenge between friends.
+- Dragging and dropping displayed widgets.
+- An admin view where an admin is able to view trends for all users. 
+
+## Application Set-Up
+
+1. Fork repository on GitHub.
+
+2. `Git clone` the repository to your local machine.
+
+3. `Cd` into the directory.
+
+4. Run `npm install` in your terminal to install project dependencies.
+
+5. Run `npm start` in the terminal to see the application. 
+
+6. When finished with the application, be sure to type `Control + C` to stop running the application. 
+
+## Contributor LinkedIn’s
+
+- [Lidia Karpinski : LinkedIn](https://www.linkedin.com/in/lidia-karpinski/)  
+- [Michael Harrison: LinkedIn](https://www.linkedin.com/in/michael-harrison-b476a498/)   
+- [Rachel Allen: LinkedIn](https://www.linkedin.com/in/rachel-lynn-allen/)  
+ 
+## Contributor GitHubs’s
+
+- [Lidia Karpinski : GitHub](https://github.com/lkarpins) 
+- [Michael Harrison: GitHub](https://github.com/mikeharrison57) 
+- [Rachel Allen: GitHub](https://github.com/Rallen13) 
+
+## Project Specs
+
+- The spec for this application can be found [here](https://frontend.turing.edu/projects/Fitlit-part-one.html)     
