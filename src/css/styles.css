@@ -95,6 +95,18 @@ button {
 }
 .sleep-section {
   flex-grow: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.sleepContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.sleepStats {
+  display: flex;
+  flex-flow: row wrap;
 }
 .number {
   font-family: "Oswald", sans-serif;

@@ -112,6 +112,18 @@ class Sleep {
       ) / 10;
     return averageQuality;
   };
+  avgHoursSleptAllUsers = () => {
+    let totalHours = 0;
+    this.sleepAPIResponse.forEach(entry => {
+      return (totalHours += entry.hoursSlept);
+    });
+
+    const averageHoursSlept =
+      Math.round(
+        (totalHours / this.sleepAPIResponse.length + Number.EPSILON) * 10
+      ) / 10;
+    return averageHoursSlept;
+  };
 }
 
 export default Sleep;
