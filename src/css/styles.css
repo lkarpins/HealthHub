@@ -1,5 +1,6 @@
 body,
 html {
+  background-color: #f7fe72;
   background-image: linear-gradient(
     to top,
     #f7fe72 0%,
@@ -12,6 +13,10 @@ html {
   color: #666666;
   display: flex;
   flex-direction: column;
+}
+
+html {
+  height: 100%;
 }
 
 h1,
@@ -61,7 +66,7 @@ main {
   justify-content: space-evenly;
   align-items: flex-start;
   gap: 3rem;
-  padding: 1.5rem;
+  padding: 1.5rem 4rem;
 }
 
 article {
@@ -111,12 +116,12 @@ button:hover {
 
 .sleepContent {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-flow: row wrap;
 }
 
 .sleepStats {
   flex-flow: row wrap;
+  padding-right: 1rem;
 }
 
 .number {
@@ -139,5 +144,6 @@ button:hover {
 }
 
 #weeklyHoursSlept {
-  margin: auto;
+  flex-grow: 2;
+  width: auto;
 }
