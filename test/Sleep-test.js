@@ -29,9 +29,9 @@ describe("Sleep", () => {
     expect(user2Sleep.date).to.equal("2019/06/28");
   });
 
-  it("should be able to store hours slept", () => {
-    expect(user1Sleep.hoursSlept).to.equal(6.1);
-    expect(user2Sleep.hoursSlept).to.equal(7);
+  it.only("should be able to store hours slept", () => {
+    expect(user1Sleep.hoursSlept).to.equal(7.6);
+    expect(user2Sleep.hoursSlept).to.equal(5.2);
   });
 
   it("should be able to store sleep quality ", () => {
