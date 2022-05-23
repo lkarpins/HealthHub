@@ -24,9 +24,9 @@ describe("Sleep", () => {
     expect(user2Sleep.userID).to.equal(2);
   });
 
-  it("should be able to store a date", () => {
-    expect(user1Sleep.date).to.equal("2019/06/15");
-    expect(user2Sleep.date).to.equal("2019/06/15");
+  it.only("should be able to store a date", () => {
+    expect(user1Sleep.date).to.equal("2019/06/28");
+    expect(user2Sleep.date).to.equal("2019/06/28");
   });
 
   it("should be able to store hours slept", () => {
