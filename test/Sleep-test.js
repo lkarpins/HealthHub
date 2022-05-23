@@ -121,31 +121,53 @@ describe("Sleep", () => {
     });
   });
 
-  it("should be able to return how many hours slept each day over the course of a different week", () => {
+  it.only("should be able to return how many hours slept each day over the course of a different week", () => {
     const sleptHoursPerDayPerWeek1 = user1Sleep.sleptHoursPerDayPerWeek(
-      "2019/06/22"
+      "2019/06/28"
     );
     const sleptHoursPerDayPerWeek2 = user2Sleep.sleptHoursPerDayPerWeek(
-      "2019/06/22"
+      "2019/06/28"
     );
-    expect(sleptHoursPerDayPerWeek1).to.deep.equal([
-      7,
-      7.8,
-      8,
-      5.1,
-      7.7,
-      9.4,
-      7.6
-    ]);
-    expect(sleptHoursPerDayPerWeek2).to.deep.equal([
-      4.8,
-      8,
-      10.8,
-      9.7,
-      9.3,
-      9,
-      5.2
-    ]);
+    expect(sleptHoursPerDayPerWeek1).to.deep.equal({
+      date: [
+        '2019/06/22',
+        '2019/06/23',
+        '2019/06/24',
+        '2019/06/25',
+        '2019/06/26',
+        '2019/06/27',
+        '2019/06/28'
+      ],
+      hoursSlept: [
+          7, 
+          7.8,
+          8,
+          5.1,
+          7.7,
+          9.4,
+          7.6
+      ]
+    });
+    expect(sleptHoursPerDayPerWeek2).to.deep.equal({
+      date: [
+        '2019/06/22',
+        '2019/06/23',
+        '2019/06/24',
+        '2019/06/25',
+        '2019/06/26',
+        '2019/06/27',
+        '2019/06/28'
+      ],
+      hoursSlept: [
+        4.8,
+        8,
+        10.8,
+        9.7,
+        9.3,
+        9,
+        5.2
+      ]
+    });
   });
 
   it("should be able to return their sleep quality each day over the course of a given week", () => {
