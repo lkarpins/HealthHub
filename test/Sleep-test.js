@@ -14,12 +14,12 @@ describe("Sleep", () => {
     expect(Sleep).to.be.a("function");
   });
 
-  it("should be an instance of Sleep", () => {
+  it.only("should be an instance of Sleep", () => {
     expect(user1Sleep).to.be.an.instanceof(Sleep);
     expect(user2Sleep).to.be.an.instanceof(Sleep);
   });
 
-  it("should be able to store a user id", () => {
+  it.only("should be able to store a user id", () => {
     expect(user1Sleep.userID).to.equal(1);
     expect(user2Sleep.userID).to.equal(2);
   });
