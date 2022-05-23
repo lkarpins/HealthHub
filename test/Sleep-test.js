@@ -6,11 +6,11 @@ describe("Sleep", () => {
   let user1Sleep;
   let user2Sleep;
   beforeEach(() => {
-    user1Sleep = new Sleep(sampleSleepData[0], sampleSleepData);
-    user2Sleep = new Sleep(sampleSleepData[1], sampleSleepData);
+    user1Sleep = new Sleep(1, sampleSleepData);
+    user2Sleep = new Sleep(2, sampleSleepData);
   });
 
-  it("should be a function", () => {
+  it.only("should be a function", () => {
     expect(Sleep).to.be.a("function");
   });
 
