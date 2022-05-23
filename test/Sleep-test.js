@@ -170,31 +170,53 @@ describe("Sleep", () => {
     });
   });
 
-  it("should be able to return their sleep quality each day over the course of a given week", () => {
+  it.only("should be able to return their sleep quality each day over the course of a given week", () => {
     const sleepQualityPerDayPerWeek1 = user1Sleep.sleepQualityPerDayPerWeek(
-      "2019/06/16"
+      "2019/06/22"
     );
     const sleepQualityPerDayPerWeek2 = user2Sleep.sleepQualityPerDayPerWeek(
-      "2019/06/16"
+      "2019/06/22"
     );
-    expect(sleepQualityPerDayPerWeek1).to.deep.equal([
-      3.8,
-      2.6,
-      3.1,
-      1.2,
-      1.2,
-      4.2,
-      3
-    ]);
-    expect(sleepQualityPerDayPerWeek2).to.deep.equal([
-      3.8,
-      3,
-      3.2,
-      2.5,
-      2.4,
-      4.8,
-      3.3
-    ]);
+    expect(sleepQualityPerDayPerWeek1).to.deep.equal({
+      date: [
+        '2019/06/16',
+        '2019/06/17',
+        '2019/06/18',
+        '2019/06/19',
+        '2019/06/20',
+        '2019/06/21',
+        '2019/06/22'
+      ],
+      sleepQuality: [
+        3.8, 
+        2.6, 
+        3.1,
+        1.2, 
+        1.2, 
+        4.2,
+        3
+      ]
+    });
+    expect(sleepQualityPerDayPerWeek2).to.deep.equal({
+      date: [
+        '2019/06/16',
+        '2019/06/17',
+        '2019/06/18',
+        '2019/06/19',
+        '2019/06/20',
+        '2019/06/21',
+        '2019/06/22'
+      ],
+      sleepQuality: [
+        3.8,   
+        3, 
+        3.2,
+        2.5, 
+        2.4, 
+        4.8,
+        3.3
+      ]
+    });
   });
 
   it("should be able to return the quality of sleep each day over the course of a different week", () => {

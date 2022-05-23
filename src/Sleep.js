@@ -96,7 +96,7 @@ class Sleep {
 
     weeklyQuality.date = chosenWeek.map(entry => entry.date);
     weeklyQuality.sleepQuality = chosenWeek.map(entry => entry.sleepQuality);
-
+    console.log(weeklyQuality)
     return weeklyQuality;
   };
 
