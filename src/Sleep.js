@@ -76,7 +76,7 @@ class Sleep {
 
     weeklyHours.date = chosenWeek.map(entry => entry.date);
     weeklyHours.hoursSlept = chosenWeek.map(entry => entry.hoursSlept);
-
+    console.log(weeklyHours, 'line 79')
     return weeklyHours;
   };
 
