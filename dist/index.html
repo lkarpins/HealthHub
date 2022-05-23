@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -37,17 +38,25 @@
         <section class="data sleep-section">
           <h2>Sleep</h2>
           <div class="sleepContent">
-            <div class="sleepStats">
-              <label>Daily Hours Slept:</label>
-              <p id="dailyHoursSlept" class="number"></p>
-              <label>Daily Sleep Quality:</label>
-              <p id="dailyQualityHoursSlept" class="number"></p>
-              <label>Average Hours Slept:</label>
-              <p id="averageSleepHours" class="number"></p>
-              <label>Average Sleep Quality:</label>
-              <p id="averageSleepQuality" class="number"></p>
+            <div class="sleepStats statDisplay">
+              <span class="stat">
+                <label>Daily Hours:</label>
+                <p id="dailyHoursSlept" class="number"></p>
+              </span>
+              <span class="stat">
+                <label>Daily Quality:</label>
+                <p id="dailyQualityHoursSlept" class="number"></p>
+              </span>
+              <span class="stat">
+                <label>Avg Hours:</label>
+                <p id="averageSleepHours" class="number"></p>
+              </span>
+              <span class="stat">
+                <label>Avg Quality:</label>
+                <p id="averageSleepQuality" class="number"></p>
+              </span>
             </div>
-            <div id="weeklyHoursSlept">
+            <div id="weeklyHoursSlept" class="sleepStats">
               <label>Weekly Overview:</label>
               <canvas id="sleepChart"></canvas>
             </div>
