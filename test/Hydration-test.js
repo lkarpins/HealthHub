@@ -51,14 +51,7 @@ describe("Hydration", () => {
     expect(consumedOuncesPerDay2).to.equal(91);
   });
 
-  it("should be able to return the date, and amount of ounces consumed on respective day.", () => {
-    const weeklyOuncesPerDay1 = user1Hydration.returnWeeklyOunces("2019/06/15");
-    const weeklyOuncesPerDay2 = user2Hydration.returnWeeklyOunces("2019/06/15");
-    expect(weeklyOuncesPerDay1).to.deep.equal({date: [ '2019/06/15' ], numOunces: [ 37 ]});
-    expect(weeklyOuncesPerDay2).to.deep.equal({date: [ '2019/06/15' ], numOunces: [ 75 ]});
-  });
-
-  it("should be able to return the date, and amount of ounces consumed each day over the course of that week", () => {
+  it("should be able to return the date, and amount of ounces consumed over a week.", () => {
     const weeklyOuncesPerDay1 = user1Hydration.returnWeeklyOunces("2019/06/22");
     const weeklyOuncesPerDay2 = user2Hydration.returnWeeklyOunces("2019/06/22");
     expect(weeklyOuncesPerDay1).to.deep.equal({
@@ -89,6 +82,41 @@ describe("Hydration", () => {
       numOunces: [
         91, 96, 70, 76,
         71, 27, 58
+      ]
+    });
+  });
+
+  it("should be able to return the date, and amount of ounces consumed each day over a different week", () => {
+    const weeklyOuncesPerDay1 = user1Hydration.returnWeeklyOunces("2019/06/28");
+    const weeklyOuncesPerDay2 = user2Hydration.returnWeeklyOunces("2019/06/28");
+    expect(weeklyOuncesPerDay1).to.deep.equal({
+      date: [
+        '2019/06/22',
+        '2019/06/23',
+        '2019/06/24',
+        '2019/06/25',
+        '2019/06/26',
+        '2019/06/27',
+        '2019/06/28'
+      ],
+      numOunces: [
+        43, 39, 61, 51,
+        52, 29, 57
+      ]
+    });
+    expect(weeklyOuncesPerDay2).to.deep.equal({
+      date: [
+        '2019/06/22',
+        '2019/06/23',
+        '2019/06/24',
+        '2019/06/25',
+        '2019/06/26',
+        '2019/06/27',
+        '2019/06/28'
+      ],
+      numOunces: [
+        58, 44, 33, 67,
+        27, 70, 56
       ]
     });
   });
