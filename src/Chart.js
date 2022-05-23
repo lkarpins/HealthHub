@@ -45,7 +45,8 @@ const chart = {
         title: {
           display: false,
           text: ""
-        }
+        },
+        responsive: true
       }
     });
   }
