@@ -34,9 +34,9 @@ describe("Sleep", () => {
     expect(user2Sleep.hoursSlept).to.equal(5.2);
   });
 
-  it("should be able to store sleep quality ", () => {
-    expect(user1Sleep.sleepQuality).to.equal(2.2);
-    expect(user2Sleep.sleepQuality).to.equal(4.7);
+  it.only("should be able to store sleep quality ", () => {
+    expect(user1Sleep.sleepQuality).to.equal(4.7);
+    expect(user2Sleep.sleepQuality).to.equal(4.9);
   });
 
   it("should be able to return the average hours of sleep per day", () => {
