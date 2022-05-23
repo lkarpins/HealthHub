@@ -10,36 +10,36 @@ describe("Sleep", () => {
     user2Sleep = new Sleep(2, sampleSleepData);
   });
 
-  it.only("should be a function", () => {
+  it("should be a function", () => {
     expect(Sleep).to.be.a("function");
   });
 
-  it.only("should be an instance of Sleep", () => {
+  it("should be an instance of Sleep", () => {
     expect(user1Sleep).to.be.an.instanceof(Sleep);
     expect(user2Sleep).to.be.an.instanceof(Sleep);
   });
 
-  it.only("should be able to store a user id", () => {
+  it("should be able to store a user id", () => {
     expect(user1Sleep.userID).to.equal(1);
     expect(user2Sleep.userID).to.equal(2);
   });
 
-  it.only("should be able to store a date", () => {
+  it("should be able to store a date", () => {
     expect(user1Sleep.date).to.equal("2019/06/28");
     expect(user2Sleep.date).to.equal("2019/06/28");
   });
 
-  it.only("should be able to store hours slept", () => {
+  it("should be able to store hours slept", () => {
     expect(user1Sleep.hoursSlept).to.equal(7.6);
     expect(user2Sleep.hoursSlept).to.equal(5.2);
   });
 
-  it.only("should be able to store sleep quality ", () => {
+  it("should be able to store sleep quality ", () => {
     expect(user1Sleep.sleepQuality).to.equal(4.7);
     expect(user2Sleep.sleepQuality).to.equal(4.9);
   });
 
-  it.only("should be able to return the average hours of sleep per day", () => {
+  it("should be able to return the average hours of sleep per day", () => {
     const avgSleepPerDay1 = user1Sleep.avgSleepPerDay();
     const avgSleepPerDay2 = user2Sleep.avgSleepPerDay();
 
@@ -47,7 +47,7 @@ describe("Sleep", () => {
     expect(avgSleepPerDay2).to.equal(8);
   });
 
-  it.only("should be able to return the average quality of sleep per day", () => {
+  it("should be able to return the average quality of sleep per day", () => {
     const avgSleepQualityPerDay1 = user1Sleep.avgSleepQualityPerDay();
     const avgSleepQualityPerDay2 = user2Sleep.avgSleepQualityPerDay();
 
@@ -55,7 +55,7 @@ describe("Sleep", () => {
     expect(avgSleepQualityPerDay2).to.equal(3.1);
   });
 
-  it.only("should be able to return how many hours a user slept for a specific day", () => {
+  it("should be able to return how many hours a user slept for a specific day", () => {
     const sleptHoursPerDay1 = user1Sleep.sleptHoursPerDay("2019/06/16");
     const sleptHoursPerDay2 = user2Sleep.sleptHoursPerDay("2019/06/16");
 
@@ -63,7 +63,7 @@ describe("Sleep", () => {
     expect(sleptHoursPerDay2).to.equal(7.5);
   });
 
-  it.only("should be able to return the sleep quality for a specific day", () => {
+  it("should be able to return the sleep quality for a specific day", () => {
     const sleepQualityPerDay1 = user1Sleep.sleepQualityPerDay("2019/06/16");
     const sleepQualityPerDay2 = user2Sleep.sleepQualityPerDay("2019/06/16");
 
@@ -71,7 +71,7 @@ describe("Sleep", () => {
     expect(sleepQualityPerDay2).to.equal(3.8);
   });
 
-  it.only("should be able to return how many hours slept over the course of a given week", () => {
+  it("should be able to return how many hours slept over the course of a given week", () => {
     const sleptHoursPerDayPerWeek1 = user1Sleep.sleptHoursPerDayPerWeek(
       "2019/06/22"
     );
@@ -121,7 +121,7 @@ describe("Sleep", () => {
     });
   });
 
-  it.only("should be able to return how many hours slept each day over the course of a different week", () => {
+  it("should be able to return how many hours slept each day over the course of a different week", () => {
     const sleptHoursPerDayPerWeek1 = user1Sleep.sleptHoursPerDayPerWeek(
       "2019/06/28"
     );
@@ -170,7 +170,7 @@ describe("Sleep", () => {
     });
   });
 
-  it.only("should be able to return their sleep quality each day over the course of a given week", () => {
+  it("should be able to return their sleep quality each day over the course of a given week", () => {
     const sleepQualityPerDayPerWeek1 = user1Sleep.sleepQualityPerDayPerWeek(
       "2019/06/22"
     );
@@ -221,29 +221,51 @@ describe("Sleep", () => {
 
   it("should be able to return the quality of sleep each day over the course of a different week", () => {
     const sleepQualityPerDayPerWeek1 = user1Sleep.sleepQualityPerDayPerWeek(
-      "2019/06/22"
+      "2019/06/28"
     );
     const sleepQualityPerDayPerWeek2 = user2Sleep.sleepQualityPerDayPerWeek(
-      "2019/06/22"
+      "2019/06/28"
     );
-    expect(sleepQualityPerDayPerWeek1).to.deep.equal([
-      3,
-      1.5,
-      1.3,
-      3.7,
-      2.4,
-      4.6,
-      4.7
-    ]);
-    expect(sleepQualityPerDayPerWeek2).to.deep.equal([
-      3.3,
-      4.9,
-      1,
-      1.3,
-      2.6,
-      1.3,
-      4.9
-    ]);
+    expect(sleepQualityPerDayPerWeek1).to.deep.equal({
+      date: [
+        '2019/06/22',
+        '2019/06/23',
+        '2019/06/24',
+        '2019/06/25',
+        '2019/06/26',
+        '2019/06/27',
+        '2019/06/28'
+      ],
+      sleepQuality: [
+          3, 
+          1.5, 
+          1.3,
+          3.7, 
+          2.4, 
+          4.6,
+          4.7
+      ]
+    });
+    expect(sleepQualityPerDayPerWeek2).to.deep.equal({
+      date: [
+        '2019/06/22',
+        '2019/06/23',
+        '2019/06/24',
+        '2019/06/25',
+        '2019/06/26',
+        '2019/06/27',
+        '2019/06/28'
+      ],
+      sleepQuality: [
+        3.3, 
+        4.9,   
+        1,
+        1.3, 
+        2.6, 
+        1.3,
+        4.9
+      ]
+    });
   });
 
   it("should be able to return the average sleep quality for all users", () => {
