@@ -20,7 +20,9 @@
 
 ## Illustration
 
-![HealthHub Recording](https://user-images.githubusercontent.com/95496577/169706726-6dc58550-073f-4af8-89a8-c24313bcb7bc.gif)
+
+https://user-images.githubusercontent.com/98505112/169926124-719110ed-3740-4148-8bb8-62f93643deaf.mp4
+
 
 ## Wireframe
 
