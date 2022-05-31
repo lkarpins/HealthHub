@@ -39,15 +39,14 @@ describe("User", () => {
     expect(user2.id).to.equal(7);
   });
 
-  it("should be able to store a user name", () => {
+  it("should be able to store a user name for multiple users", () => {
     expect(user1.name).to.equal("Luisa Hane");
     expect(user2.name).to.equal("Breanne Fay");
   });
 
-  it("should be able to store a user address", () => {
-    expect(user1.address).to.equal(
-      "15195 Nakia Tunnel, Erdmanport VA 19901-1697"
-    );
+  it("should be able to store a user address for multiple users", () => {
+    expect(user1.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
+    expect(user2.address).to.equal("834 Retta Knoll, Stantonland MA 71627-4121");
   });
 
   it("should be able to store a user email", () => {
