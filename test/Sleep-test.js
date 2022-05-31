@@ -40,8 +40,8 @@ describe("Sleep", () => {
   });
 
   it("should be able to return the average hours of sleep per day", () => {
-    const avgSleepPerDay1 = user1Sleep.avgSleepPerDay();
-    const avgSleepPerDay2 = user2Sleep.avgSleepPerDay();
+    const avgSleepPerDay1 = user1Sleep.calculateAvgSleepPerDay();
+    const avgSleepPerDay2 = user2Sleep.calculateAvgSleepPerDay();
 
     expect(avgSleepPerDay1).to.equal(7.8);
     expect(avgSleepPerDay2).to.equal(8);
