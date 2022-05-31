@@ -127,10 +127,10 @@ describe("Sleep", () => {
   });
 
   it("should be able to return their sleep quality each day over the course of a given week", () => {
-    const sleepQualityPerDayPerWeek1 = user1Sleep.sleepQualityPerDayPerWeek(
+    const sleepQualityPerDayPerWeek1 = user1Sleep.calculateSleepQualityPerDayPerWeek(
       "2019/06/16"
     );
-    const sleepQualityPerDayPerWeek2 = user2Sleep.sleepQualityPerDayPerWeek(
+    const sleepQualityPerDayPerWeek2 = user2Sleep.calculateSleepQualityPerDayPerWeek(
       "2019/06/16"
     );
     expect(sleepQualityPerDayPerWeek1).to.deep.equal([
@@ -154,10 +154,10 @@ describe("Sleep", () => {
   });
 
   it("should be able to return the quality of sleep each day over the course of a different week", () => {
-    const sleepQualityPerDayPerWeek1 = user1Sleep.sleepQualityPerDayPerWeek(
+    const sleepQualityPerDayPerWeek1 = user1Sleep.calculateSleepQualityPerDayPerWeek(
       "2019/06/22"
     );
-    const sleepQualityPerDayPerWeek2 = user2Sleep.sleepQualityPerDayPerWeek(
+    const sleepQualityPerDayPerWeek2 = user2Sleep.calculateSleepQualityPerDayPerWeek(
       "2019/06/22"
     );
     expect(sleepQualityPerDayPerWeek1).to.deep.equal([
@@ -181,7 +181,7 @@ describe("Sleep", () => {
   });
 
   it("should be able to return the average sleep quality for all users", () => {
-    const avgSleepQualityAllUsers1 = user1Sleep.avgSleepQualityAllUsers();
+    const avgSleepQualityAllUsers1 = user1Sleep.calculateAvgSleepQualityAllUsers();
     expect(avgSleepQualityAllUsers1).to.equal(3);
   });
 });
