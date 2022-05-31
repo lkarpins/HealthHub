@@ -110,17 +110,17 @@ const displayDailyOunces = () => {
 };
 
 const displayDailySleepHours = () => {
-  let dailySleep = sleep.sleptHoursPerDay(sleep.date);
+  let dailySleep = sleep.calculateSleptHoursPerDay(sleep.date);
   dailyHoursSlept.innerHTML = `${dailySleep}`;
 };
 
 const displayQualitySleep = () => {
-  let dailyQuality = sleep.sleepQualityPerDay(sleep.date);
+  let dailyQuality = sleep.calculateSleepQualityPerDay(sleep.date);
   dailySleepQuality.innerHTML = `${dailyQuality}`;
 };
 
 const displayWeeklySleepHours = () => {
-  let weeklySleep = sleep.sleptHoursPerDayPerWeek(sleep.date);
+  let weeklySleep = sleep.calculateSleptHoursPerDayPerWeek(sleep.date);
   weeklySleep.forEach(entry => {
     const singleEntry = `<br/>
     <br/>
