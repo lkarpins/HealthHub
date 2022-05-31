@@ -3,6 +3,7 @@ import User from "../src/User";
 
 describe("User", () => {
   let user;
+  let user2;
   beforeEach(() => {
     user = new User({
       id: 1,
@@ -12,6 +13,15 @@ describe("User", () => {
       strideLength: 4.3,
       dailyStepGoal: 10000,
       friends: [16, 4, 8]
+    });
+    user2 = new User({
+      id: 7,
+      name: "Breanne Fay",
+      address: "834 Retta Knoll, Stantonland MA 71627-4121",
+      email: "Dashawn28@gmail.com",
+      strideLength: 2.9,
+      dailyStepGoal: 8000,
+      friends: [12, 27, 22, 30]
     });
   });
 
