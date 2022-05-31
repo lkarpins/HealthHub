@@ -64,8 +64,9 @@ describe("User", () => {
     expect(user2.dailyStepGoal).to.equal(8000);
   });
 
-  it("should be able to store a users friends", () => {
+  it("should be able to store a users friends for multiple users", () => {
     expect(user1.friends).to.deep.equal([16, 4, 8]);
+    expect(user2.friends).to.deep.equal([12, 27, 22, 30]);
   });
 
   it("should be able to return only the first name", () => {
