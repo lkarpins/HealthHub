@@ -272,4 +272,9 @@ describe("Sleep", () => {
     const avgSleepQualityAllUsers1 = user1Sleep.avgSleepQualityAllUsers();
     expect(avgSleepQualityAllUsers1).to.equal(3);
   });
+
+  it("should be able to return the average hours slept for all users", () => {
+    const avgHoursSleptAllUsers1 = user1Sleep.avgHoursSleptAllUsers();
+    expect(avgHoursSleptAllUsers1).to.equal(7.9);
+  });
 });
