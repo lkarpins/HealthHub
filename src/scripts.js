@@ -84,7 +84,7 @@ const displayUserCard = () => {
 };
 
 const displayAverageStepGoal = () => {
-  let averageUserSteps = userRepo.averageStepGoal();
+  let averageUserSteps = userRepo.calculateAvgStepGoal();
   averageSteps.innerHTML = `${averageUserSteps}`;
 };
 const displayDailyStepGoal = () => {
