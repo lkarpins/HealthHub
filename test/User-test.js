@@ -59,8 +59,9 @@ describe("User", () => {
     expect(user2.strideLength).to.equal(2.9);
   });
 
-  it("should be able to store a user daily step goal", () => {
+  it("should be able to store a user daily step goal for multiple users", () => {
     expect(user1.dailyStepGoal).to.equal(10000);
+    expect(user2.dailyStepGoal).to.equal(8000);
   });
 
   it("should be able to store a users friends", () => {
