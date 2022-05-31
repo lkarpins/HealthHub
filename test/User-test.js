@@ -54,8 +54,9 @@ describe("User", () => {
     expect(user2.email).to.equal("Dashawn28@gmail.com");
   });
 
-  it("should be able to store a user stride length", () => {
+  it("should be able to store a user stride length for multiple users", () => {
     expect(user1.strideLength).to.equal(4.3);
+    expect(user2.strideLength).to.equal(2.9);
   });
 
   it("should be able to store a user daily step goal", () => {
