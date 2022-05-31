@@ -64,8 +64,12 @@ describe("Sleep", () => {
   });
 
   it("should be able to return the sleep quality for a specific day", () => {
-    const sleepQualityPerDay1 = user1Sleep.sleepQualityPerDay("2019/06/16");
-    const sleepQualityPerDay2 = user2Sleep.sleepQualityPerDay("2019/06/16");
+    const sleepQualityPerDay1 = user1Sleep.calculateSleepQualityPerDay(
+      "2019/06/16"
+    );
+    const sleepQualityPerDay2 = user2Sleep.calculateSleepQualityPerDay(
+      "2019/06/16"
+    );
 
     expect(sleepQualityPerDay1).to.equal(3.8);
     expect(sleepQualityPerDay2).to.equal(3.8);
