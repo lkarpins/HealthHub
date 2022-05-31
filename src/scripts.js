@@ -133,7 +133,7 @@ const displayWeeklySleepHours = () => {
 };
 
 const displayWeeklyQuality = () => {
-  let weeklyQuality = sleep.sleepQualityPerDayPerWeek(sleep.date);
+  let weeklyQuality = sleep.calculateSleepQualityPerDayPerWeek(sleep.date);
   weeklyQuality.forEach(entry => {
     const singleEntry = `<br/>
     <br/>
@@ -161,8 +161,8 @@ const displayHydrationChart = () => {
 };
 
 const displaySleepChart = () => {
-  let hours = sleep.sleptHoursPerDayPerWeek(sleep.date);
-  let quality = sleep.sleepQualityPerDayPerWeek(sleep.date);
+  let hours = sleep.calculateSleptHoursPerDayPerWeek(sleep.date);
+  let quality = sleep.calculateSleepQualityPerDayPerWeek(sleep.date);
   chart.groupedBar(hours, quality);
 };
 // Event Linsteners

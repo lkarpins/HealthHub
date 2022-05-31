@@ -80,7 +80,7 @@ class Sleep {
     return weeklyHours;
   };
 
-  sleepQualityPerDayPerWeek = weekStart => {
+  calculateSleepQualityPerDayPerWeek = weekStart => {
     const targetStartDate = this.userSleepData.findIndex(entry => {
       return entry.date === weekStart;
     });
