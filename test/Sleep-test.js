@@ -100,10 +100,10 @@ describe("Sleep", () => {
   });
 
   it("should be able to return how many hours slept each day over the course of a different week", () => {
-    const sleptHoursPerDayPerWeek1 = user1Sleep.sleptHoursPerDayPerWeek(
+    const sleptHoursPerDayPerWeek1 = user1Sleep.calculateSleptHoursPerDayPerWeek(
       "2019/06/22"
     );
-    const sleptHoursPerDayPerWeek2 = user2Sleep.sleptHoursPerDayPerWeek(
+    const sleptHoursPerDayPerWeek2 = user2Sleep.calculateSleptHoursPerDayPerWeek(
       "2019/06/22"
     );
     expect(sleptHoursPerDayPerWeek1).to.deep.equal([
