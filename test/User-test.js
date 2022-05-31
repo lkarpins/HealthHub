@@ -41,6 +41,7 @@ describe("User", () => {
 
   it("should be able to store a user name", () => {
     expect(user1.name).to.equal("Luisa Hane");
+    expect(user2.name).to.equal("Breanne Fay");
   });
 
   it("should be able to store a user address", () => {
