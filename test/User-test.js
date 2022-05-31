@@ -49,8 +49,9 @@ describe("User", () => {
     expect(user2.address).to.equal("834 Retta Knoll, Stantonland MA 71627-4121");
   });
 
-  it("should be able to store a user email", () => {
+  it("should be able to store a user email for multiple users", () => {
     expect(user1.email).to.equal("Diana.Hayes1@hotmail.com");
+    expect(user2.email).to.equal("Dashawn28@gmail.com");
   });
 
   it("should be able to store a user stride length", () => {
