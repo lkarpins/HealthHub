@@ -69,8 +69,10 @@ describe("User", () => {
     expect(user2.friends).to.deep.equal([12, 27, 22, 30]);
   });
 
-  it("should be able to return only the first name", () => {
-    const firstName = user1.returnFirstName();
-    expect(firstName).to.equal("Luisa");
+  it("should be able to return only the first name for multiple users", () => {
+    const firstName1 = user1.returnFirstName();
+    const firstName2 = user2.returnFirstName();
+    expect(firstName1).to.equal("Luisa");
+    expect(firstName2).to.equal("Breanne");
   });
 });
