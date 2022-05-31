@@ -72,10 +72,10 @@ describe("Sleep", () => {
   });
 
   it("should be able to return how many hours slept over the course of a given week", () => {
-    const sleptHoursPerDayPerWeek1 = user1Sleep.sleptHoursPerDayPerWeek(
+    const sleptHoursPerDayPerWeek1 = user1Sleep.calculateSleptHoursPerDayPerWeek(
       "2019/06/16"
     );
-    const sleptHoursPerDayPerWeek2 = user2Sleep.sleptHoursPerDayPerWeek(
+    const sleptHoursPerDayPerWeek2 = user2Sleep.calculateSleptHoursPerDayPerWeek(
       "2019/06/16"
     );
 
