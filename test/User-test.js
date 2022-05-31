@@ -2,10 +2,10 @@ import { expect } from "chai";
 import User from "../src/User";
 
 describe("User", () => {
-  let user;
+  let user1;
   let user2;
   beforeEach(() => {
-    user = new User({
+    user1 = new User({
       id: 1,
       name: "Luisa Hane",
       address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
@@ -29,42 +29,44 @@ describe("User", () => {
     expect(User).to.be.a("function");
   });
 
-  it("should be an instance of User", () => {
-    expect(user).to.be.an.instanceof(User);
+  it("should be able to instantiate multiple users", () => {
+    expect(user1).to.be.an.instanceof(User);
+    expect(user2).to.be.an.instanceOf(User);
   });
 
-  it("should be able to store a user id", () => {
-    expect(user.id).to.equal(1);
+  it("should be able to store a user id for multiple users", () => {
+    expect(user1.id).to.equal(1);
+    expect(user2.id).to.equal(7);
   });
 
   it("should be able to store a user name", () => {
-    expect(user.name).to.equal("Luisa Hane");
+    expect(user1.name).to.equal("Luisa Hane");
   });
 
   it("should be able to store a user address", () => {
-    expect(user.address).to.equal(
+    expect(user1.address).to.equal(
       "15195 Nakia Tunnel, Erdmanport VA 19901-1697"
     );
   });
 
   it("should be able to store a user email", () => {
-    expect(user.email).to.equal("Diana.Hayes1@hotmail.com");
+    expect(user1.email).to.equal("Diana.Hayes1@hotmail.com");
   });
 
   it("should be able to store a user stride length", () => {
-    expect(user.strideLength).to.equal(4.3);
+    expect(user1.strideLength).to.equal(4.3);
   });
 
   it("should be able to store a user daily step goal", () => {
-    expect(user.dailyStepGoal).to.equal(10000);
+    expect(user1.dailyStepGoal).to.equal(10000);
   });
 
   it("should be able to store a users friends", () => {
-    expect(user.friends).to.deep.equal([16, 4, 8]);
+    expect(user1.friends).to.deep.equal([16, 4, 8]);
   });
 
   it("should be able to return only the first name", () => {
-    const firstName = user.returnFirstName();
+    const firstName = user1.returnFirstName();
     expect(firstName).to.equal("Luisa");
   });
 });
