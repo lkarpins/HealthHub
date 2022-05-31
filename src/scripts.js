@@ -146,12 +146,12 @@ const displayWeeklyQuality = () => {
 };
 
 const displayAverageQuality = () => {
-  let averageQuality = sleep.avgSleepQualityAllUsers();
+  let averageQuality = sleep.calculateAvgSleepQualityAllUsers();
   avgSleepQuality.innerHTML = `${averageQuality}`;
 };
 
 const displayAverageHoursSlept = () => {
-  let averageHoursSlept = sleep.avgHoursSleptAllUsers();
+  let averageHoursSlept = sleep.calculateAvgHoursSleptAllUsers();
   avgHoursSlept.innerHTML = `${averageHoursSlept}`;
 };
 

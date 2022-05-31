@@ -100,7 +100,7 @@ class Sleep {
     return weeklyQuality;
   };
 
-  avgSleepQualityAllUsers = () => {
+  calculateAvgSleepQualityAllUsers = () => {
     let totalQuality = 0;
     this.sleepAPIResponse.forEach(entry => {
       return (totalQuality += entry.sleepQuality);
@@ -112,7 +112,7 @@ class Sleep {
       ) / 10;
     return averageQuality;
   };
-  avgHoursSleptAllUsers = () => {
+  calculateAvgHoursSleptAllUsers = () => {
     let totalHours = 0;
     this.sleepAPIResponse.forEach(entry => {
       return (totalHours += entry.hoursSlept);
