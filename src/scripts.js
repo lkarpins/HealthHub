@@ -1,14 +1,6 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// console.log("This is the JavaScript entry file - your code begins here.");
-// An example of how you tell webpack to use a JS file
-// An example of how you tell webpack to use a CSS file
-
 // Imports
 import "normalize.css";
 import "./css/styles.css";
-// import userData from "./data/users";
 import User from "./User";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
