@@ -16,7 +16,7 @@
 
 ## Abstract
 
-- The _HealthHub_ Project was designed to test my fellow project collaborators  and I on our abilities to implement ES6 classes, use array and object prototype methods for data manipulation, create an easy to use and understand dashboard with clearly displayed information, make network requests to retrieve data, and practice our TDD skills with Mocha/Chai. It’s a health and wellness application that showcases wellness information for a random user. 
+- The _HealthHub_ Project was designed to test my fellow project collaborators and I on our abilities to implement ES6 classes, use array and object prototype methods for data manipulation, create an easy to use and understand dashboard with clearly displayed information, make network requests to retrieve data, and practice our TDD skills with Mocha/Chai. It’s a health and wellness application that showcases wellness information for a random user. 
 
 ## Illustration
 
