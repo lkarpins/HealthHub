@@ -28,5 +28,8 @@ class Activity {
     });
     return Math.round(dailyMiles.numSteps * user.strideLength) / 5280;
   };
+
+  // -For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
+  returnMinutesActivePerDay = (id, date) => {};
 }
 export default Activity;
