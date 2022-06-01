@@ -1,14 +1,36 @@
 import { expect } from "chai";
 import Activity from "../src/Activity";
+import User from "../src/User";
 const sampleActivityData = require("../src/data/sample-activity-data");
 
 describe("Activity", () => {
   let user1Activity;
   let user2Activity;
+  let user1;
+  let user2;
   beforeEach(() => {
     user1Activity = new Activity(1, sampleActivityData);
     user2Activity = new Activity(2, sampleActivityData);
+    user1 = new User ({
+      id: 1,
+      name: "Luisa Hane",
+      address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+      email: "Diana.Hayes1@hotmail.com",
+      strideLength: 4.3,
+      dailyStepGoal: 10000,
+      friends: [16, 4, 8]
+    });
+    user2 = new User ({
+      id:  2,
+      name: "Jarvis Considine",
+      address: "30086 Kathryn Port, Ciceroland NE 07273",
+      email: "Dimitri.Bechtelar11@gmail.com",
+      strideLength: 4.5,
+      dailyStepGoal: 5000,
+      friends: [9, 18, 24, 19]
+    });
   });
+
   it("should be a function", () => {
     expect(Activity).to.be.a("function");
   });
@@ -44,17 +66,17 @@ describe("Activity", () => {
   });
 
   it.skip("should be able to return how many miles a user has walked based on their number of steps", () => {
-    const milesWalkedPerDay1 = user1Activity.returnDailyMilesWalked("2019/06/16");
-    const milesWalkedPerDay2 = user2Activity.returnDailyMilesWalked("2019/06/16");
+    const milesWalkedPerDay1 = user1Activity.returnDailyMilesWalked("2019/06/16", user1);
+    const milesWalkedPerDay2 = user2Activity.returnDailyMilesWalked("2019/06/16", user2);
     expect(milesWalkedPerDay1).to.equal();
     expect(milesWalkedPerDay2).to.equal();
   });
 
-  it.skip("should be able to return how many minutes a user was active for a given day", () => {
+  it("should be able to return how many minutes a user was active for a given day", () => {
     const minutesActivePerDay1 = user1Activity.returnMinutesActivePerDay("2019/06/16");
     const minutesActivePerDay2 = user2Activity.returnMinutesActivePerDay("2019/06/16");
-    expect(minutesActivePerDay1).to.equal();
-    expect(minutesActivePerDay2).to.equal();
+    expect(minutesActivePerDay1).to.equal(175);
+    expect(minutesActivePerDay2).to.equal(220);
   });
 
   it.skip("should be able to return the average amount of minutes a user was active for a given week", () => {

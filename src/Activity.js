@@ -1,5 +1,3 @@
-import User from "../src/User";
-
 class Activity {
   constructor(userID, activityAPIResponse) {
     this.userID = userID;
@@ -12,7 +10,6 @@ class Activity {
   }
 
   setUserActivityData = activityAPIResponse => {
-
     const userActive = activityAPIResponse.filter(userActivityData => {
      if (userActivityData.userID === this.userID) {
       return userActivityData;
@@ -21,26 +18,23 @@ class Activity {
     userActive.reverse();
     return userActive; 
   };
-}
-    const userActive = actvityAPIResponse.filter(userActivityData => {
-      if (userActivityData.userID === this.userID) {
-        return userActivityData;
-      }
-    });
-    userActive.reverse();
-    return userActive;
-  };
 
   // -For a specific day (specified by a date), return the miles a user has walked based on their number of steps (use their strideLength to help calculate this)
-  returnDailyMilesWalked = date => {
+  returnDailyMilesWalked = (date, user) => {
     let dailyMiles = this.userActivityData.find(entry => {
       return entry.date === date;
     });
-    return Math.round(dailyMiles.numSteps * user.strideLength) / 5280;
+    return Math.round( // (5280 * 4.3) / 3577
+      (5280 * user.strideLength + Number.EPSILON) / dailyMiles.numSteps)
   };
 
   // -For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
-  returnMinutesActivePerDay = (id, date) => {};
+  returnMinutesActivePerDay =  date => {
+    let dailyMins = this.userActivityData.find(entry => {
+      return entry.date === date;
+    });
+    return dailyMins.minutesActive;
+  };
 
   // -For a user, how many minutes active did they average for a given week (7 days)?
   returnAvgMinutesActivePerWeek = weekStart => {};
@@ -69,4 +63,6 @@ class Activity {
   // minutes active for a specific date
   returnAvgActivityDataAllUsers = date => {};
 }
+
+
 export default Activity;
