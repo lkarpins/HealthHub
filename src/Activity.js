@@ -10,6 +10,9 @@ class Activity {
     this.userID = userID;
     this.userActivityData = this.setUserActivityData(hydroActivityResponse);
     this.date = this.userActivityData[0].date;
+    this.numSteps = this.userActivityData[0].numSteps;
+    
+
   }
 
 
