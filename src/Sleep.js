@@ -18,7 +18,7 @@ class Sleep {
     return userSleep;
   };
 
-  avgSleepPerDay = () => {
+  calculateAvgSleepPerDay = () => {
     let totalHours = 0;
     this.userSleepData.forEach(entry => {
       return (totalHours += entry.hoursSlept);
@@ -31,7 +31,7 @@ class Sleep {
     return averageHours;
   };
 
-  avgSleepQualityPerDay = () => {
+  calculateAvgSleepQualityPerDay = () => {
     let totalQuality = 0;
     this.userSleepData.forEach(entry => {
       return (totalQuality += entry.sleepQuality);
@@ -44,7 +44,7 @@ class Sleep {
     return averageQuality;
   };
 
-  sleptHoursPerDay = date => {
+  calculateSleptHoursPerDay = date => {
     let dailyHoursSlept = this.userSleepData.find(entry => {
       return entry.date === date;
     });
@@ -52,7 +52,7 @@ class Sleep {
     return dailyHoursSlept.hoursSlept;
   };
 
-  sleepQualityPerDay = date => {
+  calculateSleepQualityPerDay = date => {
     let dailySleepQuality = this.userSleepData.find(entry => {
       return entry.date === date;
     });
@@ -60,7 +60,7 @@ class Sleep {
     return dailySleepQuality.sleepQuality;
   };
 
-  sleptHoursPerDayPerWeek = weekStart => {
+  calculateSleptHoursPerDayPerWeek = weekStart => {
     const targetStartDate = this.userSleepData.findIndex(entry => {
       return entry.date === weekStart;
     });
@@ -76,11 +76,11 @@ class Sleep {
 
     weeklyHours.date = chosenWeek.map(entry => entry.date);
     weeklyHours.hoursSlept = chosenWeek.map(entry => entry.hoursSlept);
-  
+
     return weeklyHours;
   };
 
-  sleepQualityPerDayPerWeek = weekStart => {
+  calculateSleepQualityPerDayPerWeek = weekStart => {
     const targetStartDate = this.userSleepData.findIndex(entry => {
       return entry.date === weekStart;
     });
@@ -100,7 +100,7 @@ class Sleep {
     return weeklyQuality;
   };
 
-  avgSleepQualityAllUsers = () => {
+  calculateAvgSleepQualityAllUsers = () => {
     let totalQuality = 0;
     this.sleepAPIResponse.forEach(entry => {
       return (totalQuality += entry.sleepQuality);
@@ -112,8 +112,7 @@ class Sleep {
       ) / 10;
     return averageQuality;
   };
-  
-  avgHoursSleptAllUsers = () => {
+  calculateAvgHoursSleptAllUsers = () => {
     let totalHours = 0;
     this.sleepAPIResponse.forEach(entry => {
       return (totalHours += entry.hoursSlept);

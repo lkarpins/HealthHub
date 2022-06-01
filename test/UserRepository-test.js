@@ -1,8 +1,8 @@
-import { expect } from 'chai';
+import { expect } from "chai";
 import User from "../src/User";
-import UserRepository from '../src/UserRepository';
+import UserRepository from "../src/UserRepository";
 
-describe('User Repository', () => {
+describe("User Repository", () => {
   let user;
   let user2;
   let userRepository;
@@ -14,14 +14,9 @@ describe('User Repository', () => {
       email: "Dimitri.Bechtelar11@gmail.com",
       strideLength: 4.5,
       dailyStepGoal: 5000,
-      friends: [
-        9,
-        18,
-        24,
-        19
-      ]
+      friends: [9, 18, 24, 19]
     });
-    
+
     user2 = new User({
       id: 5,
       name: "Erick Schaden",
@@ -29,31 +24,24 @@ describe('User Repository', () => {
       email: "Vanessa_Gerhold@gmail.com",
       strideLength: 3.1,
       dailyStepGoal: 8000,
-      friends: [
-        13,
-        44,
-        49,
-        33,
-        10
-      ]
-    })
-    userRepository = new UserRepository([user, user2])    
-    })
-    it("should be a function", function () {
-      expect(UserRepository).to.be.a('function');
+      friends: [13, 44, 49, 33, 10]
     });
-    it("should be an instance of UserRepository", () => {
-      expect(userRepository).to.be.an.instanceof(UserRepository);
-    });
-
-    it("should be able to determine user data by ID", () => {
-      let determineUser = userRepository.findUser(user2.id);
-      expect(determineUser).to.equal(user2)
-    });
-
-    it("should be able to capture the average step goal of the users ", () => {
-      let averageSteps = userRepository.averageStepGoal();
-      expect(averageSteps).to.equal(6500)
-    })
+    userRepository = new UserRepository([user, user2]);
   });
-  
+  it("should be a function", function() {
+    expect(UserRepository).to.be.a("function");
+  });
+  it("should be an instance of UserRepository", () => {
+    expect(userRepository).to.be.an.instanceof(UserRepository);
+  });
+
+  it("should be able to determine user data by ID", () => {
+    let determineUser = userRepository.findUser(user2.id);
+    expect(determineUser).to.equal(user2);
+  });
+
+  it("should be able to capture the average step goal of the users ", () => {
+    let averageSteps = userRepository.calculateAvgStepGoal();
+    expect(averageSteps).to.equal(6500);
+  });
+});

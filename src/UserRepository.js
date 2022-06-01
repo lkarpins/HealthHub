@@ -8,7 +8,7 @@ class UserRepository {
     });
     return chosenUser;
   };
-  averageStepGoal = () => {
+  calculateAvgStepGoal = () => {
     const stepGoals = this.data.map(steps => {
       return steps.dailyStepGoal;
     });

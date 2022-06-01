@@ -76,7 +76,7 @@ const displayUserCard = () => {
 };
 
 const displayAverageStepGoal = () => {
-  let averageUserSteps = userRepo.averageStepGoal();
+  let averageUserSteps = userRepo.calculateAvgStepGoal();
   averageSteps.innerHTML = `${averageUserSteps}`;
 };
 const displayDailyStepGoal = () => {
@@ -102,17 +102,17 @@ const displayDailyOunces = () => {
 };
 
 const displayDailySleepHours = () => {
-  let dailySleep = sleep.sleptHoursPerDay(sleep.date);
+  let dailySleep = sleep.calculateSleptHoursPerDay(sleep.date);
   dailyHoursSlept.innerHTML = `${dailySleep}`;
 };
 
 const displayQualitySleep = () => {
-  let dailyQuality = sleep.sleepQualityPerDay(sleep.date);
+  let dailyQuality = sleep.calculateSleepQualityPerDay(sleep.date);
   dailySleepQuality.innerHTML = `${dailyQuality}`;
 };
 
 const displayWeeklySleepHours = () => {
-  let weeklySleep = sleep.sleptHoursPerDayPerWeek(sleep.date);
+  let weeklySleep = sleep.calculateSleptHoursPerDayPerWeek(sleep.date);
   weeklySleep.forEach(entry => {
     const singleEntry = `<br/>
     <br/>
@@ -125,7 +125,7 @@ const displayWeeklySleepHours = () => {
 };
 
 const displayWeeklyQuality = () => {
-  let weeklyQuality = sleep.sleepQualityPerDayPerWeek(sleep.date);
+  let weeklyQuality = sleep.calculateSleepQualityPerDayPerWeek(sleep.date);
   weeklyQuality.forEach(entry => {
     const singleEntry = `<br/>
     <br/>
@@ -138,12 +138,12 @@ const displayWeeklyQuality = () => {
 };
 
 const displayAverageQuality = () => {
-  let averageQuality = sleep.avgSleepQualityAllUsers();
+  let averageQuality = sleep.calculateAvgSleepQualityAllUsers();
   avgSleepQuality.innerHTML = `${averageQuality}`;
 };
 
 const displayAverageHoursSlept = () => {
-  let averageHoursSlept = sleep.avgHoursSleptAllUsers();
+  let averageHoursSlept = sleep.calculateAvgHoursSleptAllUsers();
   avgHoursSlept.innerHTML = `${averageHoursSlept}`;
 };
 
@@ -153,8 +153,8 @@ const displayHydrationChart = () => {
 };
 
 const displaySleepChart = () => {
-  let hours = sleep.sleptHoursPerDayPerWeek(sleep.date);
-  let quality = sleep.sleepQualityPerDayPerWeek(sleep.date);
+  let hours = sleep.calculateSleptHoursPerDayPerWeek(sleep.date);
+  let quality = sleep.calculateSleepQualityPerDayPerWeek(sleep.date);
   chart.groupedBar(hours, quality);
 };
 // Event Linsteners
