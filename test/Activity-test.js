@@ -93,11 +93,30 @@ describe("Activity", () => {
     expect(determinedStepGoalReachedPerDay2).to.equal(true);
   });
 
-  it.skip("should be able to find the days where a user exceeded their step goal", () => {
-    const determinedStepGoalExceededPerDay1 = user1Activity.returnDaysStepGoalExceeded("2019/06/16", user1);
-    const determinedStepGoalExceededPerDay2 = user2Activity.returnDaysStepGoalExceeded("2019/06/16", user2);
-    expect(determinedStepGoalExceededPerDay1).to.equal();
-    expect(determinedStepGoalExceededPerDay2).to.equal();
+  it("should be able to find the days where a user exceeded their step goal", () => {
+    const determinedStepGoalExceededPerDay1 = user1Activity.returnDaysStepGoalExceeded(user1);
+    const determinedStepGoalExceededPerDay2 = user2Activity.returnDaysStepGoalExceeded(user2);
+    expect(determinedStepGoalExceededPerDay1).to.deep.equal(
+      [
+        '2019/06/28',
+        '2019/06/23',
+        '2019/06/22',
+        '2019/06/20',
+        '2019/06/17'
+      ]
+    );
+    expect(determinedStepGoalExceededPerDay2).to.deep.equal(
+      [
+        '2019/06/28',
+        '2019/06/26',
+        '2019/06/25',
+        '2019/06/24',
+        '2019/06/21',
+        '2019/06/20',
+        '2019/06/19',
+        '2019/06/17'
+      ]
+    );
   });
 
   it.skip("should be able to find all time stair climbing record for a given user", () => {
