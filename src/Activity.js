@@ -12,6 +12,16 @@ class Activity {
   }
 
   setUserActivityData = activityAPIResponse => {
+
+    const userActive = activityAPIResponse.filter(userActivityData => {
+     if (userActivityData.userID === this.userID) {
+      return userActivityData;
+     }
+    });
+    userActive.reverse();
+    return userActive; 
+  };
+}
     const userActive = actvityAPIResponse.filter(userActivityData => {
       if (userActivityData.userID === this.userID) {
         return userActivityData;

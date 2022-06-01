@@ -195,4 +195,6 @@ const sampleActivityData = [
     minutesActive: 193,
     flightsOfStairs: 45
   }
-]
+];
+
+module.exports = sampleActivityData;
