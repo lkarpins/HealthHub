@@ -13,10 +13,7 @@ class Activity {
     this.numSteps = this.userActivityData[0].numSteps;
     this.minutesActive = this.userActivityData[0].minutesActive;
     this.flightsOfStairs = this.userActivityData[0].flightsOfStairs;
-    
-
-
-
+    this.activityAPIResponse = activityAPIResponse;
   }
 
 
