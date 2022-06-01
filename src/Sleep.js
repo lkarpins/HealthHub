@@ -112,6 +112,7 @@ class Sleep {
       ) / 10;
     return averageQuality;
   };
+  
   avgHoursSleptAllUsers = () => {
     let totalHours = 0;
     this.sleepAPIResponse.forEach(entry => {
