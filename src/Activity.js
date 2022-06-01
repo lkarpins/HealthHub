@@ -9,8 +9,16 @@ class Activity {
     this.activityAPIResponse = activityAPIResponse;
   }
 
-
-
+  setUserActivityData = activityAPIResponse => {
+    const userActive = activityAPIResponse.filter(userActiveData => {
+     if (userActiveData.userID === this.userID) {
+      return userActiveData;
+     }
+    });
+    userActive.reverse();
+    return userActive; 
+   };
+  
 
 
 export default Activity;
