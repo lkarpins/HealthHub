@@ -24,9 +24,22 @@ class Activity {
     let dailyMiles = this.userActivityData.find(entry => {
       return entry.date === date;
     });
-    return Math.round( // (5280 * 4.3) / 3577
-      (5280 * user.strideLength + Number.EPSILON) / dailyMiles.numSteps)
+    return Math.round( 
+      ((dailyMiles.numSteps / (5280 / user.strideLength)) + Number.EPSILON) * 10 
+    ) / 10
   };
+
+//   let dailyMiles = this.userActivityData.find(entry => {
+//     return entry.date === date;
+//   });
+
+//   return Math.round( 
+//     // 3577 / (5280 / 4.3)
+//     ((dailyMiles.numSteps / (5280 / user.strideLength)) + Number.EPSILON) * 10
+//   ) / 10
+    
+// };
+  
 
   // -For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
   returnMinutesActivePerDay =  date => {
