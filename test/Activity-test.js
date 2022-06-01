@@ -38,4 +38,9 @@ describe("Activity", () => {
     expect(user2Activity.minutesActive).to.equal(193);
   });
 
+  it("should be able to store flights of stairs climbed", () => {
+    expect(user1Activity.flightsOfStairs).to.equal(6);
+    expect(user2Activity.flightsOfStairs).to.equal(45);
+  });
+
 });
