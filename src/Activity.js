@@ -34,5 +34,17 @@ class Activity {
 
   // -For a user, how many minutes active did they average for a given week (7 days)?
   returnAvgMinutesActivePerWeek = weekStart => {};
+
+  // -For a user, did they reach their step goal for a given day (specified by a date)?
+
+  returnStatusOfDailyStepGoal = date => {
+    let dailyStatus = this.userActivityData.find(entry => {
+      return entry.date === date;
+    });
+    if (this.numSteps >= user.dailyStepGoal) {
+      return true;
+    }
+    return dailyStatus;
+  };
 }
 export default Activity;
