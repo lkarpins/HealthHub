@@ -49,5 +49,8 @@ class Activity {
 
   // -For a user, find all the days where they exceeded their step goal
   returnDaysStepGoalExceeded = () => {};
+
+  // -For a user, find their all-time stair climbing record
+  returnAllTimeStairClimbRecord = () => {};
 }
 export default Activity;
