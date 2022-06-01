@@ -58,10 +58,10 @@ describe("Activity", () => {
   });
 
   it.skip("should be able to return the average amount of minutes a user was active for a given week", () => {
-    const AverageMinutesActivePerWeek1 = user1Activity.returnAverageMinutesActivePerWeek("2019/06/16");
-    const AverageMinutesActivePerWeek2 = user2Activity.returnAverageMinutesActivePerWeek("2019/06/16");
-    expect(AverageMinutesActivePerWeek1).to.equal();
-    expect(AverageMinutesActivePerWeek2).to.equal();
+    const avgMinutesActivePerWeek1 = user1Activity.returnAverageMinutesActivePerWeek("2019/06/16");
+    const avgMinutesActivePerWeek2 = user2Activity.returnAverageMinutesActivePerWeek("2019/06/16");
+    expect(avgMinutesActivePerWeek1).to.equal();
+    expect(avgMinutesActivePerWeek2).to.equal();
   });
 
   it.skip("should be able to determine if a user reached their step goal for a given day", () => {
@@ -77,7 +77,7 @@ describe("Activity", () => {
     expect(determinedStepGoalExceededPerDay1).to.equal();
     expect(determinedStepGoalExceededPerDay2).to.equal();
   });
-  
+
   it.skip("should be able to find all time stair climbing record for a given user", () => {
     const allTimeStairClimbRecord1 = user1Activity.returnAllTimeStairClimbRecord();
     const allTimeStairClimbRecord2 = user2Activity.returnAllTimeStairClimbRecord();
@@ -85,7 +85,12 @@ describe("Activity", () => {
     expect(allTimeStairClimbRecord2).to.equal();
   });
 // -For all users, what is the average number of:
-// stairs climbed for a specified date
+  it.skip("should be able to find average number of stairs climbed for all user's on a given day", () => {
+    const avgStairsClimbedPerDay1 = user1Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
+    const avgStairsClimbedPerDay2 = user2Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
+    expect(avgStairsClimbedPerDay1).to.equal();
+    expect(avgStairsClimbedPerDay2).to.equal();
+  });
 // steps taken for a specific date
 // minutes active for a specific date
 });
