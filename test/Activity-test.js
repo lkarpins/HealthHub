@@ -23,4 +23,9 @@ describe("Activity", () => {
     expect(user2Activity.userID).to.equal(2);
   });
 
+  it("should be able to store a date", () => {
+    expect(user1Activity.date).to.equal("2019/06/28");
+    expect(user2Activity.date).to.equal("2019/06/28");
+  });
+
 });
