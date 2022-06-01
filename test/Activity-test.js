@@ -13,4 +13,9 @@ describe("Activity", () => {
     expect(Activity).to.be.a("function");
   });
 
-})
+  it("should be an instance of Hydration", () => {
+    expect(user1Activity).to.be.an.instanceof(Activity);
+    expect(user2Activity).to.be.an.instanceof(Activity);
+  });
+
+});
