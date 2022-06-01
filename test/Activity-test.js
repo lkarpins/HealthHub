@@ -49,15 +49,20 @@ describe("Activity", () => {
     expect(milesWalkedPerDay1).to.equal();
     expect(milesWalkedPerDay2).to.equal();
   });
-// -For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
+
   it.skip("should be able to return how many minutes a user was active for a given day", () => {
     const minutesActivePerDay1 = user1Activity.returnMinutesActivePerDay("2019/06/16");
     const minutesActivePerDay2 = user2Activity.returnMinutesActivePerDay("2019/06/16");
     expect(minutesActivePerDay1).to.equal();
     expect(minutesActivePerDay2).to.equal();
   });
-// -For a user, how many minutes active did they average for a given week (7 days)?
 
+  it.skip("should be able to return the average amount of minutes a user was active for a given week", () => {
+    const AverageMinutesActivePerWeek1 = user1Activity.returnAverageMinutesActivePerWeek("2019/06/16");
+    const AverageMinutesActivePerWeek2 = user2Activity.returnAverageMinutesActivePerWeek("2019/06/16");
+    expect(AverageMinutesActivePerWeek1).to.equal();
+    expect(AverageMinutesActivePerWeek2).to.equal();
+  });
 // -For a user, did they reach their step goal for a given day (specified by a date)?
 
 // -For a user, find all the days where they exceeded their step goal
