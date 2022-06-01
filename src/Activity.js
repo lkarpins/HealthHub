@@ -1,5 +1,7 @@
+import User from "../src/User";
+
 class Activity {
-  constructor(userID, activityAPIResponse){
+  constructor(userID, activityAPIResponse) {
     this.userID = userID;
     this.userActivityData = this.setUserActivityData(activityAPIResponse);
     this.date = this.userActivityData[0].date;
@@ -9,8 +11,15 @@ class Activity {
     this.activityAPIResponse = activityAPIResponse;
   }
 
-
-
+  setUserActivityData = activityAPIResponse => {
+    const userActive = actvityAPIResponse.filter(userActivityData => {
+      if (userActivityData.userID === this.userID) {
+        return userActivityData;
+      }
+    });
+    userActive.reverse();
+    return userActive;
+  };
 
 
 export default Activity;
