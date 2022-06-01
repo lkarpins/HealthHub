@@ -88,12 +88,12 @@ describe("Activity", () => {
 
   it("should be able to determine if a user reached their step goal for a given day", () => {
     const determinedStepGoalReachedPerDay1 = user1Activity.returnStatusOfDailyStepGoal("2019/06/16", user1);
-    const determinedStepGoalReachedPerDay2 = user2Activity.returnStatusOfDailyStepGoal("2019/06/16", user2);
+    const determinedStepGoalReachedPerDay2 = user2Activity.returnStatusOfDailyStepGoal("2019/06/17", user2);
     expect(determinedStepGoalReachedPerDay1).to.equal(false);
-    expect(determinedStepGoalReachedPerDay2).to.equal(false);
+    expect(determinedStepGoalReachedPerDay2).to.equal(true);
   });
 
-  it("should be able to find the days where a user exceeded their step goal", () => {
+  it.skip("should be able to find the days where a user exceeded their step goal", () => {
     const determinedStepGoalExceededPerDay1 = user1Activity.returnDaysStepGoalExceeded("2019/06/16", user1);
     const determinedStepGoalExceededPerDay2 = user2Activity.returnDaysStepGoalExceeded("2019/06/16", user2);
     expect(determinedStepGoalExceededPerDay1).to.equal();

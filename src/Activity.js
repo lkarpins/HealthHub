@@ -63,11 +63,7 @@ class Activity {
     let dailyStatus = this.userActivityData.find(entry => {
       return entry.date === date;
     });
-    if (dailyStatus.numSteps >= user.dailyStepGoal) {
-      return true
-    } else {
-      return false
-    }
+    return dailyStatus.numSteps >= user.dailyStepGoal
   };
 
   // -For a user, find all the days where they exceeded their step goal
