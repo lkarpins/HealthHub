@@ -28,9 +28,7 @@ class Activity {
       ((dailyMiles.numSteps / (5280 / user.strideLength)) + Number.EPSILON) * 10 
     ) / 10
   };
-  
 
-  // -For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
   returnMinutesActivePerDay =  date => {
     let dailyMins = this.userActivityData.find(entry => {
       return entry.date === date;
@@ -38,7 +36,6 @@ class Activity {
     return dailyMins.minutesActive;
   };
 
-  // -For a user, how many minutes active did they average for a given week (7 days)?
   returnAvgMinutesActivePerWeek = weekStart => {
     const targetStartDate = this.userActivityData.findIndex(entry => {
        return entry.date === weekStart;
@@ -62,51 +59,17 @@ class Activity {
       return averageWeeklyActiveMinutes;
   };
 
-  // returnAvgHydroPerDay = () => {
-  //   let totalOunces = 0;
-
-  //   this.userHydroData.forEach(entry => {
-  //     return (totalOunces += entry.numOunces);
-  //   });
-  //   const averageOunces =
-  //     Math.round(
-  //       (totalOunces / this.userHydroData.length + Number.EPSILON) * 10
-  //     ) / 10;
-
-  //   return averageOunces;
-  // };
-
-
-  // calculateSleptHoursPerDayPerWeek = weekStart => {
-  //   const targetStartDate = this.userSleepData.findIndex(entry => {
-  //     return entry.date === weekStart;
-  //   });
-
-  //   let chosenWeek = this.userSleepData
-  //     .slice(targetStartDate, targetStartDate + 7)
-  //     .reverse();
-
-  //   let weeklyHours = {
-  //     date: [],
-  //     hoursSlept: []
-  //   };
-
-  //   weeklyHours.date = chosenWeek.map(entry => entry.date);
-  //   weeklyHours.hoursSlept = chosenWeek.map(entry => entry.hoursSlept);
-
-  //   return weeklyHours;
-  // };
-
   // -For a user, did they reach their step goal for a given day (specified by a date)?
 
-  returnStatusOfDailyStepGoal = date => {
+  returnStatusOfDailyStepGoal = (date, user) => {
     let dailyStatus = this.userActivityData.find(entry => {
       return entry.date === date;
     });
-    if (this.numSteps >= user.dailyStepGoal) {
-      return true;
+    if (dailyStatus.numSteps >= user.dailyStepGoal) {
+      return true
+    } else {
+      return false
     }
-    return dailyStatus;
   };
 
   // -For a user, find all the days where they exceeded their step goal
