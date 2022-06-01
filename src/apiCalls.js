@@ -9,7 +9,8 @@ const fetchData = () => {
   return Promise.all([
     fetchApiData("hydration"),
     fetchApiData("sleep"),
-    fetchApiData("users")
+    fetchApiData("users"),
+    fetchApiData("activity")
   ]);
 };
 
