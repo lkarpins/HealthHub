@@ -91,6 +91,11 @@ describe("Activity", () => {
     expect(avgStairsClimbedPerDay1).to.equal();
     expect(avgStairsClimbedPerDay2).to.equal();
   });
-// steps taken for a specific date
+  it.skip("should be able to find average steps taken for all user's on a given day", () => {
+    const avgStepsTakenPerDay1 = user1Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
+    const avgStepsTakenPerDay2 = user2Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
+    expect(avgStepsTakenPerDay1).to.equal();
+    expect(avgStepsTakenPerDay2).to.equal();
+  });
 // minutes active for a specific date
 });
