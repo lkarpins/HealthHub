@@ -33,4 +33,9 @@ describe("Activity", () => {
     expect(user2Activity.numSteps).to.equal(12555);
   });
 
+  it("should be able to store minutes active", () => {
+    expect(user1Activity.minutesActive).to.equal(169);
+    expect(user2Activity.minutesActive).to.equal(193);
+  });
+
 });
