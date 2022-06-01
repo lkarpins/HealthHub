@@ -28,4 +28,9 @@ describe("Activity", () => {
     expect(user2Activity.date).to.equal("2019/06/28");
   });
 
+  it("should be able to store number of steps", () => {
+    expect(user1Activity.numSteps).to.equal(10517);
+    expect(user2Activity.numSteps).to.equal(12555);
+  });
+
 });
