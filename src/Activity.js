@@ -31,5 +31,8 @@ class Activity {
 
   // -For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
   returnMinutesActivePerDay = (id, date) => {};
+
+  // -For a user, how many minutes active did they average for a given week (7 days)?
+  returnAvgMinutesActivePerWeek = weekStart => {};
 }
 export default Activity;
