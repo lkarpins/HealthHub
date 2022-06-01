@@ -6,7 +6,9 @@
 // flightsOfStairs: 16
 // },
 class Activity {
-  constructor(userID, activityAPIResponse) 
+  constructor(userID, activityAPIResponse){
+    this.userID = userID;
+  }
 
 
 
