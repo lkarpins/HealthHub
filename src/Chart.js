@@ -28,7 +28,7 @@ const chart = {
         datasets: [
           {
             type: "line",
-            label: "Quality",
+            label: "Quality (1-5)",
             borderColor: "#09441B",
             data: quality.sleepQuality
           },
