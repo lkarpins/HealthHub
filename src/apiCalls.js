@@ -1,5 +1,3 @@
-// Your fetch requests will live here!
-
 const fetchApiData = type => {
   return fetch(`https://fitlit-api.herokuapp.com/api/v1/${type}`)
     .then(response => response.json())
