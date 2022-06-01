@@ -55,7 +55,6 @@ class Hydration {
     weeklyIntake.date = selectedWeekData.map(entry => entry.date);
     weeklyIntake.numOunces = selectedWeekData.map(entry => entry.numOunces);
 
-    console.log(weeklyIntake)
     return weeklyIntake;
   };
 }
