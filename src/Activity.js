@@ -59,8 +59,6 @@ class Activity {
       return averageWeeklyActiveMinutes;
   };
 
-  // -For a user, did they reach their step goal for a given day (specified by a date)?
-
   returnStatusOfDailyStepGoal = (date, user) => {
     let dailyStatus = this.userActivityData.find(entry => {
       return entry.date === date;
@@ -73,8 +71,14 @@ class Activity {
   };
 
   // -For a user, find all the days where they exceeded their step goal
-  returnDaysStepGoalExceeded = () => {};
-
+  returnDaysStepGoalExceeded = (date, user) => {
+    let allTimeStatus = this.userActivityData.filter(entry => {
+      if (this.returnStatusOfDailyStepGoal(date, user)) {
+        return entry.date
+      }
+    });
+    console.log(allTimeStatus)
+  }
   // -For a user, find their all-time stair climbing record
   returnAllTimeStairClimbRecord = () => {};
 
