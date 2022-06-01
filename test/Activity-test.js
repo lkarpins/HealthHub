@@ -6,9 +6,11 @@ describe("Activity", () => {
   let user1Activity;
   let user2Activity;
   beforeEach(() => {
-    user1Activity = new Hydration(1, sampleActivityData);
-    user2Activity = new Hydration(2, sampleActivityData);
+    user1Activity = new Activity(1, sampleActivityData);
+    user2Activity = new Activity(2, sampleActivityData);
   });
   it("should be a function", () => {
-    expect(Hydration).to.be.a("function");
+    expect(Activity).to.be.a("function");
   });
+
+})

@@ -17,8 +17,8 @@ class Activity {
     });
     userActive.reverse();
     return userActive; 
-   };
-  
+  };
+}
 
 
 export default Activity;
