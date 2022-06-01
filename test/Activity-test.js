@@ -79,11 +79,11 @@ describe("Activity", () => {
     expect(minutesActivePerDay2).to.equal(220);
   });
 
-  it.skip("should be able to return the average amount of minutes a user was active for a given week", () => {
-    const avgMinutesActivePerWeek1 = user1Activity.returnAverageMinutesActivePerWeek("2019/06/16");
-    const avgMinutesActivePerWeek2 = user2Activity.returnAverageMinutesActivePerWeek("2019/06/16");
-    expect(avgMinutesActivePerWeek1).to.equal();
-    expect(avgMinutesActivePerWeek2).to.equal();
+  it("should be able to return the average amount of minutes a user was active for a given week", () => {
+    const avgMinutesActivePerWeek1 = user1Activity.returnAvgMinutesActivePerWeek("2019/06/22");
+    const avgMinutesActivePerWeek2 = user2Activity.returnAvgMinutesActivePerWeek("2019/06/22");
+    expect(avgMinutesActivePerWeek1).to.equal(168.1);
+    expect(avgMinutesActivePerWeek2).to.equal(154.4);
   });
 
   it.skip("should be able to determine if a user reached their step goal for a given day", () => {

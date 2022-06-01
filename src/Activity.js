@@ -28,17 +28,6 @@ class Activity {
       ((dailyMiles.numSteps / (5280 / user.strideLength)) + Number.EPSILON) * 10 
     ) / 10
   };
-
-//   let dailyMiles = this.userActivityData.find(entry => {
-//     return entry.date === date;
-//   });
-
-//   return Math.round( 
-//     // 3577 / (5280 / 4.3)
-//     ((dailyMiles.numSteps / (5280 / user.strideLength)) + Number.EPSILON) * 10
-//   ) / 10
-    
-// };
   
 
   // -For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
@@ -50,7 +39,63 @@ class Activity {
   };
 
   // -For a user, how many minutes active did they average for a given week (7 days)?
-  returnAvgMinutesActivePerWeek = weekStart => {};
+  returnAvgMinutesActivePerWeek = weekStart => {
+    const targetStartDate = this.userActivityData.findIndex(entry => {
+       return entry.date === weekStart;
+     });
+     let chosenWeek = this.userActivityData
+       .slice(targetStartDate, targetStartDate + 7)
+       .reverse()
+     let weeklyMinutesActive = {
+       date: [],
+       minutesActive: []
+     };
+      weeklyMinutesActive.date = chosenWeek.map(entry => entry.date);
+      weeklyMinutesActive.minutesActive = chosenWeek.map(entry => entry.minutesActive);
+      const totalWeeklyMinutesActive = weeklyMinutesActive.minutesActive.reduce((acc, mins) => {
+        return acc += mins 
+      }, 0)
+     const averageWeeklyActiveMinutes = 
+       Math.round(
+         (totalWeeklyMinutesActive / weeklyMinutesActive.minutesActive.length + Number.EPSILON) * 10
+       ) / 10
+      return averageWeeklyActiveMinutes;
+  };
+
+  // returnAvgHydroPerDay = () => {
+  //   let totalOunces = 0;
+
+  //   this.userHydroData.forEach(entry => {
+  //     return (totalOunces += entry.numOunces);
+  //   });
+  //   const averageOunces =
+  //     Math.round(
+  //       (totalOunces / this.userHydroData.length + Number.EPSILON) * 10
+  //     ) / 10;
+
+  //   return averageOunces;
+  // };
+
+
+  // calculateSleptHoursPerDayPerWeek = weekStart => {
+  //   const targetStartDate = this.userSleepData.findIndex(entry => {
+  //     return entry.date === weekStart;
+  //   });
+
+  //   let chosenWeek = this.userSleepData
+  //     .slice(targetStartDate, targetStartDate + 7)
+  //     .reverse();
+
+  //   let weeklyHours = {
+  //     date: [],
+  //     hoursSlept: []
+  //   };
+
+  //   weeklyHours.date = chosenWeek.map(entry => entry.date);
+  //   weeklyHours.hoursSlept = chosenWeek.map(entry => entry.hoursSlept);
+
+  //   return weeklyHours;
+  // };
 
   // -For a user, did they reach their step goal for a given day (specified by a date)?
 
