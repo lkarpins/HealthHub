@@ -119,11 +119,11 @@ describe("Activity", () => {
     );
   });
 
-  it.skip("should be able to find all time stair climbing record for a given user", () => {
+  it("should be able to find all time stair climbing record for a given user", () => {
     const allTimeStairClimbRecord1 = user1Activity.returnAllTimeStairClimbRecord();
     const allTimeStairClimbRecord2 = user2Activity.returnAllTimeStairClimbRecord();
-    expect(allTimeStairClimbRecord1).to.equal();
-    expect(allTimeStairClimbRecord2).to.equal();
+    expect(allTimeStairClimbRecord1).to.equal(39);
+    expect(allTimeStairClimbRecord2).to.equal(45);
   });
 
   it.skip("should be able to find average number of stairs climbed for all user's on a given day", () => {

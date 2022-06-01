@@ -66,7 +66,6 @@ class Activity {
     return dailyStatus.numSteps >= user.dailyStepGoal
   };
 
-  // -For a user, find all the days where they exceeded their step goal
   returnDaysStepGoalExceeded = user => {
     const allTimeStatus = this.userActivityData.reduce((acc, entry) => {
      if (this.returnStatusOfDailyStepGoal(entry.date, user)) {
@@ -77,13 +76,20 @@ class Activity {
     return allTimeStatus
    };
   // -For a user, find their all-time stair climbing record
-  returnAllTimeStairClimbRecord = () => {};
+  returnAllTimeStairClimbRecord = () => {
+    let mostStairsClimbed = this.userActivityData.sort((a, b) => {
+      return b.flightsOfStairs - a.flightsOfStairs
+    });
+    return mostStairsClimbed[0].flightsOfStairs 
+  };
 
   // -For all users, what is the average number of:
   // stairs climbed for a specified date
   // steps taken for a specific date
   // minutes active for a specific date
-  returnAvgActivityDataAllUsers = date => {};
+  returnAvgActivityDataAllUsers = date => {
+    
+  };
 }
 
 
