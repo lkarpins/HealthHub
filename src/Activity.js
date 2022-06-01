@@ -46,5 +46,8 @@ class Activity {
     }
     return dailyStatus;
   };
+
+  // -For a user, find all the days where they exceeded their step goal
+  returnDaysStepGoalExceeded = () => {};
 }
 export default Activity;
