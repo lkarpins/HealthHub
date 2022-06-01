@@ -8,6 +8,7 @@
 class Activity {
   constructor(userID, activityAPIResponse){
     this.userID = userID;
+    this.userActivityData = this.setUserActivityData(hydroActivityResponse);
   }
 
 
