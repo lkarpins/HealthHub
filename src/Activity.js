@@ -52,5 +52,11 @@ class Activity {
 
   // -For a user, find their all-time stair climbing record
   returnAllTimeStairClimbRecord = () => {};
+
+  // -For all users, what is the average number of:
+  // stairs climbed for a specified date
+  // steps taken for a specific date
+  // minutes active for a specific date
+  returnAvgActivityDataAllUsers = date => {};
 }
 export default Activity;
