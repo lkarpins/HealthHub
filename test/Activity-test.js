@@ -84,18 +84,25 @@ describe("Activity", () => {
     expect(allTimeStairClimbRecord1).to.equal();
     expect(allTimeStairClimbRecord2).to.equal();
   });
-// -For all users, what is the average number of:
+
   it.skip("should be able to find average number of stairs climbed for all user's on a given day", () => {
     const avgStairsClimbedPerDay1 = user1Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
     const avgStairsClimbedPerDay2 = user2Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
     expect(avgStairsClimbedPerDay1).to.equal();
     expect(avgStairsClimbedPerDay2).to.equal();
   });
+
   it.skip("should be able to find average steps taken for all user's on a given day", () => {
     const avgStepsTakenPerDay1 = user1Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
     const avgStepsTakenPerDay2 = user2Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
     expect(avgStepsTakenPerDay1).to.equal();
     expect(avgStepsTakenPerDay2).to.equal();
   });
-// minutes active for a specific date
+
+  it.skip("should be able to find average minutes active for all user's on a given day", () => {
+    const avgMinutesActivePerDay1 = user1Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
+    const avgMinutesActivePerDay2 = user2Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
+    expect(avgMinutesActivePerDay1).to.equal();
+    expect(avgMinutesActivePerDay2).to.equal();
+  });
 });
