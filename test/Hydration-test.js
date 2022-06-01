@@ -6,8 +6,8 @@ describe("Hydration", () => {
   let user1Hydration;
   let user2Hydration;
   beforeEach(() => {
-    user1Hydration = new Hydration(sampleHydrationData[0], sampleHydrationData);
-    user2Hydration = new Hydration(sampleHydrationData[1], sampleHydrationData);
+    user1Hydration = new Hydration(1, sampleHydrationData);
+    user2Hydration = new Hydration(2, sampleHydrationData);
   });
   it("should be a function", () => {
     expect(Hydration).to.be.a("function");
@@ -24,13 +24,13 @@ describe("Hydration", () => {
   });
 
   it("should be able to store a date", () => {
-    expect(user1Hydration.date).to.equal("2019/06/15");
-    expect(user2Hydration.date).to.equal("2019/06/15");
+    expect(user1Hydration.date).to.equal("2019/06/28");
+    expect(user2Hydration.date).to.equal("2019/06/28");
   });
 
   it("should be able to store ounces of fluid consumed", () => {
-    expect(user1Hydration.numOunces).to.equal(37);
-    expect(user2Hydration.numOunces).to.equal(75);
+    expect(user1Hydration.numOunces).to.equal(57);
+    expect(user2Hydration.numOunces).to.equal(56);
   });
 
   it("should be able to return the average fluid ounces consumed per day for all time", () => {
@@ -51,17 +51,73 @@ describe("Hydration", () => {
     expect(consumedOuncesPerDay2).to.equal(91);
   });
 
-  it("should be able to return the amount of ounces consumed each day over the course of a week", () => {
-    const weeklyOuncesPerDay1 = user1Hydration.returnWeeklyOunces("2019/06/15");
-    const weeklyOuncesPerDay2 = user2Hydration.returnWeeklyOunces("2019/06/15");
-    expect(weeklyOuncesPerDay1).to.deep.equal([37, 69, 96, 61, 91, 50, 50]);
-    expect(weeklyOuncesPerDay2).to.deep.equal([75, 91, 96, 70, 76, 71, 27]);
-  });
-
-  it("should be able to return the amount of ounces consumed each day over the course of a different week", () => {
+  it("should be able to return the date, and amount of ounces consumed over a week.", () => {
     const weeklyOuncesPerDay1 = user1Hydration.returnWeeklyOunces("2019/06/22");
     const weeklyOuncesPerDay2 = user2Hydration.returnWeeklyOunces("2019/06/22");
-    expect(weeklyOuncesPerDay1).to.deep.equal([43, 39, 61, 51, 52, 29, 57]);
-    expect(weeklyOuncesPerDay2).to.deep.equal([58, 44, 33, 67, 27, 70, 56]);
+    expect(weeklyOuncesPerDay1).to.deep.equal({
+      date: [
+        '2019/06/16',
+        '2019/06/17',
+        '2019/06/18',
+        '2019/06/19',
+        '2019/06/20',
+        '2019/06/21',
+        '2019/06/22'
+      ],
+      numOunces: [
+        69, 96, 61, 91,
+        50, 50, 43
+      ]
+    });
+    expect(weeklyOuncesPerDay2).to.deep.equal({
+      date: [
+        '2019/06/16',
+        '2019/06/17',
+        '2019/06/18',
+        '2019/06/19',
+        '2019/06/20',
+        '2019/06/21',
+        '2019/06/22'
+      ],
+      numOunces: [
+        91, 96, 70, 76,
+        71, 27, 58
+      ]
+    });
+  });
+
+  it("should be able to return the date, and amount of ounces consumed each day over a different week", () => {
+    const weeklyOuncesPerDay1 = user1Hydration.returnWeeklyOunces("2019/06/28");
+    const weeklyOuncesPerDay2 = user2Hydration.returnWeeklyOunces("2019/06/28");
+    expect(weeklyOuncesPerDay1).to.deep.equal({
+      date: [
+        '2019/06/22',
+        '2019/06/23',
+        '2019/06/24',
+        '2019/06/25',
+        '2019/06/26',
+        '2019/06/27',
+        '2019/06/28'
+      ],
+      numOunces: [
+        43, 39, 61, 51,
+        52, 29, 57
+      ]
+    });
+    expect(weeklyOuncesPerDay2).to.deep.equal({
+      date: [
+        '2019/06/22',
+        '2019/06/23',
+        '2019/06/24',
+        '2019/06/25',
+        '2019/06/26',
+        '2019/06/27',
+        '2019/06/28'
+      ],
+      numOunces: [
+        58, 44, 33, 67,
+        27, 70, 56
+      ]
+    });
   });
 });
