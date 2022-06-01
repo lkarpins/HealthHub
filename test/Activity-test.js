@@ -42,15 +42,20 @@ describe("Activity", () => {
     expect(user1Activity.flightsOfStairs).to.equal(6);
     expect(user2Activity.flightsOfStairs).to.equal(45);
   });
-  
-  it("should be able to return how many miles a user has walked based on their number of steps", () => {
+
+  it.skip("should be able to return how many miles a user has walked based on their number of steps", () => {
     const milesWalkedPerDay1 = user1Activity.returnDailyMilesWalked("2019/06/16");
     const milesWalkedPerDay2 = user2Activity.returnDailyMilesWalked("2019/06/16");
     expect(milesWalkedPerDay1).to.equal();
     expect(milesWalkedPerDay2).to.equal();
   });
 // -For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
-
+  it.skip("should be able to return how many minutes a user was active for a given day", () => {
+    const minutesActivePerDay1 = user1Activity.returnMinutesActivePerDay("2019/06/16");
+    const minutesActivePerDay2 = user2Activity.returnMinutesActivePerDay("2019/06/16");
+    expect(minutesActivePerDay1).to.equal();
+    expect(minutesActivePerDay2).to.equal();
+  });
 // -For a user, how many minutes active did they average for a given week (7 days)?
 
 // -For a user, did they reach their step goal for a given day (specified by a date)?
