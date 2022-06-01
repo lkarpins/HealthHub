@@ -63,10 +63,20 @@ describe("Activity", () => {
     expect(AverageMinutesActivePerWeek1).to.equal();
     expect(AverageMinutesActivePerWeek2).to.equal();
   });
-// -For a user, did they reach their step goal for a given day (specified by a date)?
 
+  it.skip("should be able to determine if a user reached their step goal for a given day", () => {
+    const determinedStepGoalPerDay1 = user1Activity.returnStatusOfDailyStepGoal("2019/06/16");
+    const determinedStepGoalPerDay2 = user2Activity.returnStatusOfDailyStepGoal("2019/06/16");
+    expect(determinedStepGoalPerDay1).to.equal();
+    expect(determinedStepGoalPerDay2).to.equal();
+  });
 // -For a user, find all the days where they exceeded their step goal
-
+// it.skip("should be able to determine if a user reached their step goal for a given day", () => {
+//   const determinedStepGoalPerDay1 = user1Activity.returnStatusOfDailyStepGoal("2019/06/16");
+//   const determinedStepGoalPerDay2 = user2Activity.returnStatusOfDailyStepGoal("2019/06/16");
+//   expect(determinedStepGoalPerDay1).to.equal();
+//   expect(determinedStepGoalPerDay2).to.equal();
+// });
 // -For a user, find their all-time stair climbing record
 
 // -For all users, what is the average number of:
