@@ -59,6 +59,7 @@ const loadPage = () => {
   displayAverageStepGoal();
   displayDailyStepGoal();
   displayDailyNumSteps();
+  displayDailyMinsActive();
   displayDailyIntake();
   displayDailySleepHours();
   displayQualitySleep();
@@ -91,6 +92,9 @@ const displayDailyStepGoal = () => {
 };
 const displayDailyNumSteps = () => {
   dailyNumSteps.innerHTML = `${activity.numSteps}`;
+};
+const displayDailyMinsActive = () => {
+  dailyMinsActive.innerHTML = `${activity.minutesActive}`;
 };
 
 const displayDailyIntake = () => {
