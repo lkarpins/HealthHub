@@ -5,6 +5,7 @@ import User from "./User";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
+import Activity from "./Activity";
 import apiCalls from "./apiCalls";
 import chart from "./Chart";
 
@@ -14,6 +15,9 @@ const userAddress = document.querySelector("#userAddress");
 const userEmail = document.querySelector("#userEmail");
 const dailySteps = document.querySelector("#dailySteps");
 const averageSteps = document.querySelector("#averageSteps");
+const dailyNumSteps = document.querySelector("#dailyNumSteps");
+const dailyMinsActive = document.querySelector("#dailyMinsActive");
+const dailyMilesWalked = document.querySelector("#dailyMilesWalked");
 const dailyIntakeCard = document.querySelector("#dailyIntake");
 const weeklyIntakeCard = document.querySelector("#weeklyIntake");
 const dailyHoursSlept = document.querySelector("#dailyHoursSlept");
@@ -26,7 +30,7 @@ const userName = document.querySelector("#userName");
 const newUserButton = document.querySelector(".main__button");
 
 // Class Instances
-let user, userRepo, hydration, sleep;
+let user, userRepo, hydration, sleep, activity;
 
 // Functions
 const getRandomIndex = array => {
@@ -38,11 +42,13 @@ const fetchApiCalls = () => {
     let userData = data[2].userData;
     let hydrationData = data[0].hydrationData;
     let sleepData = data[1].sleepData;
+    let activityData = data[3].activityData;
     let randomUser = getRandomIndex(userData);
     userRepo = new UserRepository(userData);
     user = new User(userRepo.findUser(randomUser));
     hydration = new Hydration(user.id, hydrationData);
     sleep = new Sleep(user.id, sleepData);
+    activity = new Activity(user.id, activityData);
     loadPage();
   });
 };
@@ -52,6 +58,7 @@ const loadPage = () => {
   welcomeUser();
   displayAverageStepGoal();
   displayDailyStepGoal();
+  displayDailyNumSteps();
   displayDailyIntake();
   displayDailySleepHours();
   displayQualitySleep();
@@ -81,6 +88,9 @@ const displayAverageStepGoal = () => {
 };
 const displayDailyStepGoal = () => {
   dailySteps.innerHTML = `${user.dailyStepGoal}`;
+};
+const displayDailyNumSteps = () => {
+  dailyNumSteps.innerHTML = `${activity.numSteps}`;
 };
 
 const displayDailyIntake = () => {
