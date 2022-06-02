@@ -140,10 +140,10 @@ describe("Activity", () => {
     expect(avgStepsTakenPerDay2.avgStepsAllUsers).to.equal(14039.5);
   });
 
-  it.skip("should be able to find average minutes active for all user's on a given day", () => {
-    const avgMinutesActivePerDay1 = user1Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
-    const avgMinutesActivePerDay2 = user2Activity.returnAverageActivityDataAllUsers("2019/06/16", property);
-    expect(avgMinutesActivePerDay1).to.equal();
-    expect(avgMinutesActivePerDay2).to.equal();
+  it("should be able to find average minutes active for all user's on a given day", () => {
+    const avgMinutesActivePerDay1 = user1Activity.returnAvgActivityDataAllUsers("2019/06/16");
+    const avgMinutesActivePerDay2 = user2Activity.returnAvgActivityDataAllUsers("2019/06/17");
+    expect(avgMinutesActivePerDay1.avgMinsActiveAllUsers).to.equal(197.5);
+    expect(avgMinutesActivePerDay2.avgMinsActiveAllUsers).to.equal(116.5);
   });
 });
