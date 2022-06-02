@@ -90,35 +90,19 @@ class Activity {
     const filteredActivity = this.activityAPIResponse.filter(
       entry => entry.date === date
     );
-
-
     const avgActivityDataAllUsers = filteredActivity.reduce(
       (acc, entry) => {
-
-
         acc.avgFlightsAllUsers +=
           entry.flightsOfStairs / filteredActivity.length;
-
-
         acc.avgFlightsAllUsers =
           Math.round((acc.avgFlightsAllUsers + Number.EPSILON) * 10) / 10;
-
-
         acc.avgStepsAllUsers += entry.numSteps / filteredActivity.length;
-
-
         acc.avgStepsAllUsers =
           Math.round((acc.avgStepsAllUsers + Number.EPSILON) * 10) / 10;
-
-
         acc.avgMinsActiveAllUsers +=
           entry.minutesActive / filteredActivity.length;
-
-
         acc.avgMinsActiveAllUsers =
           Math.round((acc.avgMinsActiveAllUsers + Number.EPSILON) * 10) / 10;
-
-
         return acc;
       },
       {
@@ -131,8 +115,6 @@ class Activity {
     return avgActivityDataAllUsers;
     };
 };
-// need to get average of user stairs climbed on a day
-// need to get average of user steps taken for data
 // need to get average of user minutes active for a specific date
 
 export default Activity;
