@@ -19,7 +19,6 @@ class Activity {
     return userActive; 
   };
 
-  // -For a specific day (specified by a date), return the miles a user has walked based on their number of steps (use their strideLength to help calculate this)
   returnDailyMilesWalked = (date, user) => {
     let dailyMiles = this.userActivityData.find(entry => {
       return entry.date === date;
@@ -88,9 +87,52 @@ class Activity {
   // steps taken for a specific date
   // minutes active for a specific date
   returnAvgActivityDataAllUsers = date => {
-    
-  };
-}
+    const filteredActivity = this.activityAPIResponse.filter(
+      entry => entry.date === date
+    );
 
+
+    const avgActivityDataAllUsers = filteredActivity.reduce(
+      (acc, entry) => {
+
+
+        acc.avgFlightsAllUsers +=
+          entry.flightsOfStairs / filteredActivity.length;
+
+
+        acc.avgFlightsAllUsers =
+          Math.round((acc.avgFlightsAllUsers + Number.EPSILON) * 10) / 10;
+
+
+        acc.avgStepsAllUsers += entry.numSteps / filteredActivity.length;
+
+
+        acc.avgStepsAllUsers =
+          Math.round((acc.avgStepsAllUsers + Number.EPSILON) * 10) / 10;
+
+
+        acc.avgMinsActiveAllUsers +=
+          entry.minutesActive / filteredActivity.length;
+
+
+        acc.avgMinsActiveAllUsers =
+          Math.round((acc.avgMinsActiveAllUsers + Number.EPSILON) * 10) / 10;
+
+
+        return acc;
+      },
+      {
+        avgFlightsAllUsers: 0,
+        avgStepsAllUsers: 0,
+        avgMinsActiveAllUsers: 0
+      }
+    );
+    console.log(avgActivityDataAllUsers);
+    return avgActivityDataAllUsers;
+    };
+};
+// need to get average of user stairs climbed on a day
+// need to get average of user steps taken for data
+// need to get average of user minutes active for a specific date
 
 export default Activity;
