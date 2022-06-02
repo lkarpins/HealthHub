@@ -82,10 +82,6 @@ class Activity {
     return mostStairsClimbed[0].flightsOfStairs 
   };
 
-  // -For all users, what is the average number of:
-  // stairs climbed for a specified date
-  // steps taken for a specific date
-  // minutes active for a specific date
   returnAvgActivityDataAllUsers = date => {
     const filteredActivity = this.activityAPIResponse.filter(
       entry => entry.date === date
@@ -111,10 +107,8 @@ class Activity {
         avgMinsActiveAllUsers: 0
       }
     );
-    console.log(avgActivityDataAllUsers);
     return avgActivityDataAllUsers;
     };
 };
-// need to get average of user minutes active for a specific date
 
 export default Activity;
