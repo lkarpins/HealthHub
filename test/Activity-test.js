@@ -65,7 +65,7 @@ describe("Activity", () => {
     expect(user2Activity.flightsOfStairs).to.equal(45);
   });
 
-  it.only("should be able to return how many miles a user has walked based on their number of steps", () => {
+  it("should be able to return how many miles a user has walked based on their number of steps", () => {
     const milesWalkedPerDay1 = user1Activity.returnDailyMilesWalked(user1);
     const milesWalkedPerDay2 = user2Activity.returnDailyMilesWalked(user2);
     expect(milesWalkedPerDay1).to.equal(8.6);

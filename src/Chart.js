@@ -49,6 +49,41 @@ const chart = {
         responsive: true
       }
     });
+  },
+
+  groupedBar2: (steps, minutes, flights) => {
+    return new Chart(document.getElementById("activityChart"), {
+      data: {
+        datasets: [
+          {
+            type: "scatter",
+            label: "Flights of Stairs",
+            borderColor: "#09441B",
+            data: flights.flightsOfStairs
+          },
+          {
+            type: "line",
+            label: "Minutes Active",
+            borderColor: "#09441B",
+            data: minutes.minutesActive
+          },
+          {
+            type: "bar",
+            label: "Steps",
+            backgroundColor: "#E98A15",
+            data: steps.numSteps
+          }
+        ],
+        labels: steps.date
+      },
+      options: {
+        title: {
+          display: false,
+          text: ""
+        },
+        responsive: true
+      }
+    });
   }
 };
 
