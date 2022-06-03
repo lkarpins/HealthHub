@@ -11,24 +11,26 @@ class Activity {
 
   setUserActivityData = activityAPIResponse => {
     const userActive = activityAPIResponse.filter(userActivityData => {
-     if (userActivityData.userID === this.userID) {
-      return userActivityData;
-     }
+      if (userActivityData.userID === this.userID) {
+        return userActivityData;
+      }
     });
     userActive.reverse();
-    return userActive; 
+    return userActive;
   };
 
-  returnDailyMilesWalked = (date, user) => {
+  returnDailyMilesWalked = user => {
     let dailyMiles = this.userActivityData.find(entry => {
-      return entry.date === date;
+      return entry.date === this.date;
     });
-    return Math.round( 
-      ((dailyMiles.numSteps / (5280 / user.strideLength)) + Number.EPSILON) * 10 
-    ) / 10
+    return (
+      Math.round(
+        (dailyMiles.numSteps / (5280 / user.strideLength) + Number.EPSILON) * 10
+      ) / 10
+    );
   };
 
-  returnMinutesActivePerDay =  date => {
+  returnMinutesActivePerDay = date => {
     let dailyMins = this.userActivityData.find(entry => {
       return entry.date === date;
     });
@@ -37,49 +39,56 @@ class Activity {
 
   returnAvgMinutesActivePerWeek = weekStart => {
     const targetStartDate = this.userActivityData.findIndex(entry => {
-       return entry.date === weekStart;
-     });
-     let chosenWeek = this.userActivityData
-       .slice(targetStartDate, targetStartDate + 7)
-       .reverse()
-     let weeklyMinutesActive = {
-       date: [],
-       minutesActive: []
-     };
-      weeklyMinutesActive.date = chosenWeek.map(entry => entry.date);
-      weeklyMinutesActive.minutesActive = chosenWeek.map(entry => entry.minutesActive);
-      const totalWeeklyMinutesActive = weeklyMinutesActive.minutesActive.reduce((acc, mins) => {
-        return acc += mins 
-      }, 0)
-     const averageWeeklyActiveMinutes = 
-       Math.round(
-         (totalWeeklyMinutesActive / weeklyMinutesActive.minutesActive.length + Number.EPSILON) * 10
-       ) / 10
-      return averageWeeklyActiveMinutes;
+      return entry.date === weekStart;
+    });
+    let chosenWeek = this.userActivityData
+      .slice(targetStartDate, targetStartDate + 7)
+      .reverse();
+    let weeklyMinutesActive = {
+      date: [],
+      minutesActive: []
+    };
+    weeklyMinutesActive.date = chosenWeek.map(entry => entry.date);
+    weeklyMinutesActive.minutesActive = chosenWeek.map(
+      entry => entry.minutesActive
+    );
+    const totalWeeklyMinutesActive = weeklyMinutesActive.minutesActive.reduce(
+      (acc, mins) => {
+        return (acc += mins);
+      },
+      0
+    );
+    const averageWeeklyActiveMinutes =
+      Math.round(
+        (totalWeeklyMinutesActive / weeklyMinutesActive.minutesActive.length +
+          Number.EPSILON) *
+          10
+      ) / 10;
+    return averageWeeklyActiveMinutes;
   };
 
   returnStatusOfDailyStepGoal = (date, user) => {
     let dailyStatus = this.userActivityData.find(entry => {
       return entry.date === date;
     });
-    return dailyStatus.numSteps >= user.dailyStepGoal
+    return dailyStatus.numSteps >= user.dailyStepGoal;
   };
 
   returnDaysStepGoalExceeded = user => {
     const allTimeStatus = this.userActivityData.reduce((acc, entry) => {
-     if (this.returnStatusOfDailyStepGoal(entry.date, user)) {
-      acc.push(entry.date);
-     }
-     return acc;
+      if (this.returnStatusOfDailyStepGoal(entry.date, user)) {
+        acc.push(entry.date);
+      }
+      return acc;
     }, []);
-    return allTimeStatus
-   };
+    return allTimeStatus;
+  };
   // -For a user, find their all-time stair climbing record
   returnAllTimeStairClimbRecord = () => {
     let mostStairsClimbed = this.userActivityData.sort((a, b) => {
-      return b.flightsOfStairs - a.flightsOfStairs
+      return b.flightsOfStairs - a.flightsOfStairs;
     });
-    return mostStairsClimbed[0].flightsOfStairs 
+    return mostStairsClimbed[0].flightsOfStairs;
   };
 
   returnAvgActivityDataAllUsers = date => {
@@ -108,7 +117,7 @@ class Activity {
       }
     );
     return avgActivityDataAllUsers;
-    };
-};
+  };
+}
 
 export default Activity;

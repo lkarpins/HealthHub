@@ -18,6 +18,7 @@ const averageSteps = document.querySelector("#averageSteps");
 const dailyNumSteps = document.querySelector("#dailyNumSteps");
 const dailyMinsActive = document.querySelector("#dailyMinsActive");
 const dailyMilesWalked = document.querySelector("#dailyMilesWalked");
+const weeklyAvgMinsActive = document.querySelector("#weeklyAvgMinutesActive");
 const dailyIntakeCard = document.querySelector("#dailyIntake");
 const weeklyIntakeCard = document.querySelector("#weeklyIntake");
 const dailyHoursSlept = document.querySelector("#dailyHoursSlept");
@@ -60,6 +61,8 @@ const loadPage = () => {
   displayDailyStepGoal();
   displayDailyNumSteps();
   displayDailyMinsActive();
+  displayDailyMilesWalked();
+  displayWeeklyAvgMinsActive();
   displayDailyIntake();
   displayDailySleepHours();
   displayQualitySleep();
@@ -84,7 +87,7 @@ const displayUserCard = () => {
 };
 
 const displayAverageStepGoal = () => {
-  let averageUserSteps = userRepo.calculateAvgStepGoal();
+  const averageUserSteps = userRepo.calculateAvgStepGoal();
   averageSteps.innerHTML = `${averageUserSteps}`;
 };
 const displayDailyStepGoal = () => {
@@ -96,9 +99,19 @@ const displayDailyNumSteps = () => {
 const displayDailyMinsActive = () => {
   dailyMinsActive.innerHTML = `${activity.minutesActive}`;
 };
+const displayDailyMilesWalked = () => {
+  const dailyMilesWalkedResponse = activity.returnDailyMilesWalked(user);
+  dailyMilesWalked.innerHTML = `${dailyMilesWalkedResponse}`;
+};
+const displayWeeklyAvgMinsActive = () => {
+  const weeklyAvgMinsActiveResponse = activity.returnAvgMinutesActivePerWeek(
+    activity.date
+  );
+  weeklyAvgMinsActive.innerHTML = `${weeklyAvgMinsActiveResponse}`;
+};
 
 const displayDailyIntake = () => {
-  let dailyIntake = hydration.returnDailyOunces(hydration.date);
+  const dailyIntake = hydration.returnDailyOunces(hydration.date);
   dailyIntakeCard.innerHTML = `${dailyIntake} oz.`;
 };
 
