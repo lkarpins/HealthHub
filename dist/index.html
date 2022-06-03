@@ -21,18 +21,32 @@
       <article class="widgetContainer">
         <section class="data activity--section">
           <h2>Activity</h2>
-          <label>Daily Step Goal:</label>
-          <p id="dailySteps" class="number"></p>
-          <label>Community Step Goal:</label>
-          <p id="averageSteps" class="number"></p>
-          <label>Daily Number of Steps:</label>
-          <p id="dailyNumSteps" class="number"></p>
-          <label>Daily Minutes Active:</label>
-          <p id="dailyMinsActive" class="number"></p>
-          <label>Daily Miles Walked:</label>
-          <p id="dailyMilesWalked" class="number"></p>
-          <label>Weekly Avg Minutes Active:</label>
-          <p id="weeklyAvgMinutesActive" class="number"></p>
+          <div class="statDisplay">
+            <span class="stat">
+              <label>Daily Step Goal:</label>
+              <p id="dailySteps" class="number"></p>
+            </span>
+            <span class="stat">
+              <label>Community Step Goal:</label>
+              <p id="averageSteps" class="number"></p>
+            </span>
+            <span class="stat">
+              <label>Daily Number of Steps:</label>
+              <p id="dailyNumSteps" class="number"></p>
+            </span>
+            <span class="stat">
+              <label>Daily Minutes Active:</label>
+              <p id="dailyMinsActive" class="number"></p>
+            </span>
+            <span class="stat">
+              <label>Daily Miles Walked:</label>
+              <p id="dailyMilesWalked" class="number"></p>
+            </span>
+            <span class="stat">
+              <label>Weekly Avg Minutes Active:</label>
+              <p id="weeklyAvgMinutesActive" class="number"></p>
+            </span>
+          </div>
           <div id="weeklyActivities" class="activityStats">
             <label>Weekly Overview:</label>
             <canvas id="activityChart"></canvas>
@@ -75,7 +89,7 @@
           </div>
         </section>
       </article>
-      <article>
+      <article class="user">
         <section class="data user--section">
           <h2 id="userName"></h2>
           <label>Address:</label>
@@ -95,10 +109,7 @@
           <button class="addData">Add Data</button>
         </section>
         <section class="data user--section">
-          <h2 id="userName">Community Competition</h2>
-          <label>You:</label>
-          <p id="userAddress" class="userContact"></p>
-          <label>Community Member Averages:</label>
+          <h2 id="userName">Community Stats</h2>
           <label>Avg Minutes Active All Users:</label>
           <p id="averageMinutesActiveAllUsers" class="number"></p>
           <label>Avg Flights of Stairs All Users:</label>

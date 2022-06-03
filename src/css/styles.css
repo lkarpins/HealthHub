@@ -142,6 +142,11 @@ button:hover {
   color: #519e8a;
 }
 
+.user {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+}
 .user--section {
   max-width: 20rem;
 }
