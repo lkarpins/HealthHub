@@ -29,7 +29,7 @@ const avgHoursSlept = document.querySelector("#averageSleepHours");
 const avgSleepQuality = document.querySelector("#averageSleepQuality");
 const userName = document.querySelector("#userName");
 const newUserButton = document.querySelector(".main__button");
-
+const avgActivityDataAllUsers = document.querySelector("#avgActivityDataAllUsers");
 // Class Instances
 let user, userRepo, hydration, sleep, activity;
 
@@ -184,6 +184,8 @@ const displaySleepChart = () => {
   let quality = sleep.calculateSleepQualityPerDayPerWeek(sleep.date);
   chart.groupedBar(hours, quality);
 };
+
+const 
 // Event Linsteners
 window.addEventListener("load", fetchApiCalls);
 newUserButton.addEventListener("click", refreshPage);
