@@ -180,6 +180,74 @@ describe("Activity", () => {
     });
   });
 
+  it("should be able to return minutes active per day over the course of a given week", () => {
+    const minsActivePerDayPerWeek1 = user1Activity.returnActiveMinsPerDayPerWeek(
+      "2019/06/22"
+    );
+    const minsActivePerDayPerWeek2 = user2Activity.returnActiveMinsPerDayPerWeek(
+      "2019/06/22"
+    );
+
+    expect(minsActivePerDayPerWeek1).to.deep.equal({
+      date: [
+        "2019/06/16",
+        "2019/06/17",
+        "2019/06/18",
+        "2019/06/19",
+        "2019/06/20",
+        "2019/06/21",
+        "2019/06/22"
+      ],
+      minutesActive: [175, 168, 165, 275, 140, 135, 119]
+    });
+    expect(minsActivePerDayPerWeek2).to.deep.equal({
+      date: [
+        "2019/06/16",
+        "2019/06/17",
+        "2019/06/18",
+        "2019/06/19",
+        "2019/06/20",
+        "2019/06/21",
+        "2019/06/22"
+      ],
+      minutesActive: [220, 65, 181, 243, 74, 174, 124]
+    });
+  });
+
+  it("should be able to return minutes active per day over the course of a given week", () => {
+    const flightsClimbedPerDayPerWeek1 = user1Activity.returnFlightsOfStairsClimbedPerDayPerWeek(
+      "2019/06/22"
+    );
+    const flightsClimbedPerDayPerWeek2 = user2Activity.returnFlightsOfStairsClimbedPerDayPerWeek(
+      "2019/06/22"
+    );
+
+    expect(flightsClimbedPerDayPerWeek1).to.deep.equal({
+      date: [
+        "2019/06/16",
+        "2019/06/17",
+        "2019/06/18",
+        "2019/06/19",
+        "2019/06/20",
+        "2019/06/21",
+        "2019/06/22"
+      ],
+      flightsOfStairs: [36, 18, 33, 2, 12, 6, 6]
+    });
+    expect(flightsClimbedPerDayPerWeek2).to.deep.equal({
+      date: [
+        "2019/06/16",
+        "2019/06/17",
+        "2019/06/18",
+        "2019/06/19",
+        "2019/06/20",
+        "2019/06/21",
+        "2019/06/22"
+      ],
+      flightsOfStairs: [37, 4, 31, 44, 10, 26, 31]
+    });
+  });
+
   it("should be able to find average number of stairs climbed for all user's on a given day", () => {
     const avgStairsClimbedPerDay = user1Activity.returnAvgActivityDataAllUsers(
       "2019/06/16"

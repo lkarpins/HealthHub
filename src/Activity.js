@@ -121,11 +121,13 @@ class Activity {
 
     let weeklyActiveMins = {
       date: [],
-      activeMins: []
+      minutesActive: []
     };
 
     weeklyActiveMins.date = chosenWeek.map(entry => entry.date);
-    weeklyActiveMins.numSteps = chosenWeek.map(entry => entry.activeMins);
+    weeklyActiveMins.minutesActive = chosenWeek.map(
+      entry => entry.minutesActive
+    );
 
     return weeklyActiveMins;
   };
@@ -141,12 +143,12 @@ class Activity {
 
     let weeklyFlightsOfStairsClimbed = {
       date: [],
-      stairsClimbed: []
+      flightsOfStairs: []
     };
 
     weeklyFlightsOfStairsClimbed.date = chosenWeek.map(entry => entry.date);
-    weeklyFlightsOfStairsClimbed.numSteps = chosenWeek.map(
-      entry => entry.stairsClimbed
+    weeklyFlightsOfStairsClimbed.flightsOfStairs = chosenWeek.map(
+      entry => entry.flightsOfStairs
     );
 
     return weeklyFlightsOfStairsClimbed;
