@@ -83,7 +83,7 @@ class Activity {
     }, []);
     return allTimeStatus;
   };
-  // -For a user, find their all-time stair climbing record
+
   returnAllTimeStairClimbRecord = () => {
     let mostStairsClimbed = this.userActivityData.sort((a, b) => {
       return b.flightsOfStairs - a.flightsOfStairs;
