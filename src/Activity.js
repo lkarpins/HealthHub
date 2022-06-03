@@ -107,7 +107,6 @@ class Activity {
 
     weeklySteps.date = chosenWeek.map(entry => entry.date);
     weeklySteps.numSteps = chosenWeek.map(entry => entry.numSteps);
-
     return weeklySteps;
   };
 
