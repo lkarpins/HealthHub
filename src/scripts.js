@@ -29,8 +29,14 @@ const avgHoursSlept = document.querySelector("#averageSleepHours");
 const avgSleepQuality = document.querySelector("#averageSleepQuality");
 const userName = document.querySelector("#userName");
 const newUserButton = document.querySelector(".main__button");
-const avgActivityDataAllUsers = document.querySelector(
-  "#avgActivityDataAllUsers"
+const averageMinutesActiveAllUsers = document.querySelector(
+  "#averageMinutesActiveAllUsers"
+);
+const averageFlightsAllUsers = document.querySelector(
+  "#averageFlightsAllUsers"
+);
+const averageNumStepsAllUsers = document.querySelector(
+  "#averageNumStepsAllUsers"
 );
 // Class Instances
 let user, userRepo, hydration, sleep, activity;
@@ -117,7 +123,9 @@ const displayAvgActivityDataAllUsers = () => {
   const avgActivityDataAllUsersResponse = activity.returnAvgActivityDataAllUsers(
     activity.date
   );
-  avgActivityDataAllUsers.innerHTML = `${avgActivityDataAllUsersResponse}`;
+  averageMinutesActiveAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgMinsActiveAllUsers}`;
+  averageFlightsAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgFlightsAllUsers}`;
+  averageNumStepsAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgStepsAllUsers}`;
 };
 
 const displayDailyIntake = () => {
