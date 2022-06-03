@@ -56,15 +56,15 @@ const chart = {
       data: {
         datasets: [
           {
-            type: "scatter",
+            type: "bar",
             label: "Flights of Stairs",
-            borderColor: "#09441B",
+            backgroundColor: "turquoise",
             data: flights.flightsOfStairs
           },
           {
-            type: "line",
+            type: "bar",
             label: "Minutes Active",
-            borderColor: "#09441B",
+            backgroundColor: "yellow",
             data: minutes.minutesActive
           },
           {
