@@ -91,6 +91,68 @@ class Activity {
     return mostStairsClimbed[0].flightsOfStairs;
   };
 
+  returnNumStepsPerDayPerWeek = weekStart => {
+    const targetStartDate = this.userActivityData.findIndex(entry => {
+      return entry.date === weekStart;
+    });
+
+    let chosenWeek = this.userActivityData
+      .slice(targetStartDate, targetStartDate + 7)
+      .reverse();
+
+    let weeklySteps = {
+      date: [],
+      numSteps: []
+    };
+
+    weeklySteps.date = chosenWeek.map(entry => entry.date);
+    weeklySteps.numSteps = chosenWeek.map(entry => entry.numSteps);
+
+    return weeklySteps;
+  };
+
+  returnActiveMinsPerDayPerWeek = weekStart => {
+    const targetStartDate = this.userActivityData.findIndex(entry => {
+      return entry.date === weekStart;
+    });
+
+    let chosenWeek = this.userActivityData
+      .slice(targetStartDate, targetStartDate + 7)
+      .reverse();
+
+    let weeklyActiveMins = {
+      date: [],
+      activeMins: []
+    };
+
+    weeklyActiveMins.date = chosenWeek.map(entry => entry.date);
+    weeklyActiveMins.numSteps = chosenWeek.map(entry => entry.activeMins);
+
+    return weeklyActiveMins;
+  };
+
+  returnFlightsOfStairsClimbedPerDayPerWeek = weekStart => {
+    const targetStartDate = this.userActivityData.findIndex(entry => {
+      return entry.date === weekStart;
+    });
+
+    let chosenWeek = this.userActivityData
+      .slice(targetStartDate, targetStartDate + 7)
+      .reverse();
+
+    let weeklyFlightsOfStairsClimbed = {
+      date: [],
+      stairsClimbed: []
+    };
+
+    weeklyFlightsOfStairsClimbed.date = chosenWeek.map(entry => entry.date);
+    weeklyFlightsOfStairsClimbed.numSteps = chosenWeek.map(
+      entry => entry.stairsClimbed
+    );
+
+    return weeklyFlightsOfStairsClimbed;
+  };
+
   returnAvgActivityDataAllUsers = date => {
     const filteredActivity = this.activityAPIResponse.filter(
       entry => entry.date === date
