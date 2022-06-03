@@ -65,17 +65,11 @@ describe("Activity", () => {
     expect(user2Activity.flightsOfStairs).to.equal(45);
   });
 
-  it("should be able to return how many miles a user has walked based on their number of steps", () => {
-    const milesWalkedPerDay1 = user1Activity.returnDailyMilesWalked(
-      "2019/06/16",
-      user1
-    );
-    const milesWalkedPerDay2 = user2Activity.returnDailyMilesWalked(
-      "2019/06/16",
-      user2
-    );
-    expect(milesWalkedPerDay1).to.equal(5.4);
-    expect(milesWalkedPerDay2).to.equal(3.5);
+  it.only("should be able to return how many miles a user has walked based on their number of steps", () => {
+    const milesWalkedPerDay1 = user1Activity.returnDailyMilesWalked(user1);
+    const milesWalkedPerDay2 = user2Activity.returnDailyMilesWalked(user2);
+    expect(milesWalkedPerDay1).to.equal(8.6);
+    expect(milesWalkedPerDay2).to.equal(10.7);
   });
 
   it("should be able to return how many minutes a user was active for a given day", () => {
