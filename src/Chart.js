@@ -22,6 +22,30 @@ const chart = {
     });
   },
 
+  horizontalBar2: steps => {
+    return new Chart(document.getElementById("activityStepsChart"), {
+      type: "bar",
+      data: {
+        labels: steps.date,
+        datasets: [
+          {
+            type: "bar",
+            label: "Steps",
+            backgroundColor: "#E98A15",
+            data: steps.numSteps
+          }
+        ]
+      },
+      options: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: ""
+        }
+      }
+    });
+  },
+
   groupedBar: (hours, quality) => {
     return new Chart(document.getElementById("sleepChart"), {
       data: {
@@ -40,6 +64,35 @@ const chart = {
           }
         ],
         labels: hours.date
+      },
+      options: {
+        title: {
+          display: false,
+          text: ""
+        },
+        responsive: true
+      }
+    });
+  },
+
+  groupedBar2: (minutes, flights) => {
+    return new Chart(document.getElementById("activityChart"), {
+      data: {
+        datasets: [
+          {
+            type: "bar",
+            label: "Flights of Stairs",
+            backgroundColor: "#E98A15",
+            data: flights.flightsOfStairs
+          },
+          {
+            type: "bar",
+            label: "Minutes Active",
+            backgroundColor: "#09441B",
+            data: minutes.minutesActive
+          }
+        ],
+        labels: minutes.date
       },
       options: {
         title: {

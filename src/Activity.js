@@ -83,12 +83,75 @@ class Activity {
     }, []);
     return allTimeStatus;
   };
-  // -For a user, find their all-time stair climbing record
+
   returnAllTimeStairClimbRecord = () => {
     let mostStairsClimbed = this.userActivityData.sort((a, b) => {
       return b.flightsOfStairs - a.flightsOfStairs;
     });
     return mostStairsClimbed[0].flightsOfStairs;
+  };
+
+  returnNumStepsPerDayPerWeek = weekStart => {
+    const targetStartDate = this.userActivityData.findIndex(entry => {
+      return entry.date === weekStart;
+    });
+
+    let chosenWeek = this.userActivityData
+      .slice(targetStartDate, targetStartDate + 7)
+      .reverse();
+
+    let weeklySteps = {
+      date: [],
+      numSteps: []
+    };
+
+    weeklySteps.date = chosenWeek.map(entry => entry.date);
+    weeklySteps.numSteps = chosenWeek.map(entry => entry.numSteps);
+    return weeklySteps;
+  };
+
+  returnActiveMinsPerDayPerWeek = weekStart => {
+    const targetStartDate = this.userActivityData.findIndex(entry => {
+      return entry.date === weekStart;
+    });
+
+    let chosenWeek = this.userActivityData
+      .slice(targetStartDate, targetStartDate + 7)
+      .reverse();
+
+    let weeklyActiveMins = {
+      date: [],
+      minutesActive: []
+    };
+
+    weeklyActiveMins.date = chosenWeek.map(entry => entry.date);
+    weeklyActiveMins.minutesActive = chosenWeek.map(
+      entry => entry.minutesActive
+    );
+
+    return weeklyActiveMins;
+  };
+
+  returnFlightsOfStairsClimbedPerDayPerWeek = weekStart => {
+    const targetStartDate = this.userActivityData.findIndex(entry => {
+      return entry.date === weekStart;
+    });
+
+    let chosenWeek = this.userActivityData
+      .slice(targetStartDate, targetStartDate + 7)
+      .reverse();
+
+    let weeklyFlightsOfStairsClimbed = {
+      date: [],
+      flightsOfStairs: []
+    };
+
+    weeklyFlightsOfStairsClimbed.date = chosenWeek.map(entry => entry.date);
+    weeklyFlightsOfStairsClimbed.flightsOfStairs = chosenWeek.map(
+      entry => entry.flightsOfStairs
+    );
+
+    return weeklyFlightsOfStairsClimbed;
   };
 
   returnAvgActivityDataAllUsers = date => {

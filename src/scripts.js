@@ -29,7 +29,15 @@ const avgHoursSlept = document.querySelector("#averageSleepHours");
 const avgSleepQuality = document.querySelector("#averageSleepQuality");
 const userName = document.querySelector("#userName");
 const newUserButton = document.querySelector(".main__button");
-
+const averageMinutesActiveAllUsers = document.querySelector(
+  "#averageMinutesActiveAllUsers"
+);
+const averageFlightsAllUsers = document.querySelector(
+  "#averageFlightsAllUsers"
+);
+const averageNumStepsAllUsers = document.querySelector(
+  "#averageNumStepsAllUsers"
+);
 // Class Instances
 let user, userRepo, hydration, sleep, activity;
 
@@ -63,6 +71,7 @@ const loadPage = () => {
   displayDailyMinsActive();
   displayDailyMilesWalked();
   displayWeeklyAvgMinsActive();
+  displayAvgActivityDataAllUsers();
   displayDailyIntake();
   displayDailySleepHours();
   displayQualitySleep();
@@ -70,6 +79,8 @@ const loadPage = () => {
   displayAverageHoursSlept();
   displayHydrationChart();
   displaySleepChart();
+  displayActivityChart();
+  displayActivityStepsChart();
 };
 
 const refreshPage = () => {
@@ -108,6 +119,15 @@ const displayWeeklyAvgMinsActive = () => {
     activity.date
   );
   weeklyAvgMinsActive.innerHTML = `${weeklyAvgMinsActiveResponse}`;
+};
+
+const displayAvgActivityDataAllUsers = () => {
+  const avgActivityDataAllUsersResponse = activity.returnAvgActivityDataAllUsers(
+    activity.date
+  );
+  averageMinutesActiveAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgMinsActiveAllUsers}`;
+  averageFlightsAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgFlightsAllUsers}`;
+  averageNumStepsAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgStepsAllUsers}`;
 };
 
 const displayDailyIntake = () => {
@@ -184,6 +204,19 @@ const displaySleepChart = () => {
   let quality = sleep.calculateSleepQualityPerDayPerWeek(sleep.date);
   chart.groupedBar(hours, quality);
 };
+const displayActivityChart = () => {
+  let minutes = activity.returnActiveMinsPerDayPerWeek(activity.date);
+  let flights = activity.returnFlightsOfStairsClimbedPerDayPerWeek(
+    activity.date
+  );
+  chart.groupedBar2(minutes, flights);
+};
+
+const displayActivityStepsChart = () => {
+  let steps = activity.returnNumStepsPerDayPerWeek(activity.date);
+  chart.horizontalBar2(steps);
+};
+
 // Event Linsteners
 window.addEventListener("load", fetchApiCalls);
 newUserButton.addEventListener("click", refreshPage);
