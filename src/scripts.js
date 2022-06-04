@@ -80,6 +80,7 @@ const loadPage = () => {
   displayHydrationChart();
   displaySleepChart();
   displayActivityChart();
+  displayActivityStepsChart();
 };
 
 const refreshPage = () => {
@@ -204,17 +205,18 @@ const displaySleepChart = () => {
   chart.groupedBar(hours, quality);
 };
 const displayActivityChart = () => {
-  let steps = activity.returnNumStepsPerDayPerWeek(activity.date);
   let minutes = activity.returnActiveMinsPerDayPerWeek(activity.date);
   let flights = activity.returnFlightsOfStairsClimbedPerDayPerWeek(
     activity.date
   );
-  console.log(steps);
-  console.log(minutes);
-  console.log(flights);
-
-  chart.groupedBar2(steps, minutes, flights);
+  chart.groupedBar2(minutes, flights);
 };
+
+const displayActivityStepsChart = () => {
+  let steps = activity.returnNumStepsPerDayPerWeek(activity.date);
+  chart.horizontalBar2(steps);
+};
+
 // Event Linsteners
 window.addEventListener("load", fetchApiCalls);
 newUserButton.addEventListener("click", refreshPage);

@@ -51,6 +51,10 @@
             <label>Weekly Overview:</label>
             <canvas id="activityChart"></canvas>
           </div>
+          <div id="weeklyActivities" class="activityStats">
+            <label>Weekly Overview:</label>
+            <canvas id="activityStepsChart"></canvas>
+          </div>
         </section>
         <section class="data hydration-section">
           <h2>Hydration</h2>
@@ -96,16 +100,18 @@
           <p id="userAddress" class="userContact"></p>
           <label>Email:</label>
           <p id="userEmail" class="userContact"></p>
-          <label for="userData">Add Your Daily Data:</label>
-          <input type="text" name="ad" id="addSteps" />
-          <select name="userData" id="userData">
-            <option value="numSteps">Number of Steps</option>
-            <option value="minutesActive">Minutes Active</option>
-            <option value="flightsOfStairs">Flights of Stairs</option>
-            <option value="numOunces">Number of Ounces</option>
-            <option value="hoursSlept">Number of Hours Slept</option>
-            <option value="sleepQuality">Rating of Sleep Quality</option>
-          </select>
+          <form>
+            <label for="userData">Add Your Daily Data:</label>
+            <input type="text" name="userData" id="addSteps" required />
+            <select name="userStatInput" id="userData">
+              <option value="numSteps">Number of Steps</option>
+              <option value="minutesActive">Minutes Active</option>
+              <option value="flightsOfStairs">Flights of Stairs</option>
+              <option value="numOunces">Number of Ounces</option>
+              <option value="hoursSlept">Number of Hours Slept</option>
+              <option value="sleepQuality">Rating of Sleep Quality</option>
+            </select>
+          </form>
           <button class="addData">Add Data</button>
         </section>
         <section class="data user--section">
@@ -119,8 +125,6 @@
         </section>
       </article>
     </main>
-
-    <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="bundle.js"></script>
   </body>

@@ -93,6 +93,8 @@ button {
   color: #ffffff;
   padding: 0 1rem;
   cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 button:hover {
