@@ -234,6 +234,24 @@ const displayActivityStepsChart = () => {
   chart.horizontalBar2(steps);
 };
 
+//Form Functions
+const getTodaysDate = () => {
+  const padTodaysDate = num => {
+    return num.toString().padStart(2, "0");
+  };
+  //pad--adds "padding"--adding zero digits to date so that will always result 2 digits
+
+  const formatDate = date => {
+    return [
+      date.getFullYear(),
+      padTodaysDate(date.getMonth() + 1),
+      padTodaysDate(date.getDate())
+    ].join("/");
+  };
+  return formatDate(new Date());
+};
+//new Date()-built-in JS class that creates new date object
+
 // Event Linsteners
 window.addEventListener("load", fetchApiCalls);
 newUserButton.addEventListener("click", refreshPage);
