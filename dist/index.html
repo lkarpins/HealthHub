@@ -20,7 +20,28 @@
     <main>
       <article class="widgetContainer">
         <section class="data activity--section">
-          <h2>Activity</h2>
+          <div class="section-header">
+            <h2>Activity</h2>
+            <dialog id="activityDialog">
+              <form method="dialog" id="activityForm">
+                <div class="form-input">
+                  <label for="numSteps">Number of Steps:</label>
+                  <input type="text" name="numSteps" id="numSteps" />
+                  <label for="minutesActive">Minutes Active:</label>
+                  <input type="text" name="minutesActive" id="minutesActive" />
+                  <label for="flightsOfStairs">Flights Of Stairs Climbed:</label>
+                  <input type="text" name="flightsOfStairs" id="flightsOfStairs" />
+                </div>
+                <div>
+                  <button value="cancel">Cancel</button>
+                  <button id="confirmActivityBtn" value="default">
+                    Confirm
+                  </button>
+                </div>
+              </form>
+            </dialog>
+            <button id="updateActivity">+</button>
+          </div>
           <div class="statDisplay">
             <span class="stat">
               <label>Daily Step Goal:</label>
