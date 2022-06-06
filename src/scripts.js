@@ -252,6 +252,11 @@ const getTodaysDate = () => {
 };
 //new Date()-built-in JS class that creates new date object
 
-// Event Linsteners
+// Event Listeners
 window.addEventListener("load", fetchApiCalls);
 newUserButton.addEventListener("click", refreshPage);
+
+//Form Event Listeners
+updateHydro.addEventListener("click", function onOpen() {
+  hydroDialog.showModal();
+});
