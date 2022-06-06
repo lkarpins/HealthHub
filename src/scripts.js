@@ -38,23 +38,40 @@ const averageFlightsAllUsers = document.querySelector(
 const averageNumStepsAllUsers = document.querySelector(
   "#averageNumStepsAllUsers"
 );
+
+// Form Query Selectors
+const updateHydro = document.querySelector("#updateHydro");
+const hydroDialog = document.querySelector("#hydroDialog");
+const hydroForm = hydroDialog.querySelector("#hydroForm");
+const numOuncesInput = hydroDialog.querySelector("#numOunces");
+const confirmHydroBtn = hydroDialog.querySelector("#confirmHydroBtn");
+
 // Class Instances
 let user, userRepo, hydration, sleep, activity;
+
+//Global Variables
+let hydroPostData;
 
 // Functions
 const getRandomIndex = array => {
   return Math.floor(Math.random() * array.length + 1);
 };
 
-const fetchApiCalls = () => {
+const fetchApiCalls = userID => {
   apiCalls.fetchData().then(data => {
     let userData = data[2].userData;
     let hydrationData = data[0].hydrationData;
     let sleepData = data[1].sleepData;
     let activityData = data[3].activityData;
+    let id;
+    if (userID === "load") {
+      id = getRandomIndex(userData);
+    } else {
+      id = userID;
+    }
     let randomUser = getRandomIndex(userData);
     userRepo = new UserRepository(userData);
-    user = new User(userRepo.findUser(randomUser));
+    user = new User(userRepo.findUser(id));
     hydration = new Hydration(user.id, hydrationData);
     sleep = new Sleep(user.id, sleepData);
     activity = new Activity(user.id, activityData);
@@ -217,6 +234,65 @@ const displayActivityStepsChart = () => {
   chart.horizontalBar2(steps);
 };
 
-// Event Linsteners
-window.addEventListener("load", fetchApiCalls);
+//Form Functions
+const getTodaysDate = () => {
+  const padTodaysDate = num => {
+    return num.toString().padStart(2, "0");
+  };
+  //pad--adds "padding"--adding zero digits to date so that will always result 2 digits
+
+  const formatDate = date => {
+    return [
+      date.getFullYear(),
+      padTodaysDate(date.getMonth() + 1),
+      padTodaysDate(date.getDate())
+    ].join("/");
+  };
+  return formatDate(new Date());
+};
+//new Date()-built-in JS class that creates new date object
+
+// Event Listeners
+window.addEventListener("load", fetchApiCalls("load"));
 newUserButton.addEventListener("click", refreshPage);
+
+//Form Event Listeners
+updateHydro.addEventListener("click", function onOpen() {
+  hydroDialog.showModal();
+});
+//modal is an alert box where user can add input
+
+hydroForm.addEventListener("change", function onSelect(e) {
+  console.log(e);
+
+  hydroPostData = {
+    userID: user.id,
+    date: getTodaysDate(),
+    numOunces: parseInt(numOuncesInput.value)
+  };
+});
+
+hydroDialog.addEventListener("close", function onClose() {
+  console.log(hydroPostData);
+  fetch("http://localhost:3001/api/v1/hydration", {
+    method: "POST",
+    body: JSON.stringify(hydroPostData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      console.log(`Way to stay hydrated!`);
+      //check for response is not 2**
+      // error response in dom?
+      fetchApiCalls(hydroPostData.userID);
+      // chart.groupedBar().update()
+    })
+    .catch(err => {
+      // write error handling here
+      console.log(err);
+    });
+  // chart.groupedBar().desrtoy();
+});
