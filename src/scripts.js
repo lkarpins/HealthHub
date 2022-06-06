@@ -62,6 +62,7 @@ const flightsOfStairsInput = activityDialog.querySelector("#flightsOfStairs");
 let user, userRepo, hydration, sleep, activity;
 
 //Global Variables
+let activityPostData, todaysSteps, todaysMinutesActive, todaysFlightsOfStairs;
 let sleepPostData, todaysSleep, todaysQuality;
 let hydroPostData;
 
