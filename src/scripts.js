@@ -49,6 +49,9 @@ const confirmHydroBtn = hydroDialog.querySelector("#confirmHydroBtn");
 // Class Instances
 let user, userRepo, hydration, sleep, activity;
 
+//Global Variables
+let hydroPostData, todaysHydro;
+
 // Functions
 const getRandomIndex = array => {
   return Math.floor(Math.random() * array.length + 1);
