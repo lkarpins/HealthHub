@@ -107,13 +107,14 @@ button:hover {
   flex-flow: column wrap;
   gap: 1rem;
 }
-/*
-.hydration-section {
-  /* flex-grow: 2; */
-/* } */
+
+.section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 .sleep-section {
-  /* flex-grow: 3; */
   display: flex;
   flex-direction: column;
 }

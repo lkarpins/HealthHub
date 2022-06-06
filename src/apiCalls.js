@@ -1,5 +1,5 @@
 const fetchApiData = type => {
-  return fetch(`https://fitlit-api.herokuapp.com/api/v1/${type}`)
+  return fetch(`http://localhost:3001/api/v1/${type}`)
     .then(response => response.json())
     .then(data => data)
     .catch(error => console.log(`${type} API error!`));
@@ -14,4 +14,6 @@ const fetchData = () => {
   ]);
 };
 
-export default { fetchData };
+export default {
+  fetchData
+};

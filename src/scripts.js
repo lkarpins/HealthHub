@@ -38,23 +38,41 @@ const averageFlightsAllUsers = document.querySelector(
 const averageNumStepsAllUsers = document.querySelector(
   "#averageNumStepsAllUsers"
 );
+
+//Form Query Selectors
+const updateSleep = document.querySelector("#updateSleep");
+const sleepDialog = document.querySelector("#sleepDialog");
+const sleepForm = sleepDialog.querySelector("#sleepForm");
+const hoursSleptInput = sleepDialog.querySelector("#hoursSlept");
+const sleepQualityInput = sleepDialog.querySelector("#sleepQuality");
+const confirmSleepBtn = sleepDialog.querySelector("#confirmSleepBtn");
+
 // Class Instances
 let user, userRepo, hydration, sleep, activity;
+
+//Global Variables
+let sleepPostData, todaysSleep, todaysQuality;
 
 // Functions
 const getRandomIndex = array => {
   return Math.floor(Math.random() * array.length + 1);
 };
 
-const fetchApiCalls = () => {
+const fetchApiCalls = userID => {
   apiCalls.fetchData().then(data => {
+    console.log(data);
     let userData = data[2].userData;
     let hydrationData = data[0].hydrationData;
     let sleepData = data[1].sleepData;
     let activityData = data[3].activityData;
-    let randomUser = getRandomIndex(userData);
+    let id;
+    if (userID === "load") {
+      id = getRandomIndex(userData);
+    } else {
+      id = userID;
+    }
     userRepo = new UserRepository(userData);
-    user = new User(userRepo.findUser(randomUser));
+    user = new User(userRepo.findUser(id));
     hydration = new Hydration(user.id, hydrationData);
     sleep = new Sleep(user.id, sleepData);
     activity = new Activity(user.id, activityData);
@@ -204,6 +222,7 @@ const displaySleepChart = () => {
   let quality = sleep.calculateSleepQualityPerDayPerWeek(sleep.date);
   chart.groupedBar(hours, quality);
 };
+
 const displayActivityChart = () => {
   let minutes = activity.returnActiveMinsPerDayPerWeek(activity.date);
   let flights = activity.returnFlightsOfStairsClimbedPerDayPerWeek(
@@ -217,6 +236,98 @@ const displayActivityStepsChart = () => {
   chart.horizontalBar2(steps);
 };
 
+//Form Functions
+const getTodaysDate = () => {
+  const padTo2Digits = num => {
+    return num.toString().padStart(2, "0");
+  };
+
+  const formatDate = date => {
+    return [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate())
+    ].join("/");
+  };
+  return formatDate(new Date());
+};
+
+const captureHrsSlept = e => {
+  if (e.target.name === "sleepQuality") {
+    return;
+  } else if (
+    hoursSleptInput.value &&
+    hoursSleptInput.value > 1 &&
+    hoursSleptInput.value <= 24 &&
+    e.target.name === "hoursSlept"
+  ) {
+    todaysSleep = hoursSleptInput.value;
+  } else {
+    hoursSleptInput.value = null;
+    return false;
+  }
+  return todaysSleep;
+};
+
+const captureQuality = e => {
+  if (e.target.name === "hoursSlept") {
+    return;
+  } else if (
+    sleepQualityInput.value &&
+    sleepQualityInput.value > 0 &&
+    sleepQualityInput.value <= 5 &&
+    e.target.name === "sleepQuality"
+  ) {
+    todaysQuality = sleepQualityInput.value;
+  } else {
+    sleepQualityInput.value = 3;
+    return false;
+  }
+  return todaysQuality;
+};
+
 // Event Linsteners
-window.addEventListener("load", fetchApiCalls);
+window.addEventListener("load", fetchApiCalls("load"));
 newUserButton.addEventListener("click", refreshPage);
+
+// Form Event Listeners
+updateSleep.addEventListener("click", function onOpen() {
+  sleepDialog.showModal();
+});
+
+sleepForm.addEventListener("change", function onSelect(e) {
+  console.log(e);
+  captureHrsSlept(e);
+  captureQuality(e);
+  sleepPostData = {
+    userID: user.id,
+    date: getTodaysDate(),
+    hoursSlept: parseInt(todaysSleep),
+    sleepQuality: parseInt(todaysQuality)
+  };
+});
+
+sleepDialog.addEventListener("close", function onClose() {
+  console.log(sleepPostData);
+  fetch("http://localhost:3001/api/v1/sleep", {
+    method: "POST",
+    body: JSON.stringify(sleepPostData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      console.log(`Great job getting some Zzzzs! 😴`);
+      //check for response is not 2**
+      // error response in dom?
+      fetchApiCalls(sleepPostData.userID);
+      // chart.groupedBar().update()
+    })
+    .catch(err => {
+      // write error handling here
+      console.log(err);
+    });
+  // chart.groupedBar().desrtoy();
+});

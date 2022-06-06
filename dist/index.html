@@ -66,7 +66,34 @@
           </div>
         </section>
         <section class="data sleep-section">
-          <h2>Sleep</h2>
+          <div class="section-header">
+            <h2>Sleep</h2>
+            <dialog id="sleepDialog">
+              <form method="dialog" id="sleepForm">
+                <div class="form-input">
+                  <label for="hoursSlept">Hours Slept:</label>
+                  <input type="text" name="hoursSlept" id="hoursSlept" />
+                </div>
+                <div class="form-input">
+                  <label>Sleep Quality:</label>
+                  <select name="sleepQuality" id="sleepQuality">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                <div>
+                  <button value="cancel">Cancel</button>
+                  <button id="confirmSleepBtn" value="default">
+                    Confirm
+                  </button>
+                </div>
+              </form>
+            </dialog>
+            <button id="updateSleep">+</button>
+          </div>
           <div class="sleepContent">
             <div class="sleepStats statDisplay">
               <span class="stat">
@@ -100,7 +127,7 @@
           <p id="userAddress" class="userContact"></p>
           <label>Email:</label>
           <p id="userEmail" class="userContact"></p>
-          <form>
+          <!-- <form>
             <label for="userData">Add Your Daily Data:</label>
             <input type="text" name="userData" id="addSteps" required />
             <select name="userStatInput" id="userData">
@@ -111,8 +138,8 @@
               <option value="hoursSlept">Number of Hours Slept</option>
               <option value="sleepQuality">Rating of Sleep Quality</option>
             </select>
-          </form>
-          <button class="addData">Add Data</button>
+            <button class="addData" type="submit">Add Data</button>
+          </form> -->
         </section>
         <section class="data user--section">
           <h2 id="userName">Community Stats</h2>
