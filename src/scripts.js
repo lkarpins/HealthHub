@@ -57,12 +57,18 @@ const getRandomIndex = array => {
   return Math.floor(Math.random() * array.length + 1);
 };
 
-const fetchApiCalls = () => {
+const fetchApiCalls = userID => {
   apiCalls.fetchData().then(data => {
     let userData = data[2].userData;
     let hydrationData = data[0].hydrationData;
     let sleepData = data[1].sleepData;
     let activityData = data[3].activityData;
+    let id;
+    if (userID === "load") {
+      id = getRandomIndex(userData);
+    } else {
+      id = userID;
+    }
     let randomUser = getRandomIndex(userData);
     userRepo = new UserRepository(userData);
     user = new User(userRepo.findUser(randomUser));
