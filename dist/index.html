@@ -57,14 +57,33 @@
           </div>
         </section>
         <section class="data hydration-section">
-          <h2>Hydration</h2>
-          <label>Daily Intake:</label>
-          <p id="dailyIntake" class="number"></p>
-          <label>Weekly Overview:</label>
-          <div id="weeklyIntake">
-            <canvas id="hydrationChart"></canvas>
+          <div class="section-header">
+            <h2>Hydration</h2>
+            <dialog id="hydroDialog">
+              <form method="dialog" id="hydroForm">
+                <div class="form-input">
+                  <label for="numOunces">Number of Ounces:</label>
+                  <input type="text" name="numOunces" id="numOunces" />
+                </div>
+                <!-- </div> -->
+                <div>
+                  <button value="cancel">Cancel</button>
+                  <button id="confirmHydroBtn" value="default">
+                    Confirm
+                  </button>
+                </div>
+              </form>
+            </dialog>
+            <button id="updateHydro">+</button>
           </div>
         </section>
+        <label>Daily Intake:</label>
+        <p id="dailyIntake" class="number"></p>
+        <label>Weekly Overview:</label>
+        <div id="weeklyIntake">
+          <canvas id="hydrationChart"></canvas>
+        </div>
+        <!-- </section> -->
         <section class="data sleep-section">
           <h2>Sleep</h2>
           <div class="sleepContent">
@@ -100,19 +119,6 @@
           <p id="userAddress" class="userContact"></p>
           <label>Email:</label>
           <p id="userEmail" class="userContact"></p>
-          <form>
-            <label for="userData">Add Your Daily Data:</label>
-            <input type="text" name="userData" id="addSteps" required />
-            <select name="userStatInput" id="userData">
-              <option value="numSteps">Number of Steps</option>
-              <option value="minutesActive">Minutes Active</option>
-              <option value="flightsOfStairs">Flights of Stairs</option>
-              <option value="numOunces">Number of Ounces</option>
-              <option value="hoursSlept">Number of Hours Slept</option>
-              <option value="sleepQuality">Rating of Sleep Quality</option>
-            </select>
-          </form>
-          <button class="addData">Add Data</button>
         </section>
         <section class="data user--section">
           <h2 id="userName">Community Stats</h2>
