@@ -51,6 +51,12 @@ const hydroDialog = document.querySelector("#hydroDialog");
 const hydroForm = hydroDialog.querySelector("#hydroForm");
 const numOuncesInput = hydroDialog.querySelector("#numOunces");
 const confirmHydroBtn = hydroDialog.querySelector("#confirmHydroBtn");
+const updateActivity = document.querySelector("#updateActivity");
+const activityDialog = document.querySelector("#activityDialog");
+const activityForm = activityDialog.querySelector("#activityForm");
+const numStepsInput = activityDialog.querySelector("#numSteps");
+const minutesActiveInput = activityDialog.querySelector("#minutesActive");
+const flightsOfStairsInput = activityDialog.querySelector("#flightsOfStairs");
 
 // Class Instances
 let user, userRepo, hydration, sleep, activity;
