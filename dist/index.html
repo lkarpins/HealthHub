@@ -65,7 +65,6 @@
                   <label for="numOunces">Number of Ounces:</label>
                   <input type="text" name="numOunces" id="numOunces" />
                 </div>
-                <!-- </div> -->
                 <div>
                   <button value="cancel">Cancel</button>
                   <button id="confirmHydroBtn" value="default">
@@ -76,14 +75,13 @@
             </dialog>
             <button id="updateHydro">+</button>
           </div>
+          <label>Daily Intake:</label>
+          <p id="dailyIntake" class="number"></p>
+          <label>Weekly Overview:</label>
+          <div id="weeklyIntake">
+            <canvas id="hydrationChart"></canvas>
+          </div>
         </section>
-        <label>Daily Intake:</label>
-        <p id="dailyIntake" class="number"></p>
-        <label>Weekly Overview:</label>
-        <div id="weeklyIntake">
-          <canvas id="hydrationChart"></canvas>
-        </div>
-        <!-- </section> -->
         <section class="data sleep-section">
           <h2>Sleep</h2>
           <div class="sleepContent">
