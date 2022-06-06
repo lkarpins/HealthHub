@@ -386,3 +386,7 @@ sleepDialog.addEventListener("close", function onClose() {
     });
   // chart.groupedBar().desrtoy();
 });
+
+updateActivity.addEventListener("click", function onOpen() {
+  activityDialog.showModal();
+});
