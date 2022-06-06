@@ -39,7 +39,13 @@ const averageNumStepsAllUsers = document.querySelector(
   "#averageNumStepsAllUsers"
 );
 
-// Form Query Selectors
+//Form Query Selectors
+const updateSleep = document.querySelector("#updateSleep");
+const sleepDialog = document.querySelector("#sleepDialog");
+const sleepForm = sleepDialog.querySelector("#sleepForm");
+const hoursSleptInput = sleepDialog.querySelector("#hoursSlept");
+const sleepQualityInput = sleepDialog.querySelector("#sleepQuality");
+const confirmSleepBtn = sleepDialog.querySelector("#confirmSleepBtn");
 const updateHydro = document.querySelector("#updateHydro");
 const hydroDialog = document.querySelector("#hydroDialog");
 const hydroForm = hydroDialog.querySelector("#hydroForm");
@@ -50,6 +56,7 @@ const confirmHydroBtn = hydroDialog.querySelector("#confirmHydroBtn");
 let user, userRepo, hydration, sleep, activity;
 
 //Global Variables
+let sleepPostData, todaysSleep, todaysQuality;
 let hydroPostData;
 
 // Functions
@@ -59,6 +66,7 @@ const getRandomIndex = array => {
 
 const fetchApiCalls = userID => {
   apiCalls.fetchData().then(data => {
+    console.log(data);
     let userData = data[2].userData;
     let hydrationData = data[0].hydrationData;
     let sleepData = data[1].sleepData;
@@ -69,7 +77,6 @@ const fetchApiCalls = userID => {
     } else {
       id = userID;
     }
-    let randomUser = getRandomIndex(userData);
     userRepo = new UserRepository(userData);
     user = new User(userRepo.findUser(id));
     hydration = new Hydration(user.id, hydrationData);
@@ -221,6 +228,7 @@ const displaySleepChart = () => {
   let quality = sleep.calculateSleepQualityPerDayPerWeek(sleep.date);
   chart.groupedBar(hours, quality);
 };
+
 const displayActivityChart = () => {
   let minutes = activity.returnActiveMinsPerDayPerWeek(activity.date);
   let flights = activity.returnFlightsOfStairsClimbedPerDayPerWeek(
@@ -251,6 +259,40 @@ const getTodaysDate = () => {
   return formatDate(new Date());
 };
 //new Date()-built-in JS class that creates new date object
+
+const captureHrsSlept = e => {
+  if (e.target.name === "sleepQuality") {
+    return;
+  } else if (
+    hoursSleptInput.value &&
+    hoursSleptInput.value > 1 &&
+    hoursSleptInput.value <= 24 &&
+    e.target.name === "hoursSlept"
+  ) {
+    todaysSleep = hoursSleptInput.value;
+  } else {
+    hoursSleptInput.value = null;
+    return false;
+  }
+  return todaysSleep;
+};
+
+const captureQuality = e => {
+  if (e.target.name === "hoursSlept") {
+    return;
+  } else if (
+    sleepQualityInput.value &&
+    sleepQualityInput.value > 0 &&
+    sleepQualityInput.value <= 5 &&
+    e.target.name === "sleepQuality"
+  ) {
+    todaysQuality = sleepQualityInput.value;
+  } else {
+    sleepQualityInput.value = 3;
+    return false;
+  }
+  return todaysQuality;
+};
 
 // Event Listeners
 window.addEventListener("load", fetchApiCalls("load"));
@@ -288,6 +330,47 @@ hydroDialog.addEventListener("close", function onClose() {
       //check for response is not 2**
       // error response in dom?
       fetchApiCalls(hydroPostData.userID);
+      // chart.groupedBar().update()
+    })
+    .catch(err => {
+      // write error handling here
+      console.log(err);
+    });
+  // chart.groupedBar().desrtoy();
+});
+
+updateSleep.addEventListener("click", function onOpen() {
+  sleepDialog.showModal();
+});
+
+sleepForm.addEventListener("change", function onSelect(e) {
+  console.log(e);
+  captureHrsSlept(e);
+  captureQuality(e);
+  sleepPostData = {
+    userID: user.id,
+    date: getTodaysDate(),
+    hoursSlept: parseInt(todaysSleep),
+    sleepQuality: parseInt(todaysQuality)
+  };
+});
+
+sleepDialog.addEventListener("close", function onClose() {
+  console.log(sleepPostData);
+  fetch("http://localhost:3001/api/v1/sleep", {
+    method: "POST",
+    body: JSON.stringify(sleepPostData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      console.log(`Great job getting some Zzzzs! 😴`);
+      //check for response is not 2**
+      // error response in dom?
+      fetchApiCalls(sleepPostData.userID);
       // chart.groupedBar().update()
     })
     .catch(err => {

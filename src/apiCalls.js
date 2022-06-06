@@ -14,4 +14,6 @@ const fetchData = () => {
   ]);
 };
 
-export default { fetchData };
+export default {
+  fetchData
+};
