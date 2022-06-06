@@ -38,6 +38,14 @@ const averageFlightsAllUsers = document.querySelector(
 const averageNumStepsAllUsers = document.querySelector(
   "#averageNumStepsAllUsers"
 );
+
+// Form Query Selectors
+const updateHydro = document.querySelector("#updateHydro");
+const hydroDialog = document.querySelector("#hydroDialog");
+const hydroForm = hydroDialog.querySelector("#hydroForm");
+const numOuncesInput = hydroDialog.querySelector("#numOunces");
+const confirmHydroBtn = hydroDialog.querySelector("#confirmHydroBtn");
+
 // Class Instances
 let user, userRepo, hydration, sleep, activity;
 
