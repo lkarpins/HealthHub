@@ -252,7 +252,6 @@ const getTodaysDate = () => {
   const padTodaysDate = num => {
     return num.toString().padStart(2, "0");
   };
-  //pad--adds "padding"--adding zero digits to date so that will always result 2 digits
 
   const formatDate = date => {
     return [
@@ -263,7 +262,6 @@ const getTodaysDate = () => {
   };
   return formatDate(new Date());
 };
-//new Date()-built-in JS class that creates new date object
 
 const captureHrsSlept = e => {
   if (e.target.name === "sleepQuality") {
@@ -307,7 +305,7 @@ newUserButton.addEventListener("click", refreshPage);
 updateHydro.addEventListener("click", function onOpen() {
   hydroDialog.showModal();
 });
-//modal is an alert box where user can add input
+
 
 hydroForm.addEventListener("change", function onSelect(e) {
   hydroPostData = {
@@ -330,16 +328,11 @@ hydroDialog.addEventListener("close", function onClose() {
     .then(data => {
       console.log(data);
       console.log(`Way to stay hydrated!`);
-      //check for response is not 2**
-      // error response in dom?
       fetchApiCalls(hydroPostData.userID);
-      // chart.groupedBar().update()
     })
     .catch(err => {
-      // write error handling here
       console.log(err);
     });
-  // chart.groupedBar().desrtoy();
 });
 
 updateSleep.addEventListener("click", function onOpen() {
@@ -347,7 +340,6 @@ updateSleep.addEventListener("click", function onOpen() {
 });
 
 sleepForm.addEventListener("change", function onSelect(e) {
-  console.log(e);
   captureHrsSlept(e);
   captureQuality(e);
   sleepPostData = {
@@ -371,16 +363,11 @@ sleepDialog.addEventListener("close", function onClose() {
     .then(data => {
       console.log(data);
       console.log(`Great job getting some Zzzzs! 😴`);
-      //check for response is not 2**
-      // error response in dom?
       fetchApiCalls(sleepPostData.userID);
-      // chart.groupedBar().update()
     })
     .catch(err => {
-      // write error handling here
       console.log(err);
     });
-  // chart.groupedBar().desrtoy();
 });
 
 updateActivity.addEventListener("click", function onOpen() {
