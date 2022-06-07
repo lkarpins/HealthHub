@@ -312,8 +312,6 @@ updateHydro.addEventListener("click", function onOpen() {
 //modal is an alert box where user can add input
 
 hydroForm.addEventListener("change", function onSelect(e) {
-  console.log(e);
-
   hydroPostData = {
     userID: user.id,
     date: getTodaysDate(),
@@ -389,4 +387,38 @@ sleepDialog.addEventListener("close", function onClose() {
 
 updateActivity.addEventListener("click", function onOpen() {
   activityDialog.showModal();
+});
+
+activityForm.addEventListener("change", function onSelect(e) {
+  activityPostData = {
+    userID: user.id,
+    date: getTodaysDate(),
+    numSteps: parseInt(numStepsInput.value),
+    minutesActive: parseInt(minutesActiveInput.value),
+    flightsOfStairs: parseInt(flightsOfStairsInput.value)
+  };
+});
+
+activityDialog.addEventListener("close", function onClose() {
+  fetch("http://localhost:3001/api/v1/activity", {
+    method: "POST",
+    body: JSON.stringify(activityPostData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      console.log(`Way to stay active!`);
+      //check for response is not 2**
+      // error response in dom?
+      fetchApiCalls(activityPostData.userID);
+      // chart.groupedBar().update()
+    })
+    .catch(err => {
+      // write error handling here
+      console.log(err);
+    });
+  // chart.groupedBar().desrtoy();
 });
