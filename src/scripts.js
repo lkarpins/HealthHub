@@ -51,11 +51,18 @@ const hydroDialog = document.querySelector("#hydroDialog");
 const hydroForm = hydroDialog.querySelector("#hydroForm");
 const numOuncesInput = hydroDialog.querySelector("#numOunces");
 const confirmHydroBtn = hydroDialog.querySelector("#confirmHydroBtn");
+const updateActivity = document.querySelector("#updateActivity");
+const activityDialog = document.querySelector("#activityDialog");
+const activityForm = activityDialog.querySelector("#activityForm");
+const numStepsInput = activityDialog.querySelector("#numSteps");
+const minutesActiveInput = activityDialog.querySelector("#minutesActive");
+const flightsOfStairsInput = activityDialog.querySelector("#flightsOfStairs");
 
 // Class Instances
 let user, userRepo, hydration, sleep, activity;
 
 //Global Variables
+let activityPostData, todaysSteps, todaysMinutesActive, todaysFlightsOfStairs;
 let sleepPostData, todaysSleep, todaysQuality;
 let hydroPostData;
 
@@ -146,9 +153,7 @@ const displayWeeklyAvgMinsActive = () => {
 };
 
 const displayAvgActivityDataAllUsers = () => {
-  const avgActivityDataAllUsersResponse = activity.returnAvgActivityDataAllUsers(
-    activity.date
-  );
+  const avgActivityDataAllUsersResponse = activity.returnAvgActivityDataAllUsers(activity.date);
   averageMinutesActiveAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgMinsActiveAllUsers}`;
   averageFlightsAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgFlightsAllUsers}`;
   averageNumStepsAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgStepsAllUsers}`;
@@ -247,7 +252,6 @@ const getTodaysDate = () => {
   const padTodaysDate = num => {
     return num.toString().padStart(2, "0");
   };
-  //pad--adds "padding"--adding zero digits to date so that will always result 2 digits
 
   const formatDate = date => {
     return [
@@ -258,7 +262,6 @@ const getTodaysDate = () => {
   };
   return formatDate(new Date());
 };
-//new Date()-built-in JS class that creates new date object
 
 const captureHrsSlept = e => {
   if (e.target.name === "sleepQuality") {
@@ -302,11 +305,9 @@ newUserButton.addEventListener("click", refreshPage);
 updateHydro.addEventListener("click", function onOpen() {
   hydroDialog.showModal();
 });
-//modal is an alert box where user can add input
+
 
 hydroForm.addEventListener("change", function onSelect(e) {
-  console.log(e);
-
   hydroPostData = {
     userID: user.id,
     date: getTodaysDate(),
@@ -327,16 +328,11 @@ hydroDialog.addEventListener("close", function onClose() {
     .then(data => {
       console.log(data);
       console.log(`Way to stay hydrated!`);
-      //check for response is not 2**
-      // error response in dom?
       fetchApiCalls(hydroPostData.userID);
-      // chart.groupedBar().update()
     })
     .catch(err => {
-      // write error handling here
       console.log(err);
     });
-  // chart.groupedBar().desrtoy();
 });
 
 updateSleep.addEventListener("click", function onOpen() {
@@ -344,7 +340,6 @@ updateSleep.addEventListener("click", function onOpen() {
 });
 
 sleepForm.addEventListener("change", function onSelect(e) {
-  console.log(e);
   captureHrsSlept(e);
   captureQuality(e);
   sleepPostData = {
@@ -368,14 +363,42 @@ sleepDialog.addEventListener("close", function onClose() {
     .then(data => {
       console.log(data);
       console.log(`Great job getting some Zzzzs! 😴`);
-      //check for response is not 2**
-      // error response in dom?
       fetchApiCalls(sleepPostData.userID);
-      // chart.groupedBar().update()
     })
     .catch(err => {
-      // write error handling here
       console.log(err);
     });
-  // chart.groupedBar().desrtoy();
+});
+
+updateActivity.addEventListener("click", function onOpen() {
+  activityDialog.showModal();
+});
+
+activityForm.addEventListener("change", function onSelect(e) {
+  activityPostData = {
+    userID: user.id,
+    date: getTodaysDate(),
+    flightsOfStairs: parseInt(flightsOfStairsInput.value),
+    minutesActive: parseInt(minutesActiveInput.value),
+    numSteps: parseInt(numStepsInput.value)
+  };
+});
+
+activityDialog.addEventListener("close", function onClose() {
+  fetch("http://localhost:3001/api/v1/activity", {
+    method: "POST",
+    body: JSON.stringify(activityPostData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      console.log(`Way to stay active!`);
+      fetchApiCalls(activityPostData.userID);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
