@@ -26,14 +26,13 @@
               <form method="dialog" id="activityForm">
                 <div class="form-input">
                   <label for="numSteps">Number of Steps:</label>
-                  <input type="text" name="numSteps" id="numSteps" />
+                  <input type="text" name="numSteps" id="numSteps" required />
                   <label for="minutesActive">Minutes Active:</label>
-                  <input type="text" name="minutesActive" id="minutesActive" />
+                  <input type="text" name="minutesActive" id="minutesActive" required />
                   <label for="flightsOfStairs">Flights Of Stairs Climbed:</label>
-                  <input type="text" name="flightsOfStairs" id="flightsOfStairs" />
+                  <input type="text" name="flightsOfStairs" id="flightsOfStairs" required />
                 </div>
                 <div>
-                  <button value="cancel">Cancel</button>
                   <button id="confirmActivityBtn" value="default">
                     Confirm
                   </button>
@@ -84,10 +83,9 @@
               <form method="dialog" id="hydroForm">
                 <div class="form-input">
                   <label for="numOunces">Number of Ounces:</label>
-                  <input type="text" name="numOunces" id="numOunces" />
+                  <input type="text" name="numOunces" id="numOunces" required />
                 </div>
                 <div>
-                  <button value="cancel">Cancel</button>
                   <button id="confirmHydroBtn" value="default">
                     Confirm
                   </button>
@@ -110,11 +108,11 @@
               <form method="dialog" id="sleepForm">
                 <div class="form-input">
                   <label for="hoursSlept">Hours Slept:</label>
-                  <input type="text" name="hoursSlept" id="hoursSlept" />
+                  <input type="text" name="hoursSlept" id="hoursSlept" required />
                 </div>
                 <div class="form-input">
                   <label>Sleep Quality:</label>
-                  <select name="sleepQuality" id="sleepQuality">
+                  <select name="sleepQuality" id="sleepQuality" required >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -123,7 +121,6 @@
                   </select>
                 </div>
                 <div>
-                  <button value="cancel">Cancel</button>
                   <button id="confirmSleepBtn" value="default">
                     Confirm
                   </button>

@@ -153,9 +153,7 @@ const displayWeeklyAvgMinsActive = () => {
 };
 
 const displayAvgActivityDataAllUsers = () => {
-  const avgActivityDataAllUsersResponse = activity.returnAvgActivityDataAllUsers(
-    activity.date
-  );
+  const avgActivityDataAllUsersResponse = activity.returnAvgActivityDataAllUsers(activity.date);
   averageMinutesActiveAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgMinsActiveAllUsers}`;
   averageFlightsAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgFlightsAllUsers}`;
   averageNumStepsAllUsers.innerHTML = `${avgActivityDataAllUsersResponse.avgStepsAllUsers}`;
@@ -393,9 +391,9 @@ activityForm.addEventListener("change", function onSelect(e) {
   activityPostData = {
     userID: user.id,
     date: getTodaysDate(),
-    numSteps: parseInt(numStepsInput.value),
+    flightsOfStairs: parseInt(flightsOfStairsInput.value),
     minutesActive: parseInt(minutesActiveInput.value),
-    flightsOfStairs: parseInt(flightsOfStairsInput.value)
+    numSteps: parseInt(numStepsInput.value)
   };
 });
 
@@ -411,14 +409,9 @@ activityDialog.addEventListener("close", function onClose() {
     .then(data => {
       console.log(data);
       console.log(`Way to stay active!`);
-      //check for response is not 2**
-      // error response in dom?
       fetchApiCalls(activityPostData.userID);
-      // chart.groupedBar().update()
     })
     .catch(err => {
-      // write error handling here
       console.log(err);
     });
-  // chart.groupedBar().desrtoy();
 });
