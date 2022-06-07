@@ -18,7 +18,7 @@
 
 - The _HealthHub_ Project was designed to test my fellow project collaborators and I on our abilities to implement ES6 classes, use array and object prototype methods for data manipulation, create an easy to use and understand dashboard with clearly displayed information, make network requests to retrieve and `POST` data, practice our TDD skills with Mocha/Chai, implement instructor feedback, and implementing error handling and accessibility features. It’s a health and wellness application that showcases hydration, sleep, and activity data for a random user. It also displays averages for said data amonst all user's.  
 
-## Illustration
+## Illustrations
 
 #### Version 1
 
@@ -26,7 +26,7 @@
 
 #### Version 2
 
-![HealthHub Recording](https://user-images.githubusercontent.com/95496577/172287093-8bdc3cad-c74e-4534-836f-ce6ee9b9aa48.gif) 
+![HealthHub-illustration](https://user-images.githubusercontent.com/95496577/172291306-3f651417-91ff-4af3-84a5-f0b141a6d611.gif) 
 
 ## Wireframe
 
